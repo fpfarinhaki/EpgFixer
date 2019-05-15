@@ -3,304 +3,153 @@
    
   <!-- for detailed info about the settings see http://webgrabplus.com/node/30 -->
    
-	<filename>guide.xml</filename>
-	<mode></mode>
+	<filename>guide_mi.xml</filename>
+	<mode>n</mode>
 	<postprocess run="n" grab="y">mdb</postprocess>
 	<logging>on</logging>
-	<retry time-out="5">4</retry>
-	<timespan>0</timespan>
-	<update>f</update>
-	
-	<channel xmltv_id="Record" update="i" site_id="br_960df919-cfd9-4d41-9fbc-31d12abb8f09" site="mi.tv">Record</channel>
-	<channel xmltv_id="Sbt" update="i" site_id="br_33c670d1-f6f9-4636-9f2a-7d10f72bd706" site="mi.tv">Sbt</channel>
-	<channel xmltv_id="Band" update="i" site_id="br_e41e527b-8375-4523-a9af-d369a1549bd8" site="mi.tv">Band</channel>
-	<channel xmltv_id="RedeTV!" update="i" site_id="br_eda9e8d0-70e1-412d-b28c-b9de67b351f4" site="mi.tv">RedeTV!</channel>
-	<channel xmltv_id="Cultura" update="i" site_id="br_5ae0e355-4606-4155-a9ad-bfee7693e831" site="mi.tv">Cultura</channel>
-	<channel xmltv_id="MTV" update="i" site_id="br_d7be220d-d8da-41fc-9a85-73f08ad0d199" site="mi.tv">MTV</channel>
-	<channel xmltv_id="AXN" update="i" site_id="br_7dad528d-b53d-4a0b-8f51-329829547d2d" site="mi.tv">AXN</channel>
-	<channel xmltv_id="FOX" update="i" site_id="br_dec84abc-0568-4e7d-88a4-b80a112a8cc8" site="mi.tv">FOX</channel>
-	<channel xmltv_id="A&amp;E" update="i" site_id="br_c61a7ed3-e3e1-4842-b050-540fd828a349" site="mi.tv">A&amp;E</channel>
-	<channel xmltv_id="HBO" update="i" site_id="br_651e0fe0-6540-4506-98a4-d81d9f241c6c" site="mi.tv">HBO</channel>
-	<channel xmltv_id="AMC" update="i" site_id="br_3d81998b-fba3-44b7-b921-5fad9119677d" site="mi.tv">AMC</channel>
-	<channel xmltv_id="TNT" update="i" site_id="br_0187207c-93f4-44fc-a2de-5ef2e778dc74" site="mi.tv">TNT</channel>
-	<channel xmltv_id="Warner" update="i" site_id="br_4860646d-c6bd-4b27-830f-3668afb549ee" site="mi.tv">Warner</channel>
-	<channel xmltv_id="Discovery" update="i" site_id="br_3ae6bbb9-38da-4647-8194-adcb748bc87f" site="mi.tv">Discovery</channel>
-	<channel xmltv_id="DiscoveryHomeHealth" update="i" site_id="br_68be1bf7-a90c-40f9-ad26-fdb48461804f" site="mi.tv">DiscoveryHomeHealth</channel>
-	
-	<!--
-	<channel xmltv_id="History Channel" update="i" site_id="br_587c0b5c-5601-48b2-b6b6-6128d712b412" site="mi.tv">History Channel</channel>
-	<channel xmltv_id="Fox Sports" update="i" site_id="br_8525746c-6c09-4fe6-b404-c87b1236cb72" site="mi.tv">Fox Sports</channel>
-	<channel xmltv_id="Espn" update="i" site_id="br_3dc78e7a-3c30-45ea-a10b-d6260c313491" site="mi.tv">Espn</channel>
-	<channel xmltv_id="Disney" update="i" site_id="br_43d98e99-af11-4eba-a54a-2ca7abf171c7" site="mi.tv">Disney</channel>
-	<channel xmltv_id="Discovery Kids" update="i" site_id="br_164c1cce-aee4-48a5-be4a-89181927ca4a" site="mi.tv">Discovery Kids</channel>
-	<channel xmltv_id="Cartoon" update="i" site_id="br_31e44654-f9dd-4858-a217-ef321b057c76" site="mi.tv">Cartoon</channel>
-	<channel xmltv_id="Boomerang" update="i" site_id="br_0b8e006c-8ef6-4fc4-8f86-6540382d7f60" site="mi.tv">Boomerang</channel>
-	<channel xmltv_id="Record News" update="i" site_id="br_f7de4350-69aa-4931-8164-fdbec2f6b531" site="mi.tv">Record News</channel>
-	<channel xmltv_id="Cnn" update="i" site_id="br_2adb53bf-f41e-424d-8767-2ffc4e80c4dd" site="mi.tv">Cnn</channel>
-	<channel xmltv_id="Globosat" update="i" site_id="br_c438f11f-8dc7-4089-86dd-a22edde8043f" site="mi.tv">Globosat</channel>
-	<channel xmltv_id="Axn Hd" update="i" site_id="br_e8e51cb0-5670-47b6-aa81-e7b244919292" site="mi.tv">Axn Hd</channel>
-	<channel xmltv_id="Animal Planet" update="i" site_id="br_e0761a37-0c78-4281-92ab-91bcf1be3328" site="mi.tv">Animal Planet</channel>
-	<channel xmltv_id="Bbc News" update="i" site_id="br_b8e3e957-5b10-4c25-94c5-e57ecf02d85b" site="mi.tv">Bbc News</channel>
-	<channel xmltv_id="Bh News Tv" update="i" site_id="br_d1c7b4d5-6a3d-4de5-beb8-ac4998356f0c" site="mi.tv">Bh News Tv</channel>
-	<channel xmltv_id="Band Belem" update="i" site_id="br_77a6a208-1985-4d1e-bf14-e13ed3d26a22" site="mi.tv">Band Belem</channel>
-	<channel xmltv_id="Band Curitiba" update="i" site_id="br_8c20f690-262b-42eb-9579-8015707883db" site="mi.tv">Band Curitiba</channel>
-	<channel xmltv_id="Band Minas" update="i" site_id="br_1cd5daa6-a6b0-4f84-9678-ad77e65c3e9f" site="mi.tv">Band Minas</channel>
-	<channel xmltv_id="Band News" update="i" site_id="br_957bb7d2-38c3-41a2-83cf-836a7b4383c2" site="mi.tv">Band News</channel>
-	<channel xmltv_id="Band Porto Alegre" update="i" site_id="br_c528c664-9359-4382-a429-107352928c9f" site="mi.tv">Band Porto Alegre</channel>
-	<channel xmltv_id="Band Rio" update="i" site_id="br_59edb36b-30d6-4268-9c55-78ab0390d20f" site="mi.tv">Band Rio</channel>
-	<channel xmltv_id="Bandsports" update="i" site_id="br_59fba93e-5354-4de5-a2a2-84854658ea46" site="mi.tv">Bandsports</channel>
-	<channel xmltv_id="Bloomberg" update="i" site_id="br_329e8f24-8d72-4a9d-960e-76b0d8a03a99" site="mi.tv">Bloomberg</channel>
-	<channel xmltv_id="Boa Vontade Tv" update="i" site_id="br_5221af00-9fdc-4a29-98dc-0866500fdb8f" site="mi.tv">Boa Vontade Tv</channel>
-	<channel xmltv_id="Cnt" update="i" site_id="br_5b26c020-b369-400e-a373-0a56aa4f2085" site="mi.tv">Cnt</channel>
-	<channel xmltv_id="Canal Adulto" update="i" site_id="br_64ded24a-38f3-4317-a7e0-e8f19c841954" site="mi.tv">Canal Adulto</channel>
-	<channel xmltv_id="Canal Agromix" update="i" site_id="br_52524352-2752-4569-a5a2-da53dcdf07f2" site="mi.tv">Canal Agromix</channel>
-	<channel xmltv_id="Canal Brasil" update="i" site_id="br_9388e526-fc02-47b9-8e98-5ea00ec53b26" site="mi.tv">Canal Brasil</channel>
-	<channel xmltv_id="Canal Brasil Hd" update="i" site_id="br_17c391f3-7915-47ef-b4b8-47a7e75a8b7e" site="mi.tv">Canal Brasil Hd</channel>
-	<channel xmltv_id="Canal Legislativo Tval" update="i" site_id="br_4242573f-2152-4d69-b82d-9615b5647a15" site="mi.tv">Canal Legislativo Tval</channel>
-	<channel xmltv_id="Canal Rural" update="i" site_id="br_7c04b037-e337-4f21-a1db-11160b56c1a0" site="mi.tv">Canal Rural</channel>
-	<channel xmltv_id="Canc O Nova" update="i" site_id="br_2e199cfc-5993-49f8-9601-c4b5f05a490f" site="mi.tv">Canc O Nova</channel>
-	<channel xmltv_id="Chef Tv" update="i" site_id="br_99bfb755-1c61-4fca-8d0e-35ac938cf605" site="mi.tv">Chef Tv</channel>
-	<channel xmltv_id="Cinebrasil Tv" update="i" site_id="br_4af9c3a5-0b5a-4358-bf5f-536e326beada" site="mi.tv">Cinebrasil Tv</channel>
-	<channel xmltv_id="Cinemax" update="i" site_id="br_53701d93-96e1-4128-b0de-7a859cf2d3d4" site="mi.tv">Cinemax</channel>
-	<channel xmltv_id="Combate" update="i" site_id="br_07770b26-9516-45ca-9aad-ed2bc692b815" site="mi.tv">Combate</channel>
-	<channel xmltv_id="Comedy Central" update="i" site_id="br_75122174-8498-458e-ba1c-321a95f13ec0" site="mi.tv">Comedy Central</channel>
-	<channel xmltv_id="Cultura Hd" update="i" site_id="br_6b30d40e-aea5-404e-9b6d-01f7d455bb5c" site="mi.tv">Cultura Hd</channel>
-	<channel xmltv_id="Deutsche Welle" update="i" site_id="br_c82c4905-dadd-4723-8656-b681ed1dc9ea" site="mi.tv">Deutsche Welle</channel>
-	<channel xmltv_id="Discovery Civilization" update="i" site_id="br_9be45245-e685-4b68-bdfb-cb2096a15c3e" site="mi.tv">Discovery Civilization</channel>
-	<channel xmltv_id="Discovery Hd" update="i" site_id="br_4c207be8-4dad-4211-8c5d-81e584a01417" site="mi.tv">Discovery Hd</channel>
-	<channel xmltv_id="Discovery Home Health Hd" update="i" site_id="br_9f634c63-4b66-4646-9e93-cf2e1a464729" site="mi.tv">Discovery Home Health Hd</channel>
-	<channel xmltv_id="Discovery Science" update="i" site_id="br_59f27105-92fd-4133-a000-c96045fedacf" site="mi.tv">Discovery Science</channel>
-	<channel xmltv_id="Discovery Theater Hd" update="i" site_id="br_f60bfd79-90df-42ab-9579-0dc26e375b94" site="mi.tv">Discovery Theater Hd</channel>
-	<channel xmltv_id="Discovery Turbo" update="i" site_id="br_a89eb5fd-e717-4f80-a6a7-481f0206e86f" site="mi.tv">Discovery Turbo</channel>
-	<channel xmltv_id="Discovery Turbo Hd" update="i" site_id="br_b55e9920-a231-4dc5-9223-68069e74d88a" site="mi.tv">Discovery Turbo Hd</channel>
-	<channel xmltv_id="Discovery World Hd" update="i" site_id="br_5b349fbf-b7c7-45d2-be01-5d11df29ac5b" site="mi.tv">Discovery World Hd</channel>
-	<channel xmltv_id="Disney Hd" update="i" site_id="br_cb846f25-a454-4640-a941-c72dba98723d" site="mi.tv">Disney Hd</channel>
-	<channel xmltv_id="Disney Junior" update="i" site_id="br_03d7ba5f-a72c-4cf8-8838-96bdadb9913e" site="mi.tv">Disney Junior</channel>
-	<channel xmltv_id="Disney Xd" update="i" site_id="br_da4a07a4-34b2-4504-ba93-4315ae8a0f76" site="mi.tv">Disney Xd</channel>
-	<channel xmltv_id="E" update="i" site_id="br_b99d885a-fe5e-40c9-8b8b-876179aa5d4c" site="mi.tv">E</channel>
-	<channel xmltv_id="Espn Plus" update="i" site_id="br_f9dcf897-ac4f-447b-9e8a-a921cdad906d" site="mi.tv">Espn Plus</channel>
-	<channel xmltv_id="Espn Sur Andina 93a" update="i" site_id="br_2ccd03a0-c507-49a9-baef-93b75013c4a1" site="mi.tv">Espn Sur Andina 93a</channel>
-	<channel xmltv_id="Esporte Interativo" update="i" site_id="br_f8663785-592a-4d24-b159-5c44aca3cf60" site="mi.tv">Esporte Interativo</channel>
-	<channel xmltv_id="Eurochannel" update="i" site_id="br_121b4de9-7bf3-4d4c-b156-165efaeb4705" site="mi.tv">Eurochannel</channel>
-	<channel xmltv_id="Fox Life" update="i" site_id="br_46544043-031d-4871-a81b-ca66ac8a1b3c" site="mi.tv">Fox Life</channel>
-	<channel xmltv_id="Fox Sports 2" update="i" site_id="br_d6897c84-0d02-46a1-a50b-e8204fe7d6b5" site="mi.tv">Fox Sports 2</channel>
-	<channel xmltv_id="Fox Sports 2 Hd" update="i" site_id="br_518dc208-0188-42f7-abdd-a512b5932edc" site="mi.tv">Fox Sports 2 Hd</channel>
-	<channel xmltv_id="Fox Sports Hd" update="i" site_id="br_6e722a13-62b4-496a-907f-001a2feb7ceb" site="mi.tv">Fox Sports Hd</channel>
-	<channel xmltv_id="Furb Tv" update="i" site_id="br_4e96be84-42e5-447d-a7e2-fbcfc3c7ed32" site="mi.tv">Furb Tv</channel>
-	<channel xmltv_id="Fx" update="i" site_id="br_b26b8609-1bda-4292-927e-746b66525a4e" site="mi.tv">Fx</channel>
-	<channel xmltv_id="Fashion Tv" update="i" site_id="br_3911e1fe-4fcc-4015-8120-b5cca71422f1" site="mi.tv">Fashion Tv</channel>
-	<channel xmltv_id="Film Arts" update="i" site_id="br_e8c156e9-9134-4dfa-a125-f4620e586894" site="mi.tv">Film Arts</channel>
-	<channel xmltv_id="Fishtv" update="i" site_id="br_ca347a8f-9f9f-419d-987f-6169eeaf83f1" site="mi.tv">Fishtv</channel>
-	<channel xmltv_id="Futura" update="i" site_id="br_49fb330d-63ce-4084-8c38-89f5c6cf3930" site="mi.tv">Futura</channel>
-	<channel xmltv_id="Gnt" update="i" site_id="br_28e283c8-4500-45c4-a300-33228455d5e3" site="mi.tv">Gnt</channel>
-	<channel xmltv_id="Gnt Hd" update="i" site_id="br_c44a2e48-4464-47f7-972b-1dab8821625f" site="mi.tv">Gnt Hd</channel>
-	<channel xmltv_id="Glitz" update="i" site_id="br_4318d70c-59eb-4c0c-9068-3dc5e7bb5f4f" site="mi.tv">Glitz</channel>
-	<channel xmltv_id="Globo Amazonas" update="i" site_id="br_04dd6788-082a-4649-a2b1-fa4167cb9bb2" site="mi.tv">Globo Amazonas</channel>
-	<channel xmltv_id="Globo Anhanguera" update="i" site_id="br_64e079a3-5341-4c1e-a8c6-7910c48933d4" site="mi.tv">Globo Anhanguera</channel>
-	<channel xmltv_id="Rede Globo Aracaju" update="i" site_id="br_225bf163-2ae3-4df2-91c7-015c11da5650" site="mi.tv">Rede Globo Aracaju</channel>
-	<channel xmltv_id="Globo Belem Liberal" update="i" site_id="br_7899f1fe-40c7-4e6d-b3ac-a040af9ffada" site="mi.tv">Globo Belem Liberal</channel>
-	<channel xmltv_id="Globo Brasilia" update="i" site_id="br_f3c8a024-869c-4e94-9819-d9a87d0a06e8" site="mi.tv">Globo Brasilia</channel>
-	<channel xmltv_id="Globo Brasilia Hd" update="i" site_id="br_963fad88-488a-42f2-b499-462cb3a21c97" site="mi.tv">Globo Brasilia Hd</channel>
-	<channel xmltv_id="Globo Hd" update="i" site_id="br_0fef49d4-dcd5-4d26-b23a-a7172b68b2a3" site="mi.tv">Globo Hd</channel>
-	<channel xmltv_id="Rede Globo Maceio" update="i" site_id="br_f80d1eca-9937-4d4c-909d-f3796f46d54b" site="mi.tv">Rede Globo Maceio</channel>
-	<channel xmltv_id="Globo Minas" update="i" site_id="br_b5e19fa9-e634-456f-80da-130e7ab5a53e" site="mi.tv">Globo Minas</channel>
-	<channel xmltv_id="Globo Natal" update="i" site_id="br_51fe5df6-cf67-4359-a1d0-b998c0c98e68" site="mi.tv">Globo Natal</channel>
-	<channel xmltv_id="Globo News" update="i" site_id="br_f0e3b802-a33b-4ebf-86d5-963ea3f6dabd" site="mi.tv">Globo News</channel>
-	<channel xmltv_id="Globo Rbs Tv Poa" update="i" site_id="br_9b807fa7-ffb3-4831-828a-e094fa8c1262" site="mi.tv">Globo Rbs Tv Poa</channel>
-	<channel xmltv_id="Globo Rj" update="i" site_id="br_d26febe3-2556-47b2-a83c-657f471ca545" site="mi.tv">Globo Rj</channel>
-	<channel xmltv_id="Globo Recife" update="i" site_id="br_c44b4e4a-453e-4b8e-b241-4a5007edbf34" site="mi.tv">Globo Recife</channel>
-	<channel xmltv_id="Globo Sp" update="i" site_id="br_363f41ae-0aae-43dd-8c4c-740cfaa06543" site="mi.tv">Globo Sp</channel>
-	<channel xmltv_id="Globo Tv Bahia" update="i" site_id="br_20dc8115-0c65-454d-98c0-9bae6d463f8e" site="mi.tv">Globo Tv Bahia</channel>
-	<channel xmltv_id="Globo Tv Internacional" update="i" site_id="br_a410505e-574d-4c47-a094-3c122f869f53" site="mi.tv">Globo Tv Internacional</channel>
-	<channel xmltv_id="Globo Tv Tem Bauru" update="i" site_id="br_3b8942d5-0e98-449c-9aa3-e94d3270bae9" site="mi.tv">Globo Tv Tem Bauru</channel>
-	<channel xmltv_id="Globo Tv Tribuna" update="i" site_id="br_f6c32147-7fe7-4440-a1f6-783f2fcb7123" site="mi.tv">Globo Tv Tribuna</channel>
-	<channel xmltv_id="Globo Tv Vanguarda" update="i" site_id="br_53edae7d-a5e4-4648-a113-e93e5e924f2d" site="mi.tv">Globo Tv Vanguarda</channel>
-	<channel xmltv_id="Rede Globo Teresina" update="i" site_id="br_26bcd48e-1d8e-4c64-a1c0-5e362a1378bc" site="mi.tv">Rede Globo Teresina</channel>
-	<channel xmltv_id="Gloob" update="i" site_id="br_94522d5d-0b66-4fd1-9ce8-abe1ee92cad6" site="mi.tv">Gloob</channel>
-	<channel xmltv_id="Gloob Hd" update="i" site_id="br_b49cbd8e-783d-4eef-812f-7c48261fc688" site="mi.tv">Gloob Hd</channel>
-	<channel xmltv_id="Golf Channel" update="i" site_id="br_cb054a43-afee-4bf4-926d-7f213488b707" site="mi.tv">Golf Channel</channel>
-	<channel xmltv_id="H2" update="i" site_id="br_50a8e0d5-8aae-4aa5-8fa7-3fdfee8bd68a" site="mi.tv">H2</channel>
-	<channel xmltv_id="H2 Hd" update="i" site_id="br_e50080f5-9f1b-45cb-ab5a-b1b5bcd42f0c" site="mi.tv">H2 Hd</channel>
-	<channel xmltv_id="Hbo 2" update="i" site_id="br_b50465ef-cf78-4af5-9f6a-faaa6b8e64e8" site="mi.tv">Hbo 2</channel>
-	<channel xmltv_id="Hbo 2 Hd" update="i" site_id="br_7dad37a2-b584-465e-a7e7-821bb8a00448" site="mi.tv">Hbo 2 Hd</channel>
-	<channel xmltv_id="Hbo Family Hd" update="i" site_id="br_4ed3128e-0a29-414e-948e-17058c9f2612" site="mi.tv">Hbo Family Hd</channel>
-	<channel xmltv_id="Hbo Plus" update="i" site_id="br_2947cff9-4a17-44e2-81f6-9d314fa08aaa" site="mi.tv">Hbo Plus</channel>
-	<channel xmltv_id="Hbo Plus Brasil Hd" update="i" site_id="br_b9ee9980-3d68-43e6-8274-7557fefdf76b" site="mi.tv">Hbo Plus Brasil Hd</channel>
-	<channel xmltv_id="Hbo Signature" update="i" site_id="br_f25d26e3-5ba7-4e27-8dc5-773775e39b24" site="mi.tv">Hbo Signature</channel>
-	<channel xmltv_id="Hbo Signature Hd" update="i" site_id="br_4c5d04b5-7dfb-48dd-b628-d068a2cf5e1f" site="mi.tv">Hbo Signature Hd</channel>
-	<channel xmltv_id="History Channel Hd" update="i" site_id="br_9455f235-7810-4658-a145-a6e1eadf5211" site="mi.tv">History Channel Hd</channel>
-	<channel xmltv_id="Hustler Tv" update="i" site_id="br_3a6fe0c7-48e5-4764-ad37-e69551eaa7ec" site="mi.tv">Hustler Tv</channel>
-	<channel xmltv_id="I Sat" update="i" site_id="br_48104220-564b-4173-9161-49c57b5e65f3" site="mi.tv">I Sat</channel>
-	<channel xmltv_id="Investigacao Discovery" update="i" site_id="br_86bdfc84-9faa-4f46-8ab1-31f9ff600868" site="mi.tv">Investigacao Discovery</channel>
-	<channel xmltv_id="Investigacao Discovery Hd" update="i" site_id="br_4b13a265-9406-4aa5-a8b4-62f3b414c3f1" site="mi.tv">Investigacao Discovery Hd</channel>
-	<channel xmltv_id="Latino" update="i" site_id="br_8ac38f65-6896-4ce9-b75e-324083608722" site="mi.tv">Latino</channel>
-	<channel xmltv_id="Mix Tv" update="i" site_id="br_87dfbe75-bd27-4839-ad7b-5a7418f5217c" site="mi.tv">Mix Tv</channel>
-	<channel xmltv_id="Mtv" update="i" site_id="br_adcead7a-dd7a-4855-a9e3-a937b3a3c922" site="mi.tv">Mtv</channel>
-	<channel xmltv_id="Max" update="i" site_id="br_dd474e40-84fa-4a80-bd4c-4d940f615e04" site="mi.tv">Max</channel>
-	<channel xmltv_id="Max Up" update="i" site_id="br_3c529f98-859a-41bf-9574-1e46c8262470" site="mi.tv">Max Up</channel>
-	<channel xmltv_id="Maxprime" update="i" site_id="br_ebea0242-db5c-444d-bf5f-6e440e491c07" site="mi.tv">Maxprime</channel>
-	<channel xmltv_id="Maxprime E" update="i" site_id="br_313102e7-7e7c-4fc8-ba88-c2836755214d" site="mi.tv">Maxprime E</channel>
-	<channel xmltv_id="Megapix" update="i" site_id="br_a23bd19a-58c3-4384-bea9-6a6907f4af1b" site="mi.tv">Megapix</channel>
-	<channel xmltv_id="Megapix Hd" update="i" site_id="br_3b5a7359-77e7-4623-a22a-65c327e2de61" site="mi.tv">Megapix Hd</channel>
-	<channel xmltv_id="Multishow" update="i" site_id="br_a8f6702e-8267-4e7e-aa2c-84f19c276054" site="mi.tv">Multishow</channel>
-	<channel xmltv_id="Nbr" update="i" site_id="br_38410656-d219-46cb-81ec-16b99ce2554a" site="mi.tv">Nbr</channel>
-	<channel xmltv_id="Nbr Florianopolis" update="i" site_id="br_297427b1-46ef-4e32-a111-646f73d816e0" site="mi.tv">Nbr Florianopolis</channel>
-	<channel xmltv_id="Nhk" update="i" site_id="br_713d70b2-7ace-4ab0-bbdd-e38ed8d5b496" site="mi.tv">Nhk</channel>
-	<channel xmltv_id="Natgeo Wild Hd" update="i" site_id="br_d9dfb6b4-5586-4f5a-85f6-d14d7c919d10" site="mi.tv">Natgeo Wild Hd</channel>
-	<channel xmltv_id="National Geographic" update="i" site_id="br_09fe69b5-5664-416b-87ab-d0d39e66ac76" site="mi.tv">National Geographic</channel>
-	<channel xmltv_id="Nick Hd" update="i" site_id="br_619058d3-8f3b-4556-a0b0-9ee775771c90" site="mi.tv">Nick Hd</channel>
-	<channel xmltv_id="Nick, Jr. " update="i" site_id="br_48852d93-42cf-47ef-abdf-9e7b6558ffb2" site="mi.tv">Nick, Jr. </channel>
-	<channel xmltv_id="Nickelodeon" update="i" site_id="br_cdafa66c-0f45-4f8d-8fda-e749811a774c" site="mi.tv">Nickelodeon</channel>
-	<channel xmltv_id="Nordestv" update="i" site_id="br_ca824c96-9d2e-4bff-b81c-8df5f24e6c87" site="mi.tv">Nordestv</channel>
-	<channel xmltv_id="Off" update="i" site_id="br_c4afd677-e410-44b5-a196-040660a1dc65" site="mi.tv">Off</channel>
-	<channel xmltv_id="Paramount Channel" update="i" site_id="br_457ade1d-7435-405d-a99f-789cb73d73fb" site="mi.tv">Paramount Channel</channel>
-	<channel xmltv_id="Paramount Brasil Hd" update="i" site_id="br_a3496156-2f7a-4b08-96ff-44942184d256" site="mi.tv">Paramount Brasil Hd</channel>
-	<channel xmltv_id="Play Tv" update="i" site_id="br_bf591706-0785-47fc-ab26-e9d35cddbf05" site="mi.tv">Play Tv</channel>
-	<channel xmltv_id="Playboy" update="i" site_id="br_ef95af19-936f-4548-921d-0a85c72cab9c" site="mi.tv">Playboy</channel>
-	<channel xmltv_id="Premiere Clubes" update="i" site_id="br_56344589-482b-4f23-a79f-00409c04097a" site="mi.tv">Premiere Clubes</channel>
-	<channel xmltv_id="Premiere Futebol Clube" update="i" site_id="br_18cac857-4480-4b8f-b233-da3aac7b9aef" site="mi.tv">Premiere Futebol Clube</channel>
-	<channel xmltv_id="Premiere Futebol Clube Hd" update="i" site_id="br_374d5ee3-9986-49b1-9bd3-d58ebf28d524" site="mi.tv">Premiere Futebol Clube Hd</channel>
-	<channel xmltv_id="Prime Box Brazil" update="i" site_id="br_915498ba-4699-49e5-b7e4-dfc0097ecfe4" site="mi.tv">Prime Box Brazil</channel>
-	<channel xmltv_id="Ra Tim Bum" update="i" site_id="br_6f421498-7a09-4ffd-a94e-451cb91166c3" site="mi.tv">Ra Tim Bum</channel>
-	<channel xmltv_id="Rai" update="i" site_id="br_3ae922e9-2503-48e9-94f5-be9617487dbb" site="mi.tv">Rai</channel>
-	<channel xmltv_id="Rbs Tv Florianopolis" update="i" site_id="br_c3944b89-4c37-495f-be66-1ec85b688cfd" site="mi.tv">Rbs Tv Florianopolis</channel>
-	<channel xmltv_id="Rbs Tv Hd" update="i" site_id="br_33cf06b8-78a1-444d-8329-7af20657c653" site="mi.tv">Rbs Tv Hd</channel>
-	<channel xmltv_id="Rbti" update="i" site_id="br_045b7b9f-1b01-4b2e-a0e6-2de8d534141e" site="mi.tv">Rbti</channel>
-	<channel xmltv_id="Record Aracaju" update="i" site_id="br_03f3dc35-4801-4ae9-bd78-e0f8f349f702" site="mi.tv">Record Aracaju</channel>
-	<channel xmltv_id="Record Bahia" update="i" site_id="br_19015ba7-ff59-46ad-b5c5-e5276184fed6" site="mi.tv">Record Bahia</channel>
-	<channel xmltv_id="Record Bauru" update="i" site_id="br_269b0999-e0e4-4dfd-a3a1-e4660ac59fff" site="mi.tv">Record Bauru</channel>
-	<channel xmltv_id="Record Belem" update="i" site_id="br_b78dd60e-2561-4fcf-ac30-0d20cd784a5f" site="mi.tv">Record Belem</channel>
-	<channel xmltv_id="Record Brasilia" update="i" site_id="br_9ee3751e-864f-43b8-a075-bc0200b0d21b" site="mi.tv">Record Brasilia</channel>
-	<channel xmltv_id="Record Campinas" update="i" site_id="br_16cd34d2-2219-4279-9dd8-d25728ab2e34" site="mi.tv">Record Campinas</channel>
-	<channel xmltv_id="Record Campo Grande" update="i" site_id="br_3f16970f-454c-40a6-b9ff-86a871995d7a" site="mi.tv">Record Campo Grande</channel>
-	<channel xmltv_id="Record Cascavel" update="i" site_id="br_3878a7e5-43bf-4f53-83c9-c2f7374dfc7d" site="mi.tv">Record Cascavel</channel>
-	<channel xmltv_id="Record Cuiaba" update="i" site_id="br_5f338b15-1bc1-4d8b-9ecf-9f30e75698e4" site="mi.tv">Record Cuiaba</channel>
-	<channel xmltv_id="Record Curitiba" update="i" site_id="br_3e4dd86c-5f04-4851-a77a-7bb83c36938e" site="mi.tv">Record Curitiba</channel>
-	<channel xmltv_id="Record Florianopolis" update="i" site_id="br_b95b6736-cd04-4149-9aea-55d3fea88a3b" site="mi.tv">Record Florianopolis</channel>
-	<channel xmltv_id="Record Fortaleza" update="i" site_id="br_cb8e11a5-2f75-49ff-8d19-70e0afd15297" site="mi.tv">Record Fortaleza</channel>
-	<channel xmltv_id="Record Franca" update="i" site_id="br_4575512f-0ca6-4955-9672-66d6008a2514" site="mi.tv">Record Franca</channel>
-	<channel xmltv_id="Record Goias" update="i" site_id="br_126e262f-a10e-405f-b286-ae313cdbb9d9" site="mi.tv">Record Goias</channel>
-	<channel xmltv_id="Record Hd" update="i" site_id="br_66ddc2e0-1db9-4859-85a2-8a2757e16517" site="mi.tv">Record Hd</channel>
-	<channel xmltv_id="Record International" update="i" site_id="br_ef9f15f2-d5c1-4e9c-8291-aba1fdb72cf9" site="mi.tv">Record International</channel>
-	<channel xmltv_id="Record Joao Pessoa" update="i" site_id="br_ab924a87-61e7-46c6-a16f-05adf923b189" site="mi.tv">Record Joao Pessoa</channel>
-	<channel xmltv_id="Record Maceio" update="i" site_id="br_b4756137-438f-4b00-853d-6fd1aa1a39ef" site="mi.tv">Record Maceio</channel>
-	<channel xmltv_id="Record Maringa" update="i" site_id="br_73e506ca-a96f-4814-8854-59a6af97c34c" site="mi.tv">Record Maringa</channel>
-	<channel xmltv_id="Record Minas" update="i" site_id="br_5cd0ee2b-3a70-4700-ac14-9a13bfada297" site="mi.tv">Record Minas</channel>
-	<channel xmltv_id="Record Natal" update="i" site_id="br_45d79d8c-451f-49fe-8e85-9ba791ed2d7e" site="mi.tv">Record Natal</channel>
-	<channel xmltv_id="Record Porto Alegre" update="i" site_id="br_636e0142-5931-4da6-b8b3-9063202bf6db" site="mi.tv">Record Porto Alegre</channel>
-	<channel xmltv_id="Record Rio" update="i" site_id="br_71a04641-4957-48bd-8e0d-c3e741845f86" site="mi.tv">Record Rio</channel>
-	<channel xmltv_id="Record Santos" update="i" site_id="br_85888769-d89a-4241-afb3-c1a2b4ce743c" site="mi.tv">Record Santos</channel>
-	<channel xmltv_id="Rede Familia" update="i" site_id="br_b6823306-d89c-4a5a-b273-5f122c71c617" site="mi.tv">Rede Familia</channel>
-	<channel xmltv_id="Rede Gospel" update="i" site_id="br_53f87f7b-b73b-4e6e-a11f-a5f60bc4ba86" site="mi.tv">Rede Gospel</channel>
-	<channel xmltv_id="Rede Massa" update="i" site_id="br_60b4ab9d-1f21-4d59-9ed5-3c83adbc1f78" site="mi.tv">Rede Massa</channel>
-	<channel xmltv_id="Rede Mercosul" update="i" site_id="br_bd2d9278-402b-4c05-87b0-85cf79ee4118" site="mi.tv">Rede Mercosul</channel>
-	<channel xmltv_id="Rede Ngt Nova Geracao De Televisao" update="i" site_id="br_4bdf170f-cba1-4d3b-96fc-9dee8f0d2f87" site="mi.tv">Rede Ngt Nova Geracao De Televisao</channel>
-	<channel xmltv_id="Rede Super" update="i" site_id="br_afc94296-da5c-4e0f-8518-06892d11f0b8" site="mi.tv">Rede Super</channel>
-	<channel xmltv_id="Rede Vida" update="i" site_id="br_747511c8-ee5e-419e-9f1f-a215b523edf8" site="mi.tv">Rede Vida</channel>
-	<channel xmltv_id="Rede Vida Belo Horizonte" update="i" site_id="br_34d9bd9a-b75c-4ea0-a9b2-649d931144fa" site="mi.tv">Rede Vida Belo Horizonte</channel>
-	<channel xmltv_id="Rede Vida Cascavel" update="i" site_id="br_e74db7cd-a743-4b07-aa36-b4579e569fb7" site="mi.tv">Rede Vida Cascavel</channel>
-	<channel xmltv_id="Rede Vida Cuiaba" update="i" site_id="br_85072d29-1ed1-4fb8-8298-f19872ee999a" site="mi.tv">Rede Vida Cuiaba</channel>
-	<channel xmltv_id="Rede Vida Goiania" update="i" site_id="br_c3a68638-4880-4f8c-9e26-3de5944b5959" site="mi.tv">Rede Vida Goiania</channel>
-	<channel xmltv_id="Rede Vida Hd" update="i" site_id="br_c0f71acb-8e41-4a72-bd62-d825060f0fc8" site="mi.tv">Rede Vida Hd</channel>
-	<channel xmltv_id="Rede Vida Porto Alegre" update="i" site_id="br_3d5043d1-ba04-4dd1-aaae-3dce42af09a7" site="mi.tv">Rede Vida Porto Alegre</channel>
-	<channel xmltv_id="Rede Vida Recife" update="i" site_id="br_0dd24649-da57-494e-b3cb-583c13d9477a" site="mi.tv">Rede Vida Recife</channel>
-	<channel xmltv_id="Rede Vida Vitoria" update="i" site_id="br_ade85302-41e1-4dd5-b266-f3e1f6f88ad7" site="mi.tv">Rede Vida Vitoria</channel>
-	<channel xmltv_id="Rede Tv Hd" update="i" site_id="br_a11e5423-1808-40ec-93d3-bbb6834d8d49" site="mi.tv">Rede Tv Hd</channel>
-	<channel xmltv_id="Rede Tv Pampa" update="i" site_id="br_c8fe53c7-036c-4bbf-ba1b-21fa1a9a3b69" site="mi.tv">Rede Tv Pampa</channel>
-	<channel xmltv_id="Redetv Rio De Janeiro" update="i" site_id="br_cf0f4edc-f4d1-4cc5-ad03-a02752ee5e38" site="mi.tv">Redetv Rio De Janeiro</channel>
-	<channel xmltv_id="Rede Tv Sp" update="i" site_id="br_92e08af8-b991-41f1-abb5-228f87e1ae9d" site="mi.tv">Rede Tv Sp</channel>
-	<channel xmltv_id="Rede Tv Sul" update="i" site_id="br_78b4c10a-8054-4839-98d3-19d7258ef2dd" site="mi.tv">Rede Tv Sul</channel>
-	<channel xmltv_id="Sbt Belem" update="i" site_id="br_e5f76d29-8bb0-42c2-afc9-da12a670a210" site="mi.tv">Sbt Belem</channel>
-	<channel xmltv_id="Sbt Belo Horizonte" update="i" site_id="br_bc327da2-c863-4cb6-87a6-2816b0df8a62" site="mi.tv">Sbt Belo Horizonte</channel>
-	<channel xmltv_id="Sbt Brasilia" update="i" site_id="br_563f5d92-8fe5-4b9d-a816-ec3e36fdb3d8" site="mi.tv">Sbt Brasilia</channel>
-	<channel xmltv_id="Sbt Cascavel" update="i" site_id="br_af8801ab-de93-476a-85e1-489e5c512e9a" site="mi.tv">Sbt Cascavel</channel>
-	<channel xmltv_id="Sbt Criciuma" update="i" site_id="br_f8f236f9-fb4a-479c-bd50-cd3ae52300ca" site="mi.tv">Sbt Criciuma</channel>
-	<channel xmltv_id="Sbt Florianopolis" update="i" site_id="br_438a7b3c-bbef-4c61-8a88-a85670e551eb" site="mi.tv">Sbt Florianopolis</channel>
-	<channel xmltv_id="Sbt Goiania Tv Serra Dourada" update="i" site_id="br_bcc1d62f-0d72-4cb9-bd1f-9a592bd72119" site="mi.tv">Sbt Goiania Tv Serra Dourada</channel>
-	<channel xmltv_id="Sbt Hd" update="i" site_id="br_ace99332-ac65-44c2-b12d-c127769a000d" site="mi.tv">Sbt Hd</channel>
-	<channel xmltv_id="Sbt Juiz De Fora" update="i" site_id="br_41e193c2-7a9a-4209-ba43-0ac6bdbf7f87" site="mi.tv">Sbt Juiz De Fora</channel>
-	<channel xmltv_id="Sbt Ms" update="i" site_id="br_7d2fcbb7-9ac0-41bf-93f1-7295d80cc705" site="mi.tv">Sbt Ms</channel>
-	<channel xmltv_id="Sbt Maceio" update="i" site_id="br_afc25074-1854-4131-a500-2b687eeb2c50" site="mi.tv">Sbt Maceio</channel>
-	<channel xmltv_id="Sbt Manaus" update="i" site_id="br_a20d3121-fd17-4574-9c64-985eada565d7" site="mi.tv">Sbt Manaus</channel>
-	<channel xmltv_id="Sbt Maringa" update="i" site_id="br_d737f37d-5992-428f-9043-323c1838ce4c" site="mi.tv">Sbt Maringa</channel>
-	<channel xmltv_id="Sbt Natal" update="i" site_id="br_e8d161f8-b38d-4c51-8155-ff8267f510c0" site="mi.tv">Sbt Natal</channel>
-	<channel xmltv_id="Sbt Piaui" update="i" site_id="br_64180b96-d93e-43cd-9189-91c4f3d34e63" site="mi.tv">Sbt Piaui</channel>
-	<channel xmltv_id="Sbt Rs" update="i" site_id="br_317dbf5c-1484-40d3-8cde-3b60e646ba6e" site="mi.tv">Sbt Rs</channel>
-	<channel xmltv_id="Sbt Rio" update="i" site_id="br_8d11cbfa-0f17-4267-9101-8ac897563bc1" site="mi.tv">Sbt Rio</channel>
-	<channel xmltv_id="Sbt Salvador" update="i" site_id="br_5e950202-9b4a-49e5-b3ff-ad8dddb45908" site="mi.tv">Sbt Salvador</channel>
-	<channel xmltv_id="Sbt S O Paulo" update="i" site_id="br_4facf076-16b1-4161-99e7-284fd4a8af35" site="mi.tv">Sbt S O Paulo</channel>
-	<channel xmltv_id="Sbt Vitoria" update="i" site_id="br_24a527f0-efe7-4254-aa8e-9cd36f949e2b" site="mi.tv">Sbt Vitoria</channel>
-	<channel xmltv_id="Sic" update="i" site_id="br_2c339ffc-5cb6-413f-b035-e4b4c1c2d931" site="mi.tv">Sic</channel>
-	<channel xmltv_id="Sic Internacional" update="i" site_id="br_692e0357-c9f2-45fd-80a2-8bee275b39c3" site="mi.tv">Sic Internacional</channel>
-	<channel xmltv_id="Sesctv" update="i" site_id="br_42751881-8060-47bd-9324-92c73cfc071a" site="mi.tv">Sesctv</channel>
-	<channel xmltv_id="Sexprive Brasileirinhas" update="i" site_id="br_b9439d66-c874-4288-9b6b-f501b98b29e4" site="mi.tv">Sexprive Brasileirinhas</channel>
-	<channel xmltv_id="Sextreme Brazil" update="i" site_id="br_fea76c24-9521-4b1b-9b63-d33292f742d5" site="mi.tv">Sextreme Brazil</channel>
-	<channel xmltv_id="Sexy Hot" update="i" site_id="br_3197c01f-306f-4ac0-836a-dad046928cc2" site="mi.tv">Sexy Hot</channel>
-	<channel xmltv_id="Sony" update="i" site_id="br_cdf2516a-e554-4389-b985-9786dbc3c082" site="mi.tv">Sony</channel>
-	<channel xmltv_id="Sony Hd" update="i" site_id="br_97c20951-79ce-415e-9968-6356a9e56846" site="mi.tv">Sony Hd</channel>
-	<channel xmltv_id="Space" update="i" site_id="br_8b39ef6f-2906-4127-8d5a-10a40869905a" site="mi.tv">Space</channel>
-	<channel xmltv_id="Space Hd" update="i" site_id="br_b56f181e-a8c4-438c-977c-9321b3943b51" site="mi.tv">Space Hd</channel>
-	<channel xmltv_id="Sportv" update="i" site_id="br_4d470878-33bb-475e-a775-f2ce6e67c810" site="mi.tv">Sportv</channel>
-	<channel xmltv_id="Sportv2" update="i" site_id="br_fdad1925-31c3-4240-bff9-d87897db4306" site="mi.tv">Sportv2</channel>
-	<channel xmltv_id="Sportv3" update="i" site_id="br_47980358-7b2d-47bb-88cd-398a85c74af0" site="mi.tv">Sportv3</channel>
-	<channel xmltv_id="Studio Universal" update="i" site_id="br_346ae03b-835b-4052-b138-0bb4e29a7f63" site="mi.tv">Studio Universal</channel>
-	<channel xmltv_id="Sucesso" update="i" site_id="br_62a3353c-94a7-46f4-a344-ba90ede66c13" site="mi.tv">Sucesso</channel>
-	<channel xmltv_id="Syfy" update="i" site_id="br_49721efe-dc60-48d5-83e7-5020228421a7" site="mi.tv">Syfy</channel>
-	<channel xmltv_id="Tbs" update="i" site_id="br_82a95cfd-5b37-478e-b627-4bf5672b4841" site="mi.tv">Tbs</channel>
-	<channel xmltv_id="Tbs Hd" update="i" site_id="br_acd74ba5-0b39-438e-a7f7-b563caab6cb7" site="mi.tv">Tbs Hd</channel>
-	<channel xmltv_id="Tcm" update="i" site_id="br_c9156a31-1d77-4741-8c5c-b31e7f7ad3cc" site="mi.tv">Tcm</channel>
-	<channel xmltv_id="Tlc" update="i" site_id="br_2020520f-14b5-4ea1-b30d-53f7cfd4076d" site="mi.tv">Tlc</channel>
-	<channel xmltv_id="Tnt Hd" update="i" site_id="br_a884ce23-8720-4ab0-ae01-24504da4f646" site="mi.tv">Tnt Hd</channel>
-	<channel xmltv_id="Tnt Series" update="i" site_id="br_bebd7f14-5bae-41b5-acd9-b90e870adaa2" site="mi.tv">Tnt Series</channel>
-	<channel xmltv_id="Tv Alterosa" update="i" site_id="br_2718785a-5ae2-4164-b86f-b5a14c6833cf" site="mi.tv">Tv Alterosa</channel>
-	<channel xmltv_id="Tv Ambiental" update="i" site_id="br_2dcf3d59-d916-473b-ae7c-1f9dc4e6a6b9" site="mi.tv">Tv Ambiental</channel>
-	<channel xmltv_id="Tv Aparecida" update="i" site_id="br_afe0d484-3c78-4c69-9dcc-248774f540bc" site="mi.tv">Tv Aparecida</channel>
-	<channel xmltv_id="Tv Aperipe" update="i" site_id="br_a5f1e7ce-2c2d-4b87-b8f6-b6122035c413" site="mi.tv">Tv Aperipe</channel>
-	<channel xmltv_id="Tv Brasil" update="i" site_id="br_3a264eaa-2f19-45c3-b2e9-503b4de573e1" site="mi.tv">Tv Brasil</channel>
-	<channel xmltv_id="Tv Cei" update="i" site_id="br_79b589e6-4b17-43bf-a6f9-eb55d94d3566" site="mi.tv">Tv Cei</channel>
-	<channel xmltv_id="Tv Centro America" update="i" site_id="br_a21553d4-34d4-4c94-8a3a-d1e0133ddda4" site="mi.tv">Tv Centro America</channel>
-	<channel xmltv_id="Tv Climatempo" update="i" site_id="br_eb1ad938-37a1-44d0-a903-a01df7c2e877" site="mi.tv">Tv Climatempo</channel>
-	<channel xmltv_id="Tv Camara" update="i" site_id="br_83b9c6d6-c3ec-4287-acb3-4127a56527d3" site="mi.tv">Tv Camara</channel>
-	<channel xmltv_id="Tv Educativa" update="i" site_id="br_b0338285-12de-471a-8f0a-fbaf64e426e8" site="mi.tv">Tv Educativa</channel>
-	<channel xmltv_id="Tv Escola" update="i" site_id="br_1f2a0f48-5fa6-4e49-865a-8e8a45986dfa" site="mi.tv">Tv Escola</channel>
-	<channel xmltv_id="Tv Gazeta" update="i" site_id="br_9e6597b3-b306-4884-9d2e-2691ec636bdf" site="mi.tv">Tv Gazeta</channel>
-	<channel xmltv_id="Tv Globo Panorama" update="i" site_id="br_e2d71c49-349b-41ae-b18b-9c402df58dc8" site="mi.tv">Tv Globo Panorama</channel>
-	<channel xmltv_id="Tv Integrac O" update="i" site_id="br_182c394a-fb72-4a38-904c-e23868adc4f5" site="mi.tv">Tv Integrac O</channel>
-	<channel xmltv_id="Tv Jangadeiro" update="i" site_id="br_d6460429-d3b9-4dc8-aedb-725c8c401458" site="mi.tv">Tv Jangadeiro</channel>
-	<channel xmltv_id="Tv Jornal" update="i" site_id="br_a311095a-bdbc-4008-b87b-a38b82bbfc6f" site="mi.tv">Tv Jornal</channel>
-	<channel xmltv_id="Tv Justica" update="i" site_id="br_69b4847d-cd25-4ed3-b854-a849f0cd91e6" site="mi.tv">Tv Justica</channel>
-	<channel xmltv_id="Tv Liberal" update="i" site_id="br_58158aee-5a20-451e-a82d-1219ad7c5640" site="mi.tv">Tv Liberal</channel>
-	<channel xmltv_id="Tv Mar Alagoas" update="i" site_id="br_6a460e6f-9384-4a9e-ae06-3a79497a396e" site="mi.tv">Tv Mar Alagoas</channel>
-	<channel xmltv_id="Tv Morena" update="i" site_id="br_62d517df-6e2a-4f38-b81e-be2ab958be9f" site="mi.tv">Tv Morena</channel>
-	<channel xmltv_id="Tv Novo Tempo" update="i" site_id="br_90acf63f-a41d-4956-a0ac-5be7d5b044e9" site="mi.tv">Tv Novo Tempo</channel>
-	<channel xmltv_id="Tv Omega" update="i" site_id="br_d7b4545c-d3e7-4f8b-9c18-3b066bd8364d" site="mi.tv">Tv Omega</channel>
-	<channel xmltv_id="Tv Rio Sul" update="i" site_id="br_a862b1a9-797a-4c59-a38b-305495b850e1" site="mi.tv">Tv Rio Sul</channel>
-	<channel xmltv_id="Tv Senado" update="i" site_id="br_694dfee1-9765-4ac8-8886-a15b5d1f6b2b" site="mi.tv">Tv Senado</channel>
-	<channel xmltv_id="Tv Sorocaba" update="i" site_id="br_c6245687-dd7a-4140-8529-50f5b12d5771" site="mi.tv">Tv Sorocaba</channel>
-	<channel xmltv_id="Tv Uni O" update="i" site_id="br_af296a27-434e-4d83-a2dd-e3d73d87e105" site="mi.tv">Tv Uni O</channel>
-	<channel xmltv_id="Tv Vitoria" update="i" site_id="br_d796ad4a-d69a-4d85-b07e-d82ac8a5c5eb" site="mi.tv">Tv Vitoria</channel>
-	<channel xmltv_id="Tv5" update="i" site_id="br_5486eb1b-c45f-4175-8f57-5ad9c5b26119" site="mi.tv">Tv5</channel>
-	<channel xmltv_id="Tve" update="i" site_id="br_a4d62a9e-4512-46a5-9d2c-2b753ce508a8" site="mi.tv">Tve</channel>
-	<channel xmltv_id="Telecine Action" update="i" site_id="br_30a245be-8b3f-4361-a8dc-99ad25fb446e" site="mi.tv">Telecine Action</channel>
-	<channel xmltv_id="Telecine Action Hd" update="i" site_id="br_da6c5a1f-5035-4a1a-868c-d0ee334f4357" site="mi.tv">Telecine Action Hd</channel>
-	<channel xmltv_id="Telecine Cult" update="i" site_id="br_5e10ddf5-1c99-4cfa-bb22-df6fc937edcc" site="mi.tv">Telecine Cult</channel>
-	<channel xmltv_id="Telecine Fun" update="i" site_id="br_381de6b4-8fe6-4ced-ac31-7e2310546df5" site="mi.tv">Telecine Fun</channel>
-	<channel xmltv_id="Telecine Fun Hd" update="i" site_id="br_bebed6e0-f1b2-4d17-ad61-e54fb5bf95d6" site="mi.tv">Telecine Fun Hd</channel>
-	<channel xmltv_id="Telecine Pipoca" update="i" site_id="br_b23497a8-62a5-4fc3-ae50-d1f6fd4bed1d" site="mi.tv">Telecine Pipoca</channel>
-	<channel xmltv_id="Telecine Pipoca Hd" update="i" site_id="br_474c3c30-393f-4a26-a11e-a4445c114876" site="mi.tv">Telecine Pipoca Hd</channel>
-	<channel xmltv_id="Telecine Premium" update="i" site_id="br_76566215-1298-41fb-8750-7486090dda13" site="mi.tv">Telecine Premium</channel>
-	<channel xmltv_id="Telecine Premium Hd" update="i" site_id="br_67c3a735-51df-4ed2-8439-32733a664962" site="mi.tv">Telecine Premium Hd</channel>
-	<channel xmltv_id="Telecine Touch" update="i" site_id="br_f4836245-1fdf-4b3e-8459-90b0808dc856" site="mi.tv">Telecine Touch</channel>
-	<channel xmltv_id="Telecine Touch Hd" update="i" site_id="br_adc844bd-63cc-427d-a887-9deacefd84f3" site="mi.tv">Telecine Touch Hd</channel>
-	<channel xmltv_id="Terra Viva" update="i" site_id="br_a889088c-40d7-4bff-b52c-623238a4bd8f" site="mi.tv">Terra Viva</channel>
-	<channel xmltv_id="Tooncast" update="i" site_id="br_3baa138e-ce22-4aa5-9e5d-e6a4afc0fc40" site="mi.tv">Tooncast</channel>
-	<channel xmltv_id="Travel Box Brazil" update="i" site_id="br_970e597f-b9cc-4539-b58e-00f3447f823b" site="mi.tv">Travel Box Brazil</channel>
-	<channel xmltv_id="Universal" update="i" site_id="br_29a0bfc1-f2b7-44a6-a80e-092046175441" site="mi.tv">Universal</channel>
-	<channel xmltv_id="Vh1" update="i" site_id="br_c5f59719-a3d2-45fd-953c-a74d17ab3094" site="mi.tv">Vh1</channel>
-	<channel xmltv_id="Viva" update="i" site_id="br_f2b4aa80-35bf-407b-91fc-d3d12123a459" site="mi.tv">Viva</channel>
-	<channel xmltv_id="Warner Channel Hd" update="i" site_id="br_3e10c590-2622-4170-bab0-c104ccab4fb9" site="mi.tv">Warner Channel Hd</channel>
-	<channel xmltv_id="Woohoo" update="i" site_id="br_52b233aa-ef4d-42d3-94bf-4b2f3ad3e72d" site="mi.tv">Woohoo</channel>
-	<channel xmltv_id="Trutv" update="i" site_id="br_9eb50ae8-c988-498f-a731-2dd83ad2ff24" site="mi.tv">Trutv</channel>
-	<channel xmltv_id="Trutv Hd" update="i" site_id="br_f4647d86-8fae-465a-b3f4-b12e39cadcda" site="mi.tv">Trutv Hd</channel> -->
- 
+	<retry time-out="90">3</retry>
+	<timespan>2</timespan>
+	<update>l</update>
+	<channels>
+		<channel update="i" site="mi.tv2" site_id="br###rede-globo" xmltv_id="GloboRpc">Globo</channel>
+		<channel update="i" site="mi.tv2" site_id="br###record" xmltv_id="Record">Record</channel>
+		<channel update="i" site="mi.tv2" site_id="br###sbt" xmltv_id="SBT">SBT</channel>
+		<channel update="i" site="mi.tv2" site_id="br###band" xmltv_id="Band">Band</channel>
+		<channel update="i" site="mi.tv2" site_id="br###rede-tv" xmltv_id="RedeTV!">RedeTV!</channel>
+		<channel update="i" site="mi.tv2" site_id="br###cultura" xmltv_id="Cultura">Cultura</channel>
+		<channel update="i" site="mi.tv2" site_id="br###futura" xmltv_id="Futura">Futura</channel>
+		<channel update="i" site="mi.tv2" site_id="br###cnt" xmltv_id="CNT">CNT</channel>
+		<channel update="i" site="mi.tv2" site_id="br###nbr" xmltv_id="NBR">NBR</channel>
+		<channel update="i" site="mi.tv2" site_id="br###tnt" xmltv_id="TNT">TNT</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fox" xmltv_id="FOX">FOX</channel>
+		<channel update="i" site="mi.tv2" site_id="br###hbo" xmltv_id="HBO">HBO</channel>
+		<channel update="i" site="mi.tv2" site_id="br###sony" xmltv_id="Sony">Sony</channel>
+		<channel update="i" site="mi.tv2" site_id="br###axn" xmltv_id="AXN">AXN</channel>
+		<channel update="i" site="mi.tv2" site_id="br###a-e" xmltv_id="A&amp;E">A&amp;E</channel>
+		<channel update="i" site="mi.tv2" site_id="br###amc-brasil" xmltv_id="AMC">AMC Brasil</channel>
+		<channel update="i" site="mi.tv2" site_id="br###warner-channel" xmltv_id="Warner">Warner Channel</channel>
+		<channel update="i" site="mi.tv2" site_id="br###universal" xmltv_id="Universal">Universal</channel>
+		<channel update="i" site="mi.tv2" site_id="br###telecine-premium" xmltv_id="TelecinePremium">Telecine Premium</channel>
+		<channel update="i" site="mi.tv2" site_id="br###mtv-brasil" xmltv_id="MTV">MTV Brasil</channel>
+		<channel update="i" site="mi.tv2" site_id="br###viva" xmltv_id="VIVA">VIVA</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery" xmltv_id="Discovery">Discovery</channel>
+		<channel update="i" site="mi.tv2" site_id="br###national-geographic" xmltv_id="NationalGeographic">National Geographic</channel>
+		<channel update="i" site="mi.tv2" site_id="br###history-channel" xmltv_id="HistoryChannel">History Channel</channel>
+		<channel update="i" site="mi.tv2" site_id="br###h2" xmltv_id="H2">H2</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fox-sports" xmltv_id="FOXSports">FOX Sports</channel>
+		<channel update="i" site="mi.tv2" site_id="br###sportv" xmltv_id="SporTV">SporTV</channel>
+		<channel update="i" site="mi.tv2" site_id="br###esporte-interativo" xmltv_id="EI">Esporte Interativo</channel>
+		<channel update="i" site="mi.tv2" site_id="br###espn" xmltv_id="ESPNBrasil">ESPN Brasil</channel>
+		<channel update="i" site="mi.tv2" site_id="br###gloob" xmltv_id="Gloob">Gloob</channel>
+		<channel update="i" site="mi.tv2" site_id="br###disney" xmltv_id="Disney">Disney</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-home-health" xmltv_id="DiscoveryHomeHealth">Discovery Home &amp; Health</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-kids" xmltv_id="DiscoveryKids">Discovery Kids</channel>
+		<channel update="i" site="mi.tv2" site_id="br###cartoon" xmltv_id="CartoonNetwork">Cartoon Network</channel>
+		<channel update="i" site="mi.tv2" site_id="br###nickelodeon" xmltv_id="Nickelodeon">Nickelodeon</channel>
+		<channel update="i" site="mi.tv2" site_id="br###boomerang" xmltv_id="Boomerang">Boomerang</channel>
+		<channel update="i" site="mi.tv2" site_id="br###globo-news" xmltv_id="GloboNews">Globo News</channel>
+		<channel update="i" site="mi.tv2" site_id="br###record-news" xmltv_id="RecordNews">Record News</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###bbc-news" xmltv_id="BBC News">BBC News</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###cnn" xmltv_id="CNN">CNN</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###globosat" xmltv_id="Globosat">+ Globosat</channel>
+		<channel update="i" site="mi.tv2" site_id="br###animal-planet" xmltv_id="AnimalPlanet">Animal Planet</channel>
+		<channel update="i" site="mi.tv2" site_id="br###bandsports" xmltv_id="BandSports">BandSports</channel>
+		<channel update="i" site="mi.tv2" site_id="br###canal-brasil" xmltv_id="CanalBrasil">Canal Brasil</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###canal-rural" xmltv_id="Canal Rural">Canal Rural</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###canc-o-nova" xmltv_id="CançãoNova">Canção Nova</channel>
+		<channel update="i" site="mi.tv2" site_id="br###cinebrasil-tv" xmltv_id="CineBrasil">Cine Brasil</channel>
+		<channel update="i" site="mi.tv2" site_id="br###cinemax" xmltv_id="Cinemax">Cinemax</channel>
+		<channel update="i" site="mi.tv2" site_id="br###comedy-central" xmltv_id="ComedyCentral">Comedy Central</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-science" xmltv_id="DiscoveryScience">Discovery Science</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-theater-hd" xmltv_id="DiscoveryTheater">Discovery Theater</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-turbo" xmltv_id="DiscoveryTurbo">Discovery Turbo</channel>
+		<channel update="i" site="mi.tv2" site_id="br###discovery-world-hd" xmltv_id="DiscoveryWorld">Discovery World</channel>
+		<channel update="i" site="mi.tv2" site_id="br###disney-junior" xmltv_id="DisneyJr">Disney Junior</channel>
+		<channel update="i" site="mi.tv2" site_id="br###disney-xd" xmltv_id="DisneyXD">Disney XD</channel>
+		<channel update="i" site="mi.tv2" site_id="br###e" xmltv_id="E!">E!</channel>
+		<channel update="i" site="mi.tv2" site_id="br###espn-plus" xmltv_id="ESPN+">ESPN +</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###eurochannel" xmltv_id="Eurochannel">Eurochannel</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###fashion-tv" xmltv_id="Fashion TV">Fashion TV</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###film-arts" xmltv_id="FilmArts">Film &amp; Arts</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fishtv" xmltv_id="FishTV">FishTV</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fox-life" xmltv_id="FOXLife">FOX Life</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fox-sports-2" xmltv_id="FOXSports2">FOX Sports 2</channel>
+		<channel update="i" site="mi.tv2" site_id="br###fx" xmltv_id="FX">FX</channel>
+		<channel update="i" site="mi.tv2" site_id="br###gnt" xmltv_id="GNT">GNT</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###golf-channel" xmltv_id="Golf Channel">Golf Channel</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###hbo-2" xmltv_id="HBO2">HBO 2</channel>
+		<channel update="i" site="mi.tv2" site_id="br###hbo-plus" xmltv_id="HBOPlus">HBO Plus</channel>
+		<channel update="i" site="mi.tv2" site_id="br###hbo-signature" xmltv_id="HBOSignature">HBO Signature</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###i-sat" xmltv_id="I.SAT">I.SAT</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###investigacao-discovery" xmltv_id="DiscoveryInvestigation">Investigação Discovery</channel>
+		<channel update="i" site="mi.tv2" site_id="br###max" xmltv_id="MAX">Max</channel>
+		<channel update="i" site="mi.tv2" site_id="br###maxprime" xmltv_id="Maxprime">Maxprime</channel>
+		<channel update="i" site="mi.tv2" site_id="br###max-up" xmltv_id="MaxUp">Max Up</channel>
+		<channel update="i" site="mi.tv2" site_id="br###megapix" xmltv_id="Megapix">Megapix</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###mix-tv" xmltv_id="MIX TV">MIX TV</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###multishow" xmltv_id="Multishow">Multishow</channel>
+		<channel update="i" site="mi.tv2" site_id="br###natgeo-wild-hd" xmltv_id="NatGeoWild">NatGeo Wild</channel>
+		<channel update="i" site="mi.tv2" site_id="br###nhk" xmltv_id="NHK">NHK</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###nick-hd" xmltv_id="Nick HD">Nick HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###nick-jr" xmltv_id="NickJr">Nick Jr.</channel>
+		<channel update="i" site="mi.tv2" site_id="br###off" xmltv_id="Off">Off</channel>
+		<channel update="i" site="mi.tv2" site_id="br###paramount-channel" xmltv_id="Paramount">Paramount Channel</channel>
+		<channel update="i" site="mi.tv2" site_id="br###playboy" xmltv_id="Playboy">Playboy</channel>
+		<channel update="i" site="mi.tv2" site_id="br###play-tv" xmltv_id="PlayTV">Play TV</channel>
+		<channel update="i" site="mi.tv2" site_id="br###premiere-clubes" xmltv_id="PremiereClubes">Premiere Clubes</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###premiere-futebol-clube-hd" xmltv_id="Premiere FC HD">Premiere FC HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###prime-box-brazil" xmltv_id="PrimeBoxBr">Prime Box Brazil</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###rai" xmltv_id="RAI">RAI</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###ra-tim-bum" xmltv_id="RATIMBUM">RA TIM BUM</channel>
+		<channel update="i" site="mi.tv2" site_id="br###rede-vida" xmltv_id="RedeVida">Rede Vida</channel>
+		<channel update="i" site="mi.tv2" site_id="br###rede-vida-porto-alegre" xmltv_id="Rede Vida Porto Alegre">Rede Vida Porto Alegre</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###sesctv" xmltv_id="Sesctv">Sesctv</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###sexprive-brasileirinhas" xmltv_id="SexPrive Brasileirinhas">SexPrive Brasileirinhas</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###sextreme-brazil" xmltv_id="SextremeBr">Sextreme Brazil</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###sic" xmltv_id="SIC">SIC</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###sic-internacional" xmltv_id="SIC">SIC Internacional</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###sony-hd" xmltv_id="Sony HD">Sony HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###space" xmltv_id="Space">Space</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###space-hd" xmltv_id="Space HD">Space HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###sportv2" xmltv_id="SporTV2">SporTV2</channel>
+		<channel update="i" site="mi.tv2" site_id="br###sportv3" xmltv_id="SporTV 3">SporTV3</channel>
+		<channel update="i" site="mi.tv2" site_id="br###studio-universal" xmltv_id="UniversalStudio">Studio Universal</channel>
+		<channel update="i" site="mi.tv2" site_id="br###syfy" xmltv_id="SyFy">SyFy</channel>
+		<channel update="i" site="mi.tv2" site_id="br###tbs" xmltv_id="TBS">TBS</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###tbs-hd" xmltv_id="TBS HD">TBS HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###tcm" xmltv_id="TCM">TCM</channel>
+		<channel update="i" site="mi.tv2" site_id="br###telecine-action" xmltv_id="TelecineAction">Telecine Action</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###telecine-action-hd" xmltv_id="Telecine Action HD">Telecine Action HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###telecine-cult" xmltv_id="TelecineCult">Telecine Cult</channel>
+		<channel update="i" site="mi.tv2" site_id="br###telecine-fun" xmltv_id="TelecineFun">Telecine Fun</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###telecine-fun-hd" xmltv_id="Telecine Fun HD">Telecine Fun HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###telecine-pipoca" xmltv_id="TelecinePipoca">Telecine Pipoca</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###telecine-pipoca-hd" xmltv_id="Telecine Pipoca HD">Telecine Pipoca HD</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###telecine-premium-hd" xmltv_id="Telecine Premium HD">Telecine Premium HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###telecine-touch" xmltv_id="TelecineTouch">Telecine Touch</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###telecine-touch-hd" xmltv_id="Telecine Touch HD">Telecine Touch HD</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###terra-viva" xmltv_id="Terra Viva">TerraViva</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###tlc" xmltv_id="TLC">TLC</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###tnt-hd" xmltv_id="TNT HD">TNT HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###tnt-series" xmltv_id="TNTSeries">TNT Series</channel>
+		<channel update="i" site="mi.tv2" site_id="br###tooncast" xmltv_id="Tooncast">Tooncast</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###travel-box-brazil" xmltv_id="Travel Box Brazil">Travel Box Brazil</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###trutv" xmltv_id="truTV">truTV</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###trutv-hd" xmltv_id="truTV HD">truTV HD</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv5" xmltv_id="TV5">TV5</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###tv-aparecida" xmltv_id="TV Aparecida">TV Aparecida</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-brasil" xmltv_id="TV Brasil">TV Brasil</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-climatempo" xmltv_id="TV Climatempo">TV Climatempo</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-camara" xmltv_id="TV Câmara">TV Câmara</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tve" xmltv_id="TVE">TVE</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-educativa" xmltv_id="TV Educativa">TV Educativa</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-escola" xmltv_id="TV Escola">TV Escola</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-jornal" xmltv_id="TV Jornal">TV Jornal</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-justica" xmltv_id="TV Justiça">TV Justiça</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-liberal" xmltv_id="TV Liberal">TV Liberal</channel>-->
+		<!--<channel update="i" site="mi.tv2" site_id="br###tv-senado" xmltv_id="TV SENADO">TV SENADO</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###vh1" xmltv_id="VH1">VH1</channel>
+		<!--<channel update="i" site="mi.tv2" site_id="br###warner-channel-hd" xmltv_id="Warner Channel HD">Warner Channel HD</channel>-->
+		<channel update="i" site="mi.tv2" site_id="br###woohoo" xmltv_id="WooHoo">WooHoo</channel>
+	</channels>
 </settings>

@@ -3,21 +3,22 @@ import re
 
 class M3uFixer:
 
-    def __init__(self):
+    def __init__(self, channelDictionary):
         self.all_lines = []
         self.vod_lines = []
+        self.channelDictionary = channelDictionary
 
     def readAllLines(self):
         self.lines = [line.rstrip('\n') for line in open("test.m3u", encoding='utf8')]
         return len(self.lines)
 
-    def fixLines(self, channelDictionary):
+    def fixLines(self):
         self.readAllLines()
         numLine = len(self.lines)
         for n in range(numLine):
             line = self.lines[n]
             if line[0] == "#":
-                self.manageLine(n, channelDictionary)
+                self.manageLine(n)
         playlist = open("playlist.m3u", "w", encoding='utf8')
         playlist.write("#EXTM3U\n")
         playlist.writelines(self.all_lines)
@@ -36,19 +37,22 @@ class M3uFixer:
         else:
             return False
 
-    def manageLine(self, n, channeldic):
-        keys = channeldic.keys()
+    def manageLine(self, n):
+        keys = self.channelDictionary.keys()
         lineInfo = self.lines[n]
+        lineLink = self.lines[n+1]
         if lineInfo != "#EXTM3U":
             m = re.search("group-title=\"(.*?)\"", lineInfo)
             group = m.group(1)
             if not(group.startswith("Canais:")):
                 self.vod_lines.append(lineInfo + '\n')
+                self.vod_lines.append(lineLink + '\n')
             else:
                 m = re.search("tvg-name=\"(.*?)\"", lineInfo)
                 name = m.group(1)
                 possibleKeyMatches = filter(lambda k: self.getPossibleKeyMatches(k, name), keys)
                 for key in possibleKeyMatches:
-                    if name in channeldic.get(key):
+                    if name in self.channelDictionary.get(key):
                         newline = re.sub("tvg-id=\"(.*?)\"", 'tvg-id="' + key + '"', lineInfo)
                         self.all_lines.append(newline + '\n')
+                        self.all_lines.append(lineLink + '\n')

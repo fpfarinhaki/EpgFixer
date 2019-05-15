@@ -167,8 +167,8 @@ channel_id_dic = {
 
 def main():
     print("Reading m3u file")
-    fixer = M3uFixer()
-    fixer.fixLines(channel_id_dic)
+    fixer = M3uFixer(channel_id_dic)
+    fixer.fixLines()
     # with open("playlist.m3u", 'r', encoding='utf8') as playlist:
     #     print(playlist.read())
 
