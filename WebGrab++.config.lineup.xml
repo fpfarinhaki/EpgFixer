@@ -11,133 +11,227 @@
 	<timespan>2</timespan>
 	<update>l</update>
 	<channels>
-		<!-- From lineup tv -->
-		<channel update="i" site="lineup.net.br" xmltv_id="A&amp;E" site_id="579146">A&amp;E</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="AMC" site_id="310177">AMC</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="AnimalPlanet" site_id="992823">Animal Planet</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Arte1" site_id="462230">Arte 1</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="AXN" site_id="334752">AXN</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="BabyTV" site_id="367466">BabyTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Band" site_id="807711">Band</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="BandNews" site_id="936130">BandNews</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="BandSports" site_id="513338">BandSports</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="BIS" site_id="983734">BIS</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Boomerang" site_id="377972">Boomerang</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="CanalBrasil" site_id="683243">Canal Brasil</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="CançãoNova" site_id="167601">Canção Nova</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="CartoonNetwork" site_id="721829">Cartoon Network</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Cinemax" site_id="860020">Cinemax</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="ComedyCentral" site_id="849602">Comedy Central</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Cultura" site_id="822273">Cultura</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Discovery" site_id="579063">Discovery Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryCivilization" site_id="797977">Discovery Civilization</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryHomeHealth" site_id="403129">Discovery Home &amp; Health</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryKids" site_id="140971">Discovery Kids</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryScience" site_id="467961">Discovery Science</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryTheater" site_id="505519">Discovery Theater</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryTurbo" site_id="830058">Discovery Turbo</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryWorld" site_id="733482">Discovery World</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryInvestigation" site_id="826362">ID: Investigação Discovery</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Disney" site_id="199977">Disney Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DisneyJr" site_id="170613">Disney Junior</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="DisneyXD" site_id="233631">Disney XD</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="E!" site_id="395837">E!</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="ESPN" site_id="440135">ESPN</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="ESPN2" site_id="978157">ESPN 2</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="ESPNBrasil" site_id="606133">ESPN Brasil</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="ESPN+" site_id="662208">ESPN Extra</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="EI" site_id="335258">Esporte Interativo BR</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FilmArts" site_id="259059">FILM&amp;Arts</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FishTV" site_id="350650">Fish TV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FoodNetwork" site_id="169477">Food Network</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FOX" site_id="112124">Fox Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FoxLife" site_id="682141">FoxLife</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FoxSports" site_id="230127">FoxSports</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FoxSports2" site_id="110708">FoxSports 2</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Futura" site_id="824292">Futura</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="FX" site_id="656821">FX</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="GloboRpc" site_id="415534">RPC Curitiba</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="GloboNews" site_id="883806">GloboNews</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Gloob " site_id="407556">Gloob </channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Gloobinho" site_id="870284">Gloobinho</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="GNT" site_id="759036">GNT</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="HistoryChannel" site_id="562988">History</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="H2" site_id="543864">History 2</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Lifetime" site_id="820230">Lifetime</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Globosat" site_id="429426">Mais GloboSat</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Megapix" site_id="247452">Megapix</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="MTV" site_id="425702">MTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="MTV Live" site_id="287580">MTV Live HD</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Multishow" site_id="963870">Multishow</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="MusicBox" site_id="752812">Music Box Brazil</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="NatGeoKids" site_id="569561">NatGeo Kids</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="NationalGeographic" site_id="297424">National Geographic</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="NatGeoWild" site_id="462117">National Geographic Wild</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="NHK" site_id="811370">NHK World Japan</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Nickelodeon" site_id="550416">Nick</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="NickJr" site_id="387462">Nick Jr.</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Off" site_id="502509">Off</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Paramount" site_id="952547">Paramount Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Playboy" site_id="255112">PlayboyTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="PlayTV" site_id="610917">PlayTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="PrimeBoxBr" site_id="871262">Prime Box Brazil</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Record" site_id="760178">RecordTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="RecordNews" site_id="760325">Record News</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="RedeVida" site_id="103185">Rede Vida</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="RedeTV!" site_id="242657">RedeTV!</channel>
-<!--		<channel update="i" site="lineup.net.br" xmltv_id="RIC TV Curitiba" site_id="801791">RIC TV Curitiba</channel>-->
-		<channel update="i" site="lineup.net.br" xmltv_id="SBT" site_id="302660">SBT</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SextremeBr" site_id="283850">Sextreme</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SexyHot" site_id="282073">SexyHot</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SIC" site_id="254955">SIC Internacional</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Smithsonian" site_id="919521">Smithsonian Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Sony" site_id="538255">Sony</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Space" site_id="107575">Space</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SporTV" site_id="811805">SporTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SporTV2" site_id="757057">SporTV 2</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="SporTV3" site_id="446591">SporTV 3</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="UniversalStudio" site_id="730757">Studio Universal</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Syfy" site_id="841551">Syfy</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TBS" site_id="568294">TBS</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TCM" site_id="287052">TCM</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TLC" site_id="587400">TLC</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TNT" site_id="259413">TNT</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TNTSeries" site_id="428188">TNT Séries</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Tooncast" site_id="429008">Tooncast</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TruTV" site_id="768991">TruTV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="TV Aparecida" site_id="133772">TV Aparecida</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Universal" site_id="504464">Universal TV</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Venus" site_id="371715">Venus</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="VH1" site_id="631361">VH1 HD</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="VH1 MegaHits" site_id="360076">VH1 MegaHits</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Viva" site_id="555298">Viva</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Warner" site_id="392407">Warner Channel</channel>
-		<channel update="i" site="lineup.net.br" xmltv_id="Woohoo" site_id="565039">Woohoo</channel>
+	<!-- From lineup tv -->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="A&amp;E" site_id="579146">A&amp;E</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="AMC" site_id="310177">AMC</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="AnimalPlanet" site_id="992823">Animal Planet</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Arte1" site_id="462230">Arte 1</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="AXN" site_id="334752">AXN</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="BabyTV" site_id="367466">BabyTV</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Band" site_id="807711">Band</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="BandNews" site_id="936130">BandNews</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="BandSports" site_id="513338">BandSports</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="BIS" site_id="983734">BIS</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Boomerang" site_id="377972">Boomerang</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="CanalBrasil" site_id="683243">Canal Brasil</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="CançãoNova" site_id="167601">Canção Nova</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="CartoonNetwork" site_id="721829">Cartoon Network</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Cinemax" site_id="860020">Cinemax</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="ComedyCentral" site_id="849602">Comedy Central</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Cultura" site_id="822273">Cultura</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Discovery" site_id="579063">Discovery Channel</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryCivilization" site_id="797977">Discovery Civilization</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryHomeHealth" site_id="403129">Discovery Home &amp; Health</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryKids" site_id="140971">Discovery Kids</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryScience" site_id="467961">Discovery Science</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryTheater" site_id="505519">Discovery Theater</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryTurbo" site_id="830058">Discovery Turbo</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryWorld" site_id="733482">Discovery World</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DiscoveryInvestigation" site_id="826362">ID: Investigação Discovery</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Disney" site_id="199977">Disney Channel</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DisneyJr" site_id="170613">Disney Junior</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="DisneyXD" site_id="233631">Disney XD</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="E!" site_id="395837">E!</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="ESPN" site_id="440135">ESPN</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="ESPN2" site_id="978157">ESPN 2</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="ESPNBrasil" site_id="606133">ESPN Brasil</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="ESPN+" site_id="662208">ESPN Extra</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="EI" site_id="335258">Esporte Interativo BR</channel>
+	<channel update="i" site="lineup.net.br" xmltv_id="FilmArts" site_id="259059">FILM&amp;Arts</channel>
+	<channel update="i" site="lineup.net.br" xmltv_id="FishTV" site_id="350650">Fish TV</channel>
+	<channel update="i" site="lineup.net.br" xmltv_id="FoodNetwork" site_id="169477">Food Network</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="FOX" site_id="112124">Fox Channel</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="FoxLife" site_id="682141">FoxLife</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="FoxSports" site_id="230127">FoxSports</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="FoxSports2" site_id="110708">FoxSports 2</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Futura" site_id="824292">Futura</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="FX" site_id="656821">FX</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="GloboRpc" site_id="415534">RPC Curitiba</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="GloboNews" site_id="883806">GloboNews</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Gloob " site_id="407556">Gloob </channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="Gloobinho" site_id="870284">Gloobinho</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="GNT" site_id="759036">GNT</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="HistoryChannel" site_id="562988">History</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="H2" site_id="543864">History 2</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="Lifetime" site_id="820230">Lifetime</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Globosat" site_id="429426">Mais GloboSat</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Megapix" site_id="247452">Megapix</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="MTV" site_id="425702">MTV</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="MTV Live" site_id="287580">MTV Live HD</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Multishow" site_id="963870">Multishow</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="MusicBox" site_id="752812">Music Box Brazil</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="NatGeoKids" site_id="569561">NatGeo Kids</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="NationalGeographic" site_id="297424">National Geographic</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="NatGeoWild" site_id="462117">National Geographic Wild</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="NHK" site_id="811370">NHK World Japan</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Nickelodeon" site_id="550416">Nick</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="NickJr" site_id="387462">Nick Jr.</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Off" site_id="502509">Off</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Paramount" site_id="952547">Paramount Channel</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Playboy" site_id="255112">PlayboyTV</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="PlayTV" site_id="610917">PlayTV</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="PrimeBoxBr" site_id="871262">Prime Box Brazil</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Record" site_id="760178">RecordTV</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="RecordNews" site_id="760325">Record News</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="RedeVida" site_id="103185">Rede Vida</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="RedeTV!" site_id="242657">RedeTV!</channel>-->
+<!--	&lt;!&ndash;		<channel update="i" site="lineup.net.br" xmltv_id="RIC TV Curitiba" site_id="801791">RIC TV Curitiba</channel>&ndash;&gt;-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SBT" site_id="302660">SBT</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="SextremeBr" site_id="283850">Sextreme</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SexyHot" site_id="282073">SexyHot</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SIC" site_id="254955">SIC Internacional</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Smithsonian" site_id="919521">Smithsonian Channel</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Sony" site_id="538255">Sony</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Space" site_id="107575">Space</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SporTV" site_id="811805">SporTV</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SporTV2" site_id="757057">SporTV 2</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="SporTV3" site_id="446591">SporTV 3</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="UniversalStudio" site_id="730757">Studio Universal</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Syfy" site_id="841551">Syfy</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TBS" site_id="568294">TBS</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TCM" site_id="287052">TCM</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TLC" site_id="587400">TLC</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TNT" site_id="259413">TNT</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TNTSeries" site_id="428188">TNT Séries</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Tooncast" site_id="429008">Tooncast</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TruTV" site_id="768991">TruTV</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="TV Aparecida" site_id="133772">TV Aparecida</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Universal" site_id="504464">Universal TV</channel>-->
+	<channel update="i" site="lineup.net.br" xmltv_id="Venus" site_id="371715">Venus</channel>
+	<channel update="i" site="lineup.net.br" xmltv_id="VH1" site_id="631361">VH1 HD</channel>
+	<channel update="i" site="lineup.net.br" xmltv_id="VH1 MegaHits" site_id="360076">VH1 MegaHits</channel>
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Viva" site_id="555298">Viva</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Warner" site_id="392407">Warner Channel</channel>-->
+<!--	<channel update="i" site="lineup.net.br" xmltv_id="Woohoo" site_id="565039">Woohoo</channel>-->
 
-		<!-- From Mi2.tv -->
-		<channel update="i" site="mi.tv2" site_id="br###hbo" xmltv_id="HBO">HBO</channel>
-		<channel update="i" site="mi.tv2" site_id="br###hbo-2" xmltv_id="HBO2">HBO 2</channel>
-		<channel update="i" site="mi.tv2" site_id="br###hbo-plus" xmltv_id="HBOPlus">HBO Plus</channel>
-		<channel update="i" site="mi.tv2" site_id="br###hbo-signature" xmltv_id="HBOSignature">HBO Signature</channel>
-		<channel update="i" site="mi.tv2" site_id="br###max" xmltv_id="MAX">Max</channel>
-		<channel update="i" site="mi.tv2" site_id="br###maxprime" xmltv_id="Maxprime">Maxprime</channel>
-		<channel update="i" site="mi.tv2" site_id="br###max-up" xmltv_id="MaxUp">Max Up</channel>
-		<channel update="i" site="mi.tv2" site_id="br###nbr" xmltv_id="NBR">NBR</channel>
-		<channel update="i" site="mi.tv2" site_id="br###premiere-clubes" xmltv_id="PremiereClubes">Premiere Clubes</channel>
-		<channel update="i" site="mi.tv2" site_id="br###ra-tim-bum" xmltv_id="RATIMBUM">RA TIM BUM</channel>
+	<!-- From Mi2.tv -->
+<!--	<channel update="i" site="mi.tv2" site_id="br###hbo" xmltv_id="HBO">HBO</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###hbo-2" xmltv_id="HBO2">HBO 2</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###hbo-plus" xmltv_id="HBOPlus">HBO Plus</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###hbo-signature" xmltv_id="HBOSignature">HBO Signature</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###max" xmltv_id="MAX">Max</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###maxprime" xmltv_id="Maxprime">Maxprime</channel>-->
+	<channel update="i" site="mi.tv2" site_id="br###max-up" xmltv_id="MaxUp">Max Up</channel>
+<!--	<channel update="i" site="mi.tv2" site_id="br###nbr" xmltv_id="NBR">NBR</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###premiere-clubes" xmltv_id="PremiereClubes">Premiere Clubes</channel>-->
+<!--	<channel update="i" site="mi.tv2" site_id="br###ra-tim-bum" xmltv_id="RATIMBUM">RA TIM BUM</channel>-->
 
-		<!-- From Netcombo -->
-		<channel update="i" site="netcombo.com.br" xmltv_id="PremiereClubes" site_id="1365">Premiere Clubes</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere2" site_id="1360">Premiere 2</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere3" site_id="1361">Premiere 3</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere4" site_id="1362">Premiere 4</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere5" site_id="1363">Premiere 5</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere6" site_id="1364">Premiere 6</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere7" site_id="693">Premiere 7</channel>
-		<channel update="i" site="netcombo.com.br" xmltv_id="Combate" site_id="487">Combate</channel>
+	<!-- From Netcombo -->
+<!--	<channel update="i" site="netcombo.com.br" xmltv_id="PremiereClubes" site_id="1365">Premiere Clubes</channel>-->
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere2" site_id="1360">Premiere 2</channel>
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere3" site_id="1361">Premiere 3</channel>
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere4" site_id="1362">Premiere 4</channel>
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere5" site_id="1363">Premiere 5</channel>
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere6" site_id="1364">Premiere 6</channel>
+	<channel update="i" site="netcombo.com.br" xmltv_id="Premiere7" site_id="693">Premiere 7</channel>
+<!--	<channel update="i" site="netcombo.com.br" xmltv_id="Combate" site_id="487">Combate</channel>-->
 
 		<!-- From ClaroTV -->
+		<channel update="i" site="clarotv.com.br" xmltv_id="A&amp;E" site_id="1">A&amp;E</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="AnimalPlanet" site_id="3">Animal Planet</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Arte1" site_id="211">Arte 1</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="AXN" site_id="2">AXN</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Band" site_id="5">BAND</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="BandNews" site_id="7">Band News</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="BandSports" site_id="8">Band Sports</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="BIS" site_id="202">BIS</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Boomerang" site_id="11">Boomerang</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="CanalBrasil" site_id="14">Canal Brasil</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="CançãoNova" site_id="102">Canção Nova</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="CartoonNetwork" site_id="18">Cartoon Network</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Cinemax" site_id="19">Cinemax</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Combate" site_id="23">Combate</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="ComedyCentral" site_id="188">Comedy Central</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Cultura" site_id="103">TV Cultura</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Discovery" site_id="28">Discovery Channel</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DiscoveryHomeHealth" site_id="29">Discovery Home &amp; Health</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DiscoveryKids" site_id="30">Discovery Kids</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DiscoveryTheater" site_id="26">DISCOVERY THEATER HD</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DiscoveryTurbo" site_id="147">Discovery Turbo</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DiscoveryInvestigation" site_id="61">ID - Investigação Discovery</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Disney" site_id="33">Disney</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DisneyJr" site_id="77">Disney Júnior</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="DisneyXD" site_id="32">Disney XD</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="E!" site_id="34">E!</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="ESPN" site_id="36">ESPN</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="ESPNBrasil" site_id="35">ESPN Brasil</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="ESPN+" site_id="143">ESPN +</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="FOX" site_id="40">FOX</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="FoxLife" site_id="249">Fox Life</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="FOXSports" site_id="92">Fox Sports</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="FOXSports2" site_id="248">Fox Sports 2</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Futura" site_id="46">Futura</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="FX" site_id="42">FX</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="GloboNews" site_id="49">GloboNews</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Gloob" site_id="191">Gloob</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Globosat" site_id="201">+ GLOBOSAT</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="GNT" site_id="48">GNT</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="HBO" site_id="56">HBO</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="HBO2" site_id="50">HBO 2</channel>
 		<channel update="i" site="clarotv.com.br" xmltv_id="HBOFamily" site_id="52">HBO Family</channel>
-		<!-- Missing channels: HBO Family -->
-	</channels>
+		<channel update="i" site="clarotv.com.br" xmltv_id="HBOPlus" site_id="55">HBO Plus</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="HBOSignature" site_id="51">HBO Signature</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="H2" site_id="10">H2</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="HistoryChannel" site_id="119">The History Channel</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="MAX" site_id="21">Max</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Maxprime" site_id="65">Max Prime</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Megapix" site_id="67">Megapix</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="MTV" site_id="246">MTV </channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Multishow" site_id="68">Multishow</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="MusicBox" site_id="222">Music Box Brazil</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="NationalGeographic" site_id="71">National Geographic</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="NatGeoWild" site_id="167">Nat Geo Wild HD</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="NBR" site_id="69">NBR</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="NHK" site_id="150">NHK PREMIUM</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="NickJr" site_id="73">Nick Jr.</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Nickelodeon" site_id="74">Nickelodeon</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Off" site_id="200">OFF</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Paramount" site_id="123">Paramount</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Playboy" site_id="76">Playboy TV</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="PlayTV" site_id="199">Play TV</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="PrimeBoxBr" site_id="148">Prime Box Brazil</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="PremiereClubes" site_id="75">Premiere Clubes</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="RATIMBUM" site_id="109">TV Rá Tim Bum</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Record" site_id="80">RECORD</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="RecordNews" site_id="81">Record News</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="RedeTV!" site_id="240">Rede TV</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="RedeVida" site_id="234">Rede Vida</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SBT" site_id="86">SBT</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SexyHot" site_id="89">Sexy Hot</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SIC" site_id="154">SIC</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Sony" site_id="90">Sony</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Space" site_id="91">Space</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SporTV3" site_id="186">Sportv 3</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SporTV2" site_id="94">Sportv 2</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SporTV" site_id="93">SporTV</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="SyFy" site_id="88">SyFy</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TBS" site_id="224">TBS</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TCM" site_id="96">TCM</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecineAction" site_id="112">Telecine Action</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecineCult" site_id="113">Telecine Cult</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecineFun" site_id="114">Telecine Fun</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecinePipoca" site_id="116">Telecine Pipoca</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecinePremium" site_id="117">Telecine Premium</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TelecineTouch" site_id="115">Telecine Touch</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TLC" site_id="31">TLC</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TNT" site_id="100">TNT</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Tooncast" site_id="175">TOONCAST</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TruTV" site_id="120">TruTV</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="TV Aparecida" site_id="232">Aparecida</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Universal" site_id="121">Universal Channel</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="UniversalStudio" site_id="95">Studio Universal</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Viva" site_id="17">Canal Viva</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="Warner" site_id="124">Warner Channel</channel>
+		<channel update="i" site="clarotv.com.br" xmltv_id="WooHoo" site_id="125">WooHoo</channel>
+</channels>
 </settings>
