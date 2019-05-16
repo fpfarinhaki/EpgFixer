@@ -126,6 +126,18 @@
 		<channel update="i" site="mi.tv2" site_id="br###premiere-clubes" xmltv_id="PremiereClubes">Premiere Clubes</channel>
 		<channel update="i" site="mi.tv2" site_id="br###ra-tim-bum" xmltv_id="RATIMBUM">RA TIM BUM</channel>
 
+		<!-- From Netcombo -->
+		<channel update="i" site="netcombo.com.br" xmltv_id="PremiereClubes" site_id="1365">Premiere Clubes</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere2" site_id="1360">Premiere 2</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere3" site_id="1361">Premiere 3</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere4" site_id="1362">Premiere 4</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere5" site_id="1363">Premiere 5</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere6" site_id="1364">Premiere 6</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Premiere7" site_id="693">Premiere 7</channel>
+		<channel update="i" site="netcombo.com.br" xmltv_id="Combate" site_id="487">Combate</channel>
+
+		<!-- From ClaroTV -->
+		<channel update="i" site="clarotv.com.br" xmltv_id="HBOFamily" site_id="52">HBO Family</channel>
 		<!-- Missing channels: HBO Family -->
 	</channels>
 </settings>
