@@ -11,7 +11,8 @@
 	<timespan>2</timespan>
 	<update>l</update>
 	<channels>
-		<channel update="i" site="mi.tv2" site_id="br###rede-globo" xmltv_id="GloboRpc">Globo</channel>
+		<channel update="i" site="lineup.net.br" xmltv_id="GloboRpc" site_id="559771">RPC Curitiba</channel>
+<!--		<channel update="i" site="mi.tv2" site_id="br###rede-globo" xmltv_id="GloboRpc">Globo</channel>-->
 		<channel update="i" site="mi.tv2" site_id="br###record" xmltv_id="Record">Record</channel>
 		<channel update="i" site="mi.tv2" site_id="br###sbt" xmltv_id="SBT">SBT</channel>
 		<channel update="i" site="mi.tv2" site_id="br###band" xmltv_id="Band">Band</channel>
