@@ -1,7 +1,6 @@
-# coding=utf-8
-from M3uFixer import M3uFixer
 import sys
-import logging
+
+from M3uFixer import M3uFixer
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -177,4 +176,5 @@ def main(iptv_filename, enable_vod_update):
     # with open("playlist.m3u", 'r', encoding='utf8') as playlist:
     #     print(playlist.read())
 
-main(sys.argv[0], sys.argv[1])
+
+main(sys.argv[1], sys.argv[2])
