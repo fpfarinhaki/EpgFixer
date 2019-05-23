@@ -28,11 +28,15 @@ class M3uFixer:
 
     def __init__(self, iptv_filename, channelDictionary, vod_enable_update):
         self.iptv_filename = iptv_filename
+        print(self.iptv_filename)
         self.channelDictionary = channelDictionary
         self.channels = []
         self.movies = []
         self.series = []
         self.vod_update_enabled = vod_enable_update
+
+    def vodUpdateEnabled(self):
+        return self.vod_update_enabled.casefold() == "true"
 
     def readAllLines(self):
         self.lines = [line.rstrip('\n') for line in open(self.iptv_filename, encoding='utf8')]
@@ -47,7 +51,7 @@ class M3uFixer:
                 self.manageLine(n)
 
         self.save_to_file("channels.m3u", self.channels)
-        if self.vod_update_enabled:
+        if self.vodUpdateEnabled():
             self.save_to_file("movies.m3u", self.movies)
             self.save_to_file("series.m3u", self.series)
 
@@ -72,7 +76,8 @@ class M3uFixer:
             m = re.search(GROUP_TITLE_PATTERN, lineInfo)
             group = m.group(1)
             if not (group.startswith("Canais:")):
-                if self.vod_update_enabled:
+                if self.vodUpdateEnabled():
+                    print("should not reach here")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
                         self.movies.append(self.fill_movie_metadata(lineInfo) + '\n')
                         self.movies.append(lineLink + '\n')
