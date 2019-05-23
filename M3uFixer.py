@@ -1,8 +1,9 @@
 import logging
 import re
-import time
 
 import tmdbsimple as tmdb
+
+from RateLimitedDecorator import RateLimited
 
 WRONG_COLECAO_BEGINNING_OF_MOVIE_TITLE = "Coleção.*:\s*"
 TVG_ID_PATTERN = "tvg-id=\"(.*?)\""
@@ -16,6 +17,11 @@ logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
 handler = logging.FileHandler('fixer.log', 'a+', encoding='utf-8')
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[handler])
+
+
+@RateLimited(3)
+def searchMovie(name, year):
+    return tmdb.Search().movie(query=name, language='pt-BR', year=year)
 
 
 class M3uFixer:
@@ -105,7 +111,7 @@ class M3uFixer:
             name = re.sub("\s\(.*\)$", '', name)
             name = re.sub("\s+-.*", '', name)
             # TODO: Spell check movie name
-            movie_results = tmdb.Search().movie(query=name, language='pt-BR', year=year)
+            movie_results = searchMovie(name, year)
             try:
                 filme = movie_results['results'][0]
                 sinopse = filme['overview']
@@ -121,23 +127,3 @@ class M3uFixer:
                 return line
         else:
             return line
-
-
-def RateLimited(maxPerSecond):
-    minInterval = 1.0 / float(maxPerSecond)
-
-    def decorate(func):
-        lastTimeCalled = [0.0]
-
-        def rateLimitedFunction(*args, **kargs):
-            elapsed = time.clock() - lastTimeCalled[0]
-            leftToWait = minInterval - elapsed
-            if leftToWait > 0:
-                time.sleep(leftToWait)
-            ret = func(*args, **kargs)
-            lastTimeCalled[0] = time.clock()
-            return ret
-
-        return rateLimitedFunction
-
-    return decorate
