@@ -184,4 +184,5 @@ try:
     enabled_vod = sys.argv[1]
     main(filename, enabled_vod)
 except Exception:
+    logging.info("Incomplete arguments provided. Running with default options. (VOD disabled / test.m3u file.")
     main()
