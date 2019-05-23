@@ -77,7 +77,6 @@ class M3uFixer:
             group = m.group(1)
             if not (group.startswith("Canais:")):
                 if self.vodUpdateEnabled():
-                    print("should not reach here")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
                         self.movies.append(self.fill_movie_metadata(lineInfo) + '\n')
                         self.movies.append(lineLink + '\n')
