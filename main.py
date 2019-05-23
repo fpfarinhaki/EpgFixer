@@ -1,6 +1,7 @@
 # coding=utf-8
 from M3uFixer import M3uFixer
 import sys
+import logging
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -170,7 +171,7 @@ channel_id_dic = {
 suffixes = ['FHD', 'HD', '[Alter]']
 
 
-def main(iptv_filename, enable_vod_update=False):
+def main(iptv_filename="test.m3u", enable_vod_update=False):
     print("Reading m3u file")
     fixer = M3uFixer(iptv_filename, channel_id_dic, enable_vod_update)
     fixer.fixLines()
@@ -178,4 +179,9 @@ def main(iptv_filename, enable_vod_update=False):
     #     print(playlist.read())
 
 
-main(sys.argv[0], sys.argv[1])
+try:
+    filename = sys.argv[0]
+    enabled_vod = sys.argv[1]
+    main(filename, enabled_vod)
+except Exception:
+    main()
