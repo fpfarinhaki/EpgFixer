@@ -1,4 +1,5 @@
 from M3uFixer import M3uFixer
+import sys
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -66,7 +67,8 @@ channel_id_dic = {
                    'Fox Sports 2 [Alter]'],
     "Futura": ['FUTURA FHD', 'FUTURA HD', 'FUTURA SD'],
     "FX": ['FX FHD', 'FX HD', 'FX HD [Alter]', 'FX SD', 'FX [Alter]'],
-    "GloboRpc": ['GLOBO RPC CURITIBA FHD', 'GLOBO RPC CURITIBA HD', 'GLOBO RPC CURITIBA SD', 'RPC Curitiba [Alter]'],
+    "GloboRpc": ['GLOBO RPC CURITIBA FHD', 'GLOBO RPC CURITIBA HD', 'GLOBO RPC CURITIBA SD', 'RPC Curitiba [Alter]',
+                 'GLOBO RPC FOZ DO IGUACU HD'],
     "GloboNews": ['GLOBO NEWS', 'GLOBO NEWS FHD', 'GLOBO NEWS HD', 'GLOBO NEWS HD [Alter]', 'GLOBO NEWS [Alter]'],
     "Gloob": ['GLOOB FHD', 'GLOOB HD', 'GLOOB SD', 'Gloob HD [Alter]', 'Gloob [Alter]'],
     "Gloobinho": ['GLOOBINHO FHD', 'GLOOBINHO HD', 'GLOOBINHO SD'],
@@ -167,12 +169,12 @@ channel_id_dic = {
 suffixes = ['FHD', 'HD', '[Alter]']
 
 
-def main():
+def main(iptv_filename, enable_vod_update=False):
     print("Reading m3u file")
-    fixer = M3uFixer(channel_id_dic)
+    fixer = M3uFixer(iptv_filename, channel_id_dic, enable_vod_update)
     fixer.fixLines()
     # with open("playlist.m3u", 'r', encoding='utf8') as playlist:
     #     print(playlist.read())
 
 
-main()
+main(sys.argv[0], sys.argv[1])
