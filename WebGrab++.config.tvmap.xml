@@ -24,7 +24,7 @@
 		<channel update="i" site="tvmap.com.br" site_id="Bis" xmltv_id="BIS">Bis</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Boomerang" xmltv_id="Boomerang">Boomerang</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Canal-Brasil" xmltv_id="CanalBrasil">Canal Brasil</channel>
-<!--		<channel update="i" site="tvmap.com.br" site_id="CNV" xmltv_id="CançãoNova">Canção Nova</channel>-->
+		<channel update="i" site="tvmap.com.br" site_id="TV-Cancao-Nova" xmltv_id="CançãoNova">Canção Nova</channel>-->
 		<channel update="i" site="tvmap.com.br" site_id="Cartoon-Network" xmltv_id="CartoonNetwork">Cartoon Network</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Cinemax" xmltv_id="Cinemax">Cinemax</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Combate" xmltv_id="Combate">Combate</channel>
@@ -123,7 +123,7 @@
 		<channel update="i" site="tvmap.com.br" site_id="Venus" xmltv_id="Venus">Venus</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Viva" xmltv_id="Viva">Viva</channel>
 		<channel update="i" site="tvmap.com.br" site_id="Warner-Channel" xmltv_id="Warner">Warner Channel</channel>
-		<channel update="i" site="tvmap.com.br" site_id="Woohoo" xmltv_id="Woohoo">Woohoo</channel>
+		<channel update="i" site="tvmap.com.br" site_id="Woohoo" xmltv_id="WooHoo">Woohoo</channel>
 
 	</channels>
 </settings>
