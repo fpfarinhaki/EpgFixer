@@ -1,6 +1,7 @@
 # coding=utf-8
-import re
 import logging
+import re
+import time
 
 import tmdbsimple as tmdb
 
@@ -41,8 +42,9 @@ class M3uFixer:
                 self.manageLine(n)
 
         self.save_to_file("channels.m3u", self.channels)
-        self.save_to_file("movies.m3u", self.movies)
-        self.save_to_file("series.m3u", self.series)
+        if self.vod_update_enabled:
+            self.save_to_file("movies.m3u", self.movies)
+            self.save_to_file("series.m3u", self.series)
 
     def save_to_file(self, filename, list):
         with open(filename, "w+", encoding='utf8') as file:
@@ -120,3 +122,23 @@ class M3uFixer:
                 return line
         else:
             return line
+
+
+def RateLimited(maxPerSecond):
+    minInterval = 1.0 / float(maxPerSecond)
+
+    def decorate(func):
+        lastTimeCalled = [0.0]
+
+        def rateLimitedFunction(*args, **kargs):
+            elapsed = time.clock() - lastTimeCalled[0]
+            leftToWait = minInterval - elapsed
+            if leftToWait > 0:
+                time.sleep(leftToWait)
+            ret = func(*args, **kargs)
+            lastTimeCalled[0] = time.clock()
+            return ret
+
+        return rateLimitedFunction
+
+    return decorate
