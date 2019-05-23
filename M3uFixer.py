@@ -1,4 +1,3 @@
-# coding=utf-8
 import logging
 import re
 import time
@@ -21,7 +20,7 @@ logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S
 
 class M3uFixer:
 
-    def __init__(self, iptv_filename, channelDictionary, vod_enable_update=False):
+    def __init__(self, iptv_filename, channelDictionary, vod_enable_update):
         self.iptv_filename = iptv_filename
         self.channelDictionary = channelDictionary
         self.channels = []
