@@ -62,7 +62,6 @@ class M3uFixer:
         lineInfo = self.lines[n]
         lineLink = self.lines[n + 1]
         if lineInfo != "#EXTM3U":
-            print(lineInfo)
             m = re.search(GROUP_TITLE_PATTERN, lineInfo)
             group = m.group(1)
             if not (group.startswith("Canais:")):
