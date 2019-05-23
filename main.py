@@ -168,21 +168,13 @@ channel_id_dic = {
     "Warner": ['WARNER CHANNEL HD', 'WARNER CHANNEL SD', 'WARNER FHD', 'Warner Channel [Alter]', 'Warner HD [Alter]'],
     "WooHoo": ['WOOHOO FHD', 'WOOHOO HD', 'WOOHOO SD', 'Woohoo HD [Alter]', 'Woohoo [Alter]']
 }
-suffixes = ['FHD', 'HD', '[Alter]']
 
 
-def main(iptv_filename="test.m3u", enable_vod_update=False):
+def main(iptv_filename, enable_vod_update):
     print("Reading m3u file")
     fixer = M3uFixer(iptv_filename, channel_id_dic, enable_vod_update)
     fixer.fixLines()
     # with open("playlist.m3u", 'r', encoding='utf8') as playlist:
     #     print(playlist.read())
 
-
-try:
-    filename = sys.argv[0]
-    enabled_vod = sys.argv[1]
-    main(filename, enabled_vod)
-except Exception:
-    logging.info("Incomplete arguments provided. Running with default options. (VOD disabled / test.m3u file.")
-    main()
+main(sys.argv[0], sys.argv[1])
