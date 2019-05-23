@@ -1,3 +1,4 @@
+# coding=utf-8
 from M3uFixer import M3uFixer
 import sys
 

@@ -1,3 +1,4 @@
+# coding=utf-8
 import re
 import logging
 
@@ -57,7 +58,7 @@ class M3uFixer:
             return False
 
     def manageLine(self, n):
-        keys = self.channelDictionary.keys()
+        keys = list(self.channelDictionary.keys())
         lineInfo = self.lines[n]
         lineLink = self.lines[n + 1]
         if lineInfo != "#EXTM3U":
@@ -77,7 +78,7 @@ class M3uFixer:
             else:
                 m = re.search(TVG_NAME_PATTERN, lineInfo)
                 name = m.group(1)
-                possible_key_matches = filter(lambda k: self.getPossibleKeyMatches(k, name), keys)
+                possible_key_matches = [k for k in keys if self.getPossibleKeyMatches(k, name)]
                 for key in possible_key_matches:
                     if name in self.channelDictionary.get(key):
                         newline = re.sub(TVG_ID_PATTERN, 'tvg-id="' + key + '"', lineInfo)
