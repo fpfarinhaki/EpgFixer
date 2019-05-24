@@ -1,27 +1,12 @@
 import logging
 import re
+import tmdb
+from M3uPatterns import *
 
-import tmdbsimple as tmdb
-
-from RateLimitedDecorator import RateLimited
-
-WRONG_COLECAO_BEGINNING_OF_MOVIE_TITLE = "Coleção.*:\s*"
-TVG_ID_PATTERN = "tvg-id=\"(.*?)\""
-GROUP_TITLE_PATTERN = "group-title=\"(.*?)\""
-TVG_NAME_PATTERN = "tvg-name=\"(.*?)\""
-TITLE_ENDING_UNNECESSARY_NUMBER_ONE = "\s*1$"
-TITLE_RELEASE_YEAR_PATTERN = "\s+([0-9]{4})$"
-
-tmdb.API_KEY = 'edc5f123313769de83a71e157758030b'
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
 handler = logging.FileHandler('fixer.log', 'a+', encoding='utf-8')
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[handler])
-
-
-@RateLimited(3)
-def searchMovie(name, year):
-    return tmdb.Search().movie(query=name, language='pt-BR', year=year)
 
 
 class M3uFixer:
@@ -79,7 +64,7 @@ class M3uFixer:
                 if self.vodUpdateEnabled():
                     logger.debug("VOD update enabled")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
-                        self.movies.append(self.fill_movie_metadata(lineInfo) + '\n')
+                        self.movies.append(tmdb.fill_movie_description_m3u(lineInfo) + '\n')
                         self.movies.append(lineLink + '\n')
                     elif group.startswith("Série:") or group.startswith("Serie:"):
                         self.series.append(lineInfo + '\n')
@@ -97,39 +82,3 @@ class M3uFixer:
                         self.channels.append(newline + '\n')
                         self.channels.append(lineLink + '\n')
 
-    def fill_movie_metadata(self, line):
-        if re.match("#EXTINF", line):
-            name, year = '', ''
-            m = re.search(TVG_NAME_PATTERN, line)
-            name = m.group(1)
-            # Find year of movie and remove from query
-            m = re.search(TITLE_RELEASE_YEAR_PATTERN, name)
-            if m:
-                year = m.group(1)
-                name = re.sub(TITLE_RELEASE_YEAR_PATTERN, '', name)
-            # Remove number 1 from first movie of trilogy
-            name = re.sub(TITLE_ENDING_UNNECESSARY_NUMBER_ONE, '', name)
-            # Remove wrong beginning of movie name
-            name = re.sub(WRONG_COLECAO_BEGINNING_OF_MOVIE_TITLE, '', name)
-            # Remove wrong end of movie name
-            # name = re.sub(":\s.*$", '', name)
-            name = re.sub("\s\(.*\)$", '', name)
-            name = re.sub("\s+-.*", '', name)
-            # TODO: Spell check movie name
-            movie_results = searchMovie(name, year)
-            try:
-                filme = movie_results['results'][0]
-                sinopse = filme['overview']
-                rating = str(filme['vote_average'])
-                data_lancamento = str(filme['release_date'])
-                insertion_point = re.search("tvg-logo=", line).start()
-                linewithdesc = line[:insertion_point] \
-                                + 'description="{Sinopse:} %s\\n{Nota:} %s\\n{Data de Lançamento:} %s"' % (sinopse, rating, data_lancamento) \
-                                + " " + line[insertion_point:]
-                logging.debug(linewithdesc)
-                return linewithdesc
-            except IndexError:
-                logging.error("No results found for: {}".format(name))
-                return line
-        else:
-            return line
