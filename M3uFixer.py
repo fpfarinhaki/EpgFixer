@@ -2,6 +2,7 @@ import logging
 import re
 import tmdb
 from M3uPatterns import *
+from exceptions import NotFound
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
@@ -18,6 +19,7 @@ class M3uFixer:
         self.channels = []
         self.movies = []
         self.series = []
+        self.bad_movies = []
         self.vod_update_enabled = vod_enable_update
 
     def vodUpdateEnabled(self):
@@ -39,6 +41,7 @@ class M3uFixer:
         if self.vodUpdateEnabled():
             self.save_to_file("movies.m3u", self.movies)
             self.save_to_file("series.m3u", self.series)
+            self.save_to_file("need_fixes.m3u", self.bad_movies)
 
     def save_to_file(self, filename, list):
         with open(filename, "w+", encoding='utf8') as file:
@@ -64,8 +67,13 @@ class M3uFixer:
                 if self.vodUpdateEnabled():
                     logger.debug("VOD update enabled")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
-                        self.movies.append(tmdb.fill_movie_description_m3u(lineInfo) + '\n')
-                        self.movies.append(lineLink + '\n')
+                        try:
+                            filled = tmdb.fill_movie_description_m3u(lineInfo) + '\n'
+                            self.movies.append(filled + '\n')
+                            self.movies.append(lineLink + '\n')
+                        except NotFound:
+                            self.bad_movies.append(lineInfo + '\n')
+                            self.bad_movies.append(lineLink + '\n')
                     elif group.startswith("Série:") or group.startswith("Serie:"):
                         self.series.append(lineInfo + '\n')
                         self.series.append(lineLink + '\n')

@@ -1,16 +1,19 @@
 import logging
 import re
+from logging.handlers import TimedRotatingFileHandler
+
 import tmdbsimple as tmdb
 from RateLimitedDecorator import RateLimited
 from M3uPatterns import *
+from exceptions import *
 
 WRONG_COLECAO_BEGINNING_OF_MOVIE_TITLE = "Coleção.*:\s*"
 TITLE_ENDING_UNNECESSARY_NUMBER_ONE = "\s*1$"
 TITLE_RELEASE_YEAR_PATTERN = "\s+([0-9]{4})$"
 tmdb.API_KEY = 'edc5f123313769de83a71e157758030b'
 
-handler = logging.FileHandler('tmdb.log', 'a+', encoding='utf-8')
-logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[handler])
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
+                    handlers=[TimedRotatingFileHandler(filename='tmdb.log', encoding='utf-8')])
 
 
 @RateLimited(3)
@@ -52,6 +55,6 @@ def fill_movie_description_m3u(m3uLine):
             return linewithdesc
         except IndexError:
             logging.error("No results found for: {}".format(name))
-            return m3uLine
+            raise NotFound("No results found for: {}".format(name))
     else:
         return m3uLine
