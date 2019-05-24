@@ -68,7 +68,7 @@ class M3uFixer:
                     logger.debug("VOD update enabled")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
                         try:
-                            filled = tmdb.fill_movie_description_m3u(lineInfo) + '\n'
+                            filled = tmdb.fill_movie_description_m3u(lineInfo)
                             self.movies.append(filled + '\n')
                             self.movies.append(lineLink + '\n')
                         except NotFound:
