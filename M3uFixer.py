@@ -18,8 +18,9 @@ class M3uFixer:
         self.channelDictionary = channelDictionary
         self.channels = []
         self.movies = []
-        self.series = []
+        self.adult_movies = []
         self.bad_movies = []
+        self.series = []
         self.vod_update_enabled = vod_enable_update
 
     def vodUpdateEnabled(self):
@@ -40,8 +41,9 @@ class M3uFixer:
         self.save_to_file("channels.m3u", self.channels)
         if self.vodUpdateEnabled():
             self.save_to_file("movies.m3u", self.movies)
-            self.save_to_file("series.m3u", self.series)
             self.save_to_file("need_fixes.m3u", self.bad_movies)
+            self.save_to_file("adult_movies.m3u", self.adult_movies)
+            self.save_to_file("series.m3u", self.series)
 
     def save_to_file(self, filename, list):
         with open(filename, "w+", encoding='utf8') as file:
@@ -66,7 +68,10 @@ class M3uFixer:
             if not (group.startswith("Canais:")):
                 if self.vodUpdateEnabled():
                     logger.debug("VOD update enabled")
-                    if group.startswith("Filme:") or group.startswith("Coleção: "):
+                    if group.__contains__("Adulto"):
+                        self.adult_movies.append(lineInfo + '\n')
+                        self.adult_movies.append(lineLink + '\n')
+                    elif group.startswith("Filme:") or group.startswith("Coleção: "):
                         try:
                             filled = tmdb.fill_movie_description_m3u(lineInfo)
                             self.movies.append(filled + '\n')
