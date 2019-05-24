@@ -14,7 +14,7 @@ TITLE_RELEASE_YEAR_PATTERN = "\s+([0-9]{4})$"
 
 tmdb.API_KEY = 'edc5f123313769de83a71e157758030b'
 logger = logging.getLogger()
-logger.setLevel(logging.ERROR)
+logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler('fixer.log', 'a+', encoding='utf-8')
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[handler])
 
@@ -77,6 +77,7 @@ class M3uFixer:
             group = m.group(1)
             if not (group.startswith("Canais:")):
                 if self.vodUpdateEnabled():
+                    logger.debug("VOD update enabled")
                     if group.startswith("Filme:") or group.startswith("Coleção: "):
                         self.movies.append(self.fill_movie_metadata(lineInfo) + '\n')
                         self.movies.append(lineLink + '\n')
@@ -121,9 +122,10 @@ class M3uFixer:
                 sinopse = filme['overview']
                 rating = str(filme['vote_average'])
                 data_lancamento = str(filme['release_date'])
-                linewithdesc = line + " " \
-                               + 'description="{Sinopse:} %s\\n{Nota:} %s\\n{Data de Lançamento:} %s\\n"' % (
-                                   sinopse, rating, data_lancamento)
+                insertion_point = re.search("tvg-logo=", line).start()
+                linewithdesc = line[:insertion_point] \
+                                + 'description="{Sinopse:} %s\\n{Nota:} %s\\n{Data de Lançamento:} %s"' % (sinopse, rating, data_lancamento) \
+                                + " " + line[insertion_point:]
                 logging.debug(linewithdesc)
                 return linewithdesc
             except IndexError:
