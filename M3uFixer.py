@@ -14,7 +14,7 @@ TITLE_RELEASE_YEAR_PATTERN = "\s+([0-9]{4})$"
 
 tmdb.API_KEY = 'edc5f123313769de83a71e157758030b'
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.ERROR)
 handler = logging.FileHandler('fixer.log', 'a+', encoding='utf-8')
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', handlers=[handler])
 
