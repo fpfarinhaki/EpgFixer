@@ -4,7 +4,7 @@ from logging.handlers import TimedRotatingFileHandler
 
 from tinydb import where
 
-import Repository
+import repository
 import tmdb
 from M3uFixer import M3uFixer
 from M3uWriter import M3uWriter
@@ -12,7 +12,7 @@ from M3uWriter import M3uWriter
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
-console_handler.setLevel(logging.ERROR)
+console_handler.setLevel(logging.DEBUG)
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
                     handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
                               console_handler], level=logging.DEBUG)
@@ -189,14 +189,26 @@ channel_id_dic = {
 def main(iptv_filename):
     fixer = M3uFixer(iptv_filename, channel_id_dic)
     fixer.fixLines()
-    tmdb.fill_movie_data()
+    writer = M3uWriter()
 
-    create_movies_list(M3uWriter())
+    create_channel_list(writer)
+
+    tmdb.fill_movie_data()
+    create_movies_list(writer)
+
+
+def create_channel_list(writer):
+    channels = repository.channels().all()
+    sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
+    with open('channels.m3u', 'w+', encoding='utf8') as file:
+        writer.initialize_m3u_list(file)
+        for channel in sorted_channels:
+            file.write(writer.generate_channel_line(channel))
 
 
 def create_movies_list(writer):
-    m3u_movies = Repository.getdb().table('M3U_MOVIES')
-    movies = Repository.getdb().table('MOVIES').all()
+    m3u_movies = repository.movies()
+    movies = repository.movie_data().all()
     sorted_movies = sorted(movies, key=lambda m: m['title'])
     with open('movies.m3u', 'w+', encoding='utf8') as file:
         writer.initialize_m3u_list(file)
