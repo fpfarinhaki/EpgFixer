@@ -1,7 +1,9 @@
 import logging
 import re
+import time
 
 import tmdbsimple as tmdb
+from requests import HTTPError
 from tinydb import Query, where, operations
 
 import Repository
@@ -19,7 +21,7 @@ m3u_movies = db.table('M3U_MOVIES')
 no_data_movies = db.table('MOVIES_NO_DATA')
 
 
-@RateLimited(3)
+@RateLimited(2)
 def searchMovie(name, year):
     filme_id = tmdb.Search().movie(query=name, language='pt-BR', year=year)['results'][0]['id']
     return tmdb.Movies(id=filme_id).info(language='pt-BR')
@@ -53,6 +55,9 @@ def fill_movie_data():
             logging.error("No results found for: {}".format(m3uMovie['tvg_name']))
             no_data_movies.insert(m3uMovie)
             m3u_movies.update(operations.set('movie_id', 'NO_DATA_FOUND'), doc_ids=[m3uMovie.doc_id])
+        except HTTPError as e:
+            logging.error("Error on TMDB request - {}".format(e.response))
+            time.sleep(10)
 
 
 def find_year_in_title(title):
