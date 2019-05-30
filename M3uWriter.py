@@ -21,9 +21,14 @@ class M3uWriter:
         return file
 
     def generate_movie_line(self, m3uMovie, tmdb_data):
+        try:
+            release_date = datetime.strftime(datetime.strptime(tmdb_data['release_date'], '%Y-%m-%d'), '%d-%m-%Y')
+        except ValueError:
+            logging.error("Release date not in proper format - {} - Keeping original".format(tmdb_data['release_date']))
+            release_date = tmdb_data['release_date']
         description = description_template.safe_substitute(tmdb_data,
                    genre=', '.join(map(lambda genre: genre['name'], tmdb_data['genres'])),
-                   release_date=datetime.strftime(datetime.strptime(tmdb_data['release_date'], '%Y-%m-%d'), '%d-%m-%Y'))
+                   release_date=release_date)
         filled_line = line_template.format(**m3uMovie, **tmdb_data, description=description)
         logging.debug(filled_line)
         return filled_line
