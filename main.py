@@ -1,11 +1,13 @@
-import sys
-import Repository
 import logging
+import sys
+from logging.handlers import TimedRotatingFileHandler
 
 from tinydb import where
+
+import Repository
+import tmdb
 from M3uFixer import M3uFixer
 from M3uWriter import M3uWriter
-from logging.handlers import TimedRotatingFileHandler
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -184,9 +186,10 @@ channel_id_dic = {
 }
 
 
-def main(iptv_filename, enable_vod_update):
-    fixer = M3uFixer(iptv_filename, channel_id_dic, enable_vod_update)
+def main(iptv_filename):
+    fixer = M3uFixer(iptv_filename, channel_id_dic)
     fixer.fixLines()
+    tmdb.fill_movie_data()
 
     writer = M3uWriter()
     m3u_movies = Repository.getdb().table('M3U_MOVIES')
@@ -200,4 +203,4 @@ def main(iptv_filename, enable_vod_update):
             file.write(writer.generate_movie_line(m3umovie, movie))
 
 
-main(sys.argv[1], sys.argv[2])
+main(sys.argv[1])
