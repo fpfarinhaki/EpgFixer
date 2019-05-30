@@ -1,50 +1,65 @@
 import sys
+import Repository
+import logging
 
+from tinydb import where
 from M3uFixer import M3uFixer
+from M3uWriter import M3uWriter
+from logging.handlers import TimedRotatingFileHandler
+
+console_handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+console_handler.setLevel(logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
+                    handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
+                              console_handler], level=logging.DEBUG)
+
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
     "AMC": ['AMC', 'AMC FHD', 'AMC HD', 'AMC HD [Alter]', 'AMC [Alter]'],
     "Animal Planet": ['ANIMAL  PLANET FHD', 'ANIMAL PLANET', 'ANIMAL PLANET HD', 'ANIMAL PLANET HD [Alter]',
-                     'ANIMAL PLANET [Alter]'],
+                      'ANIMAL PLANET [Alter]'],
     "Arte 1": ['ARTE 1', 'ARTE 1 FHD', 'ARTE 1 HD', 'ARTE 1 [Alter]'],
     "AXN": ['AXN FHD', 'AXN HD', 'AXN HD [Alter]', 'AXN SD', 'AXN [Alter]'],
     "Baby Tv": ['BABY TV', 'BABY TV [Alter]'],
     "Band": ['BAND HD [Alter]', 'BAND SP', 'BAND SP FHD', 'BAND SP HD', 'BAND SP [Alter]'],
     "Band News": ['BAND NEWS', 'BAND NEWS FHD', 'BAND NEWS HD', 'BAND NEWS [Alter]'],
-    "Band Sports": ['BAND SPORTS', 'BAND SPORTS FHD', 'BAND SPORTS HD', 'BAND SPORTS [Alter]', 'Band Sports HD [Alter]'],
+    "Band Sports": ['BAND SPORTS', 'BAND SPORTS FHD', 'BAND SPORTS HD', 'BAND SPORTS [Alter]',
+                    'Band Sports HD [Alter]'],
     "BIS": ['BIS', 'BIS FHD', 'BIS HD', 'BIS [Alter]', 'Bis HD [Alter]'],
     "Boomerang": ['BOOMERANG', 'BOOMERANG  FHD', 'BOOMERANG HD', 'BOOMERANG [Alter]', 'Boomerang HD [Alter]'],
     "Canal Brasil": ['CANAL BRASIL', 'CANAL BRASIL FHD', 'CANAL BRASIL HD', 'CANAL BRASIL [Alter]'],
     "Canção Nova": ['CANÇÃO NOVA', 'CANÇÃO NOVA [Alter]'],
     "Cartoon Network": ['CARTOON NETWORK', 'CARTOON NETWORK FHD', 'CARTOON NETWORK HD', 'CARTOON NETWORK [Alter]',
-                       'Cartoon Network HD [Alter]'],
+                        'Cartoon Network HD [Alter]'],
     "Cinemax": ['CINEMAX', 'CINEMAX FHD', 'CINEMAX HD', 'CINEMAX [Alter]', 'Cinemax HD [Alter]'],
     "Combate": ['COMBATE', 'COMBATE FHD', 'COMBATE HD', 'Combate HD [Alter]', 'Combate [Alter]'],
     "Comedy Central": ['COMEDY CENTRAL', 'COMEDY CENTRAL FHD', 'COMEDY CENTRAL HD', 'Comedy Central HD [Alter]',
-                      'Comedy Central [Alter]'],
+                       'Comedy Central [Alter]'],
     "Cultura": ['TV CULTURA FHD', 'TV CULTURA HD', 'TV CULTURA SD', 'TV Cultura [Alter]'],
     "DAZN1": ['DAZN 1 FHD', 'DAZN 1 HD', 'DAZN 1 SD'],
     "DAZN2": ['DAZN 2 FHD', 'DAZN 2 HD', 'DAZN 2 SD'],
     "DAZN3": ['DAZN 3 FHD', 'DAZN 3 HD', 'DAZN 3 SD'],
     "Discovery Channel": ['DISCOVERY CHANNEL', 'DISCOVERY CHANNEL FHD', 'DISCOVERY CHANNEL HD',
-                  'Discovery Channel HD [Alter]', 'Discovery Channel [Alter]'],
+                          'Discovery Channel HD [Alter]', 'Discovery Channel [Alter]'],
     "Discovery Civilization": ['DISCOVERY CIVILIZATION', 'DISCOVERY CIVILIZATION FHD', 'DISCOVERY CIVILIZATION HD',
-                              'Discovery Civilization HD [Alter]'],
+                               'Discovery Civilization HD [Alter]'],
     "Discovery Home & Health": ['DISCOVERY HOME & HEALTH', 'DISCOVERY HOME & HEALTH FHD',
-                            'DISCOVERY HOME & HEALTH HD', 'Discovery H&H [Alter]',
-                            'Discovery Home & Helth HD [Alter]'],
+                                'DISCOVERY HOME & HEALTH HD', 'Discovery H&H [Alter]',
+                                'Discovery Home & Helth HD [Alter]'],
     "Discovery Kids": ['DISCOVERY KIDS', 'DISCOVERY KIDS FHD', 'DISCOVERY KIDS HD', 'DISCOVERY KIDS [Alter]',
-                      'Discovery Kids HD [Alter]'],
+                       'Discovery Kids HD [Alter]'],
     "Discovery Science": ['DISCOVERY SCIENCE', 'DISCOVERY SCIENCE FHD', 'DISCOVERY SCIENCE HD',
-                         'Discovery Science HD [Alter]'],
+                          'Discovery Science HD [Alter]'],
     "Discovery Theater": ['DISCOVERY THEATER', 'DISCOVERY THEATER FHD', 'DISCOVERY THEATER HD',
-                         'Discovery Theater HD [Alter]'],
+                          'Discovery Theater HD [Alter]'],
     "Discovery Turbo": ['DISCOVERY TURBO', 'DISCOVERY TURBO FHD', 'DISCOVERY TURBO HD', 'Discovery Turbo HD [Alter]',
-                       'Discovery Turbo [Alter]'],
+                        'Discovery Turbo [Alter]'],
     "Discovery world": ['DISCOVERY WORLD', 'DISCOVERY WORLD  HD', 'DISCOVERY WORLD FHD',
-                       'Discovery World HD [Alter]'],
+                        'Discovery World HD [Alter]'],
     "Disney Channel": ['DISNEY CHANNEL', 'DISNEY CHANNEL FHD', 'DISNEY CHANNEL HD', 'Disney Channel HD [Alter]',
-               'Disney [Alter]'],
+                       'Disney [Alter]'],
     "Disney JR": ['DISNEY JR FHD', 'DISNEY JR HD', 'DISNEY JR SD', 'Disney JR [Alter]'],
     "Disney XD": ['DISNEY XD SD', 'Disney XD [Alter]'],
     "E!": ['E! FHD', 'E! HD', 'E! HD [Alter]', 'E! SD', 'E! [Alter]'],
@@ -54,17 +69,17 @@ channel_id_dic = {
     "ESPN": ['ESPN   [Alter]', 'ESPN FHD', 'ESPN HD', 'ESPN HD [Alter]', 'ESPN SD', 'ESPN [Alter]'],
     "ESPN 2": ['ESPN 2 FHD', 'ESPN 2 HD', 'ESPN 2 HD [Alter]', 'ESPN 2 SD'],
     "ESPN Brasil": ['ESPN BRASIL FHD', 'ESPN BRASIL HD', 'ESPN BRASIL HD [Alter]', 'ESPN BRASIL SD',
-                   'Espn Brasil [Alter]'],
+                    'Espn Brasil [Alter]'],
     "ESPN Extra": ['ESPN EXTRA HD', 'ESPN EXTRA SD', 'ESPN Extra FHD', 'ESPN Extra HD [Alter]', 'ESPN Plus HD [Alter]'],
     "Film&Arts": ['FILM & ARTS SD'],
     "FISH TV": ['FISH TV FHD', 'FISH TV HD', 'FISH TV SD', 'Fish TV HD [Alter]', 'Fish TV [Alter]'],
     "Food Network": ['FOOD NETWORK FHD', 'FOOD NETWORK HD', 'FOOD NETWORK SD', 'Food Network HD [Alter]',
-                    'Food Network [Alter]'],
+                     'Food Network [Alter]'],
     "FOX": ['FOX FHD', 'FOX HD', 'FOX SD', 'Fox 1 HD [Alter]', 'Fox HD [Alter]', 'Fox [Alter]'],
     "Fox Life": ['FOX LIFE FHD', 'FOX LIFE HD', 'FOX LIFE SD', 'Fox Life HD [Alter]', 'Fox Life [Alter]'],
     "Fox Sports": ['FOX SPORTS FHD', 'FOX SPORTS HD', 'FOX SPORTS HD [Alter]', 'FOX SPORTS SD', 'FOX SPORTS [Alter]'],
     "FOX Sports 2": ['FOX SPORTS 2 FHD', 'FOX SPORTS 2 HD', 'FOX SPORTS 2 SD', 'Fox Sports 2 HD [Alter]',
-                   'Fox Sports 2 [Alter]'],
+                     'Fox Sports 2 [Alter]'],
     "Futura": ['FUTURA FHD', 'FUTURA HD', 'FUTURA SD'],
     "FX": ['FX FHD', 'FX HD', 'FX HD [Alter]', 'FX SD', 'FX [Alter]'],
     "GloboRpc": ['GLOBO RPC CURITIBA FHD', 'GLOBO RPC CURITIBA HD', 'GLOBO RPC CURITIBA SD', 'RPC Curitiba [Alter]',
@@ -79,10 +94,10 @@ channel_id_dic = {
     "HBO": ['HBO FHD', 'HBO HD', 'HBO HD [Alter]', 'HBO SD', 'HBO [Alter]'],
     "HBO Plus": ['HBO PLUS SD', 'HBO Plus [Alter]', 'HBO PLUS FHD', 'HBO PLUS HD', 'HBO Plus HD [Alter]'],
     "HBO Signature": ['HBO SIGNATURE FHD', 'HBO SIGNATURE HD', 'HBO SIGNATURE SD', 'HBO SIGNATURE [Alter]',
-                     'HBO Signature HD [Alter]'],
+                      'HBO Signature HD [Alter]'],
     "History 2": ['H2 FHD', 'H2 HD', 'H2 SD', 'History 2 HD [Alter]', 'History 2 [Alter]'],
     "InvestigacaoDiscovery": ['INVESTIGATION DISCOVERY FHD', 'INVESTIGAÇÃO DISCOVERY', 'INVESTIGAÇÃO DISCOVERY HD',
-                               'INVESTIGAÇÃO DISCOVERY HD [Alter]', 'INVESTIGAÇÃO DISCOVERY [Alter]'],
+                              'INVESTIGAÇÃO DISCOVERY HD [Alter]', 'INVESTIGAÇÃO DISCOVERY [Alter]'],
     "Lifetime": ['LIFETIME', 'LIFETIME FHD', 'LIFETIME HD', 'Life Time HD [Alter]', 'Life Time [Alter]'],
     "Max": ['MAX FHD', 'MAX HD', 'MAX SD', 'MAX UP FHD', 'MAX UP HD', 'MAX UP SD', 'Max HD [Alter]', 'Max [Alter]'],
     "Max Prime": ['MAX PRIME FHD', 'MAX PRIME HD', 'MAX PRIME SD', 'Max Prime HD [Alter]', 'Max Prime [Alter]'],
@@ -90,13 +105,14 @@ channel_id_dic = {
     "MTV": ['MTV', 'MTV FHD', 'MTV HD', 'MTV HD [Alter]', 'MTV [Alter]'],
     "MTV Live": ['MTV LIVE FHD', 'MTV LIVE HD', 'MTV LIVE SD'],
     "Multishow": ['MULTISHOW', 'MULTISHOW FHD', 'MULTISHOW HD', 'Multishow HD [Alter]', 'Multishow [Alter]'],
-    "Music Box Brazil": ['MUSIC BOX BRASIL FHD', 'MUSIC BOX BRASIL HD', 'MUSIC BOX BRASIL SD', 'Music Box Brasil [Alter]'],
+    "Music Box Brazil": ['MUSIC BOX BRASIL FHD', 'MUSIC BOX BRASIL HD', 'MUSIC BOX BRASIL SD',
+                         'Music Box Brasil [Alter]'],
     "Max UP": ['Max UP HD [Alter]', 'Max UP [Alter]'],
     "NatGeo": ['NAT GEO FHD', 'NAT GEO HD', 'NAT GEO SD', 'NatGeo HD [Alter]', 'NatGeo [Alter]'],
     "NatGeo Kids": ['NAT GEO KIDS FHD', 'NAT GEO KIDS HD', 'NAT GEO KIDS SD', 'NatGeo Kids HD [Alter]',
-                   'NatGeo Kids [Alter]'],
+                    'NatGeo Kids [Alter]'],
     "NatGeo Wild": ['NAT GEO WILD FHD', 'NAT GEO WILD HD', 'NAT GEO WILD SD', 'NatGeo Wild HD [Alter]',
-                   'NatGeo Wild [Alter]'],
+                    'NatGeo Wild [Alter]'],
     "NBR": ['NBR', 'NBR [Alter]'],
     "NHK World Premium": ['NHK [Alter]'],
     "Nick Jr": ['NICK JR FHD', 'NICK JR HD', 'NICK JR SD', 'Nick JR HD [Alter]', 'Nick JR [Alter]'],
@@ -108,9 +124,9 @@ channel_id_dic = {
     "Playboy": ['PLAYBOY', 'PLAYBOY FHD', 'PLAYBOY HD', 'PLAYBOY HD [Alter]', 'PLAYBOY [Alter]'],
     "Play TV": ['Play Tv [Alter]'],
     "Prime Box Brazil": ['PRIME BOX BRASIL FHD', 'PRIME BOX BRASIL HD', 'PRIME BOX BRASIL SD',
-                   'Prime Box Brasil [Alter]'],
+                         'Prime Box Brasil [Alter]'],
     "Premiere Clubes": ['PREMIERE CLUBES FHD', 'Premiere Clubes HD', 'Premiere Clubes HD [Alter]', 'Premiere Clubes SD',
-                       'Premiere Clubes [Alter]'],
+                        'Premiere Clubes [Alter]'],
     "Premiere 2": ['PREMIERE 2 FHD', 'PREMIERE 2 HD', 'PREMIERE 2 SD', 'Premiere 2 HD [Alter]', 'Premiere 2 [Alter]'],
     "Premiere 3": ['PREMIERE 3 FHD', 'PREMIERE 3 HD', 'PREMIERE 3 SD', 'Premiere 3 HD [Alter]', 'Premiere 3 [Alter]'],
     "Premiere 4": ['PREMIERE 4 FHD', 'PREMIERE 4 HD', 'PREMIERE 4 SD', 'Premiere 4 HD [Alter]', 'Premiere 4 [Alter]'],
@@ -133,23 +149,23 @@ channel_id_dic = {
     "SporTV 2": ['SPORTV 2 FHD', 'SPORTV 2 HD', 'SPORTV 2 SD', 'Sportv 2 HD [Alter]', 'Sportv 2 [Alter]'],
     "SporTV 3": ['SPORTV 3 FHD', 'SPORTV 3 HD', 'SPORTV 3 SD', 'Sportv 3 HD [Alter]', 'Sportv 3 [Alter]'],
     "Studio Universal": ['STUDIO UNIVERSAL FHD', 'STUDIO UNIVERSAL HD', 'STUDIO UNIVERSAL SD',
-                        'Studio Universal HD [Alter]', 'Studio Universal [Alter]'],
+                         'Studio Universal HD [Alter]', 'Studio Universal [Alter]'],
     "Syfy": ['SYFY FHD', 'SYFY HD', 'SYFY SD', 'Syfy HD [Alter]', 'Syfy [Alter]'],
     "Sony": ['CANAL SONY', 'CANAL SONY FHD', 'CANAL SONY HD', 'Canal Sony HD [Alter]', 'Sony [Alter]'],
     "TBS": ['TBS FHD', 'TBS HD', 'TBS HD [Alter]', 'TBS SD', 'TBS [Alter]'],
     "TCM": ['TCM SD', 'TCM [Alter]'],
     "Telecine Action": ['TELECINE ACTION', 'TELECINE ACTION [Alter]', 'TELECINE ACTION FHD', 'TELECINE ACTION HD',
-                       'TELECINE ACTION HD [Alter]'],
+                        'TELECINE ACTION HD [Alter]'],
     "Telecine Cult": ['TELECINE CULT', 'TELECINE CULT FHD', 'TELECINE CULT HD', 'TELECINE CULT HD [Alter]',
-                     'TELECINE CULT [Alter]'],
+                      'TELECINE CULT [Alter]'],
     "Telecine Fun": ['TELECINE FUN', 'TELECINE FUN [Alter]', 'TELECINE FUN FHD', 'TELECINE FUN HD',
-                    'TELECINE FUN HD [Alter]'],
+                     'TELECINE FUN HD [Alter]'],
     "Telecine Pipoca": ['TELECINE PIPOCA', 'TELECINE PIPOCA [Alter]', 'TELECINE PIPOCA FHD', 'TELECINE PIPOCA HD',
-                       'TELECINE PIPOCA HD [Alter]'],
+                        'TELECINE PIPOCA HD [Alter]'],
     "Telecine Premium": ['TELECINE PREMIUM', 'TELECINE PREMIUM FHD', 'TELECINE PREMIUM HD',
-                        'TELECINE PREMIUM HD [Alter]', 'TELECINE PREMIUM [Alter]'],
+                         'TELECINE PREMIUM HD [Alter]', 'TELECINE PREMIUM [Alter]'],
     "Telecine Touch": ['TELECINE TOUCH', 'TELECINE TOUCH [Alter]', 'TELECINE TOUCH FHD', 'TELECINE TOUCH HD',
-                      'TELECINE TOUCH HD [Alter]'],
+                       'TELECINE TOUCH HD [Alter]'],
     "History": ['HISTORY SD', 'History [Alter]', 'HISTORY FHD', 'HISTORY HD', 'History HD [Alter]'],
     "TLC": ['TLC FHD', 'TLC HD', 'TLC HD [Alter]', 'TLC SD', 'TLC [Alter]'],
     "TNT": ['TNT SD', 'TNT [Alter]', 'TNT FHD', 'TNT HD', 'TNT HD [Alter]'],
@@ -168,13 +184,20 @@ channel_id_dic = {
 }
 
 
-
 def main(iptv_filename, enable_vod_update):
-    print("Reading m3u file")
     fixer = M3uFixer(iptv_filename, channel_id_dic, enable_vod_update)
     fixer.fixLines()
-    # with open("playlist.m3u", 'r', encoding='utf8') as playlist:
-    #     print(playlist.read())
+
+    writer = M3uWriter()
+    m3u_movies = Repository.getdb().table('M3U_MOVIES')
+    movies = Repository.getdb().table('MOVIES').all()
+
+    sorted_movies = sorted(movies, key=lambda m: m['title'])
+    with open('movies.m3u', 'w+', encoding='utf8') as file:
+        writer.initialize_m3u_list(file)
+        for movie in sorted_movies:
+            m3umovie = m3u_movies.get(where('movie_id') == movie.doc_id)
+            file.write(writer.generate_movie_line(m3umovie, movie))
 
 
 main(sys.argv[1], sys.argv[2])
