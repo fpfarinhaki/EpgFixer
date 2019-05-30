@@ -191,10 +191,12 @@ def main(iptv_filename):
     fixer.fixLines()
     tmdb.fill_movie_data()
 
-    writer = M3uWriter()
+    create_movies_list(M3uWriter())
+
+
+def create_movies_list(writer):
     m3u_movies = Repository.getdb().table('M3U_MOVIES')
     movies = Repository.getdb().table('MOVIES').all()
-
     sorted_movies = sorted(movies, key=lambda m: m['title'])
     with open('movies.m3u', 'w+', encoding='utf8') as file:
         writer.initialize_m3u_list(file)
