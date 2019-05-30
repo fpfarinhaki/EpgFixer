@@ -14,7 +14,7 @@ movie_line_template = ('#EXTINF:-1 tvg-id="{id}" '
                        'group-title="{tvg_group}",{title}\n'
                        '{vod_link}\n')
 
-channel_line_template = ('#EXTINF:-1 tvg-id="{doc_id}" '
+channel_line_template = ('#EXTINF:-1 tvg-id="{tvg_id}" '
                          'tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" '
                          'group-title="{tvg_group}",{tvg_name}\n'
                          '{vod_link}\n')

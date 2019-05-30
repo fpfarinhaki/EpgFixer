@@ -12,10 +12,10 @@ from M3uWriter import M3uWriter
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
-console_handler.setLevel(logging.DEBUG)
+console_handler.setLevel(logging.INFO)
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
                     handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
-                              console_handler], level=logging.DEBUG)
+                              console_handler], level=logging.INFO)
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -201,6 +201,7 @@ def create_channel_list(writer):
     channels = repository.channels().all()
     sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
     with open('channels.m3u', 'w+', encoding='utf8') as file:
+        logging.info("Creating channels list with {} items".format(len(sorted_channels)))
         writer.initialize_m3u_list(file)
         for channel in sorted_channels:
             file.write(writer.generate_channel_line(channel))
@@ -211,6 +212,7 @@ def create_movies_list(writer):
     movies = repository.movie_data().all()
     sorted_movies = sorted(movies, key=lambda m: m['title'])
     with open('movies.m3u', 'w+', encoding='utf8') as file:
+        logging.info("Creating movies list with {} items.".format(len(sorted_movies)))
         writer.initialize_m3u_list(file)
         for movie in sorted_movies:
             m3umovie = m3u_movies.get(where('movie_id') == movie.doc_id)

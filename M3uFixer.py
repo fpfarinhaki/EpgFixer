@@ -79,17 +79,17 @@ class M3uFixer:
                         self.channels.append(M3uEntity(newline, lineLink))
 
     def update_m3u_entity(self, m3u_entity_list, db):
-        logging.debug("Executing m3u update for {}".format(m3u_entity_list))
+        logging.info("Updating {} M3U Entities".format(len(m3u_entity_list)))
         for m3uEntity in m3u_entity_list:
             if re.match("#EXTINF", m3uEntity.line):
-                match = re.search(TVG_NAME_PATTERN, m3uEntity.line)
-                tvg_name = match.group(1)
+                tvg_id = re.search(TVG_ID_PATTERN, m3uEntity.line).group(1)
+                tvg_name = re.search(TVG_NAME_PATTERN, m3uEntity.line).group(1)
                 tvg_group = re.search(GROUP_TITLE_PATTERN, m3uEntity.line).group(1)
                 tvg_logo = re.search(TVG_LOGO_PATTERN, m3uEntity.line).group(1)
                 search_by_tvg_name = Query().tvg_name == tvg_name
                 if not (db.contains(search_by_tvg_name)):
                     logging.debug("no m3u entity with tvg-name: {} - insert".format(tvg_name))
-                    db.insert({'tvg_name': tvg_name, 'tvg_group': tvg_group, 'tvg_logo':tvg_logo,
+                    db.insert({'tvg_id': tvg_id, 'tvg_name': tvg_name, 'tvg_group': tvg_group, 'tvg_logo':tvg_logo,
                                      'vod_link': m3uEntity.link, 'movie_id': 'NOT_PROCESSED'})
             else:
                 logging.error("Argument provided is not a M3U line - {}".format(m3uEntity.line))
