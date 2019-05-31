@@ -1,5 +1,8 @@
+import concurrent
 import logging
 import sys
+from concurrent.futures import ALL_COMPLETED
+from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
 
 from tinydb import where
@@ -194,8 +197,12 @@ def main(iptv_filename):
 
     create_channel_list(writer)
 
-    tmdb.fill_movie_data()
+    movie_executor = ThreadPoolExecutor()
+    movieDataFuture = movie_executor.submit(tmdb.fill_movie_data())
+    concurrent.futures.wait([movieDataFuture], return_when=ALL_COMPLETED)
     create_movies_list(writer)
+
+    create_series_list(writer)
     logging.info("EPG and movie data process finished.")
 
 
@@ -219,6 +226,16 @@ def create_movies_list(writer):
         for movie in sorted_movies:
             m3umovie = m3u_movies.get(where('movie_id') == movie.doc_id)
             file.write(writer.generate_movie_line(m3umovie, movie))
+
+
+def create_series_list(writer):
+    series = repository.series().all()
+    sorted_series = sorted(series, key=lambda m: m['tvg_name'])
+    with open('series.m3u', 'w+', encoding='utf8') as file:
+        logging.info("Creating Series list with {} items".format(len(sorted_series)))
+        writer.initialize_m3u_list(file)
+        for serie in sorted_series:
+            file.write(writer.generate_channel_line(serie))
 
 
 main(sys.argv[1])
