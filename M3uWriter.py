@@ -3,14 +3,14 @@ import logging
 from datetime import *
 from string import Template
 
-description_template = Template('description="{Título:} $title\\n'
-                                '{Gênero:} $genre\\n'
-                                '{Sinopse:} $overview\\n'
-                                '{Nota:} $vote_average\\n'
-                                '{Data de Lançamento:} $release_date"')
+description_template = Template('description="{Título Original:} $original_title\\n'
+                                '{Data de Lançamento:} $release_date\\n'
+                                '\\n{Sinopse:} $overview\\n'
+                                '\\n$genre\\t\\t $runtime min.'
+                                '{Avaliação:} $vote_average\\n"')
 
 movie_line_template = ('#EXTINF:-1 tvg-id="{id}" '
-                       'tvg-name="{title}" {description} tvg-logo="http://image.tmdb.org/t/p/w300{poster_path}" '
+                       'tvg-name="{title}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
                        'group-title="{tvg_group}",{title}\n'
                        '{vod_link}\n')
 

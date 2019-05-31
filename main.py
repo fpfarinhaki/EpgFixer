@@ -187,6 +187,7 @@ channel_id_dic = {
 
 
 def main(iptv_filename):
+    logging.info("Starting EPG and movie data process.")
     fixer = M3uFixer(iptv_filename, channel_id_dic)
     fixer.fixLines()
     writer = M3uWriter()
@@ -195,6 +196,7 @@ def main(iptv_filename):
 
     tmdb.fill_movie_data()
     create_movies_list(writer)
+    logging.info("EPG and movie data process finished.")
 
 
 def create_channel_list(writer):
