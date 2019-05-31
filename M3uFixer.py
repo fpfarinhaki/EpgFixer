@@ -3,7 +3,7 @@ import re
 import threading
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from tinydb import Query, where
+from tinydb import Query
 
 import repository
 import tmdb
@@ -126,5 +126,5 @@ class M3uFixer:
         logging.info("Updating {} M3U Entities".format(len(m3u_entity_list)))
         for m3uEntity in m3u_entity_list:
             if not(db.contains(Query().tvg_name == m3uEntity.tvg_name)):
-                logging.info("Inserting new M3U entity {} - insert".format(m3uEntity))
-                db.insert(vars(m3uEntity), where('tvg_name') == m3uEntity.tvg_name)
+                logging.debug("Inserting new M3U entity {} - insert".format(m3uEntity))
+                db.insert(vars(m3uEntity))
