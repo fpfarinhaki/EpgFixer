@@ -45,6 +45,7 @@ class M3uFixer:
             # executor.submit(self.update_m3u_entity, self.others, repository.other())
 
     def save_movies(self):
+        logging.info("{} - Processing movie database".format(threading.current_thread().name))
         movies_repo = repository.movies()
         self.update_m3u_entity(self.movies, movies_repo)
         tmdb.fill_movie_data()
@@ -61,6 +62,7 @@ class M3uFixer:
                 file.write(writer.generate_movie_line(m3umovie, movie_data))
 
     def save_channels(self):
+        logging.info("{} - Processing channel database".format(threading.current_thread().name))
         self.update_m3u_entity(self.channels, repository.channels())
         channels = repository.channels().all()
         sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
@@ -73,6 +75,7 @@ class M3uFixer:
                 file.write(writer.generate_channel_line(channel))
 
     def save_series(self):
+        logging.info("{} - Processing series database".format(threading.current_thread().name))
         series_repo = repository.series()
         self.update_m3u_entity(self.series, series_repo)
 
