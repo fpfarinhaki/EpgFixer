@@ -122,7 +122,6 @@ class M3uFixer:
     def update_m3u_entity(self, m3u_entity_list, db):
         logging.info("Updating {} M3U Entities".format(len(m3u_entity_list)))
         for m3uEntity in m3u_entity_list:
-            # search_by_tvg_name = Query().tvg_name == m3uEntity.tvg_name
-            # if not (db.contains(search_by_tvg_name)):
-            logging.info("Inserting new M3U entity {} - insert".format(m3uEntity))
-            db.upsert(vars(m3uEntity), where('tvg_name') == m3uEntity.tvg_name)
+            if not(db.contains(Query().tvg_name == m3uEntity.tvg_name)):
+                logging.info("Inserting new M3U entity {} - insert".format(m3uEntity))
+                db.insert(vars(m3uEntity), where('tvg_name') == m3uEntity.tvg_name)
