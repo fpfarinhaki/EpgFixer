@@ -1,14 +1,15 @@
-import concurrent
 import logging
 import re
-from concurrent.futures import ALL_COMPLETED
+import threading
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from tinydb import Query
+from tinydb import Query, where
 
 import repository
-from M3uEntity import M3uEntity
+import tmdb
 from M3uPatterns import *
+from M3uWriter import M3uWriter
+from domain.M3uEntity import M3uEntity, M3uMovie
 
 
 class M3uFixer:
@@ -36,14 +37,54 @@ class M3uFixer:
         self.save_m3u_entities()
 
     def save_m3u_entities(self):
-        futures = []
-        executor = ThreadPoolExecutor()
-        futures.append(executor.submit(self.update_m3u_entity, self.movies, repository.movies()))
-        executor.submit(self.update_m3u_entity, self.channels, repository.channels())
-        executor.submit(self.update_m3u_entity, self.series, repository.series())
-        executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
-        executor.submit(self.update_m3u_entity, self.others, repository.other())
-        concurrent.futures.wait(futures, return_when=ALL_COMPLETED)
+        with ThreadPoolExecutor(thread_name_prefix='save_thread') as executor:
+            executor.submit(self.save_movies)
+            executor.submit(self.save_channels)
+            executor.submit(self.save_series)
+            # executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
+            # executor.submit(self.update_m3u_entity, self.others, repository.other())
+
+    def save_movies(self):
+        movies_repo = repository.movies()
+        self.update_m3u_entity(self.movies, movies_repo)
+        tmdb.fill_movie_data()
+
+        movie_data = repository.movie_data().all()
+        sorted_movies = sorted(movie_data, key=lambda m: m['title'])
+        writer = M3uWriter()
+        with open('movies.m3u', 'w+', encoding='utf8') as file:
+            logging.info("{} - Creating movies list with {} items."
+                         .format(threading.current_thread().name, len(sorted_movies)))
+            writer.initialize_m3u_list(file)
+            for movie_data in sorted_movies:
+                m3umovie = movies_repo.get(Query().movie_data_id == movie_data.doc_id)
+                file.write(writer.generate_movie_line(m3umovie, movie_data))
+
+    def save_channels(self):
+        self.update_m3u_entity(self.channels, repository.channels())
+        channels = repository.channels().all()
+        sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
+        writer = M3uWriter()
+        with open('channels.m3u', 'w+', encoding='utf8') as file:
+            logging.info("{} - Creating channels list with {} items"
+                         .format(threading.current_thread().name, len(sorted_channels)))
+            writer.initialize_m3u_list(file)
+            for channel in sorted_channels:
+                file.write(writer.generate_channel_line(channel))
+
+    def save_series(self):
+        series_repo = repository.series()
+        self.update_m3u_entity(self.series, series_repo)
+
+        series = series_repo.all()
+        sorted_series = sorted(series, key=lambda m: m['tvg_name'])
+        writer = M3uWriter()
+        with open('series.m3u', 'w+', encoding='utf8') as file:
+            logging.info("{} - Creating Series list with {} items"
+                         .format(threading.current_thread().name, len(sorted_series)))
+            writer.initialize_m3u_list(file)
+            for serie in sorted_series:
+                file.write(writer.generate_channel_line(serie))
 
     def getPossibleKeyMatches(self, key, matcher):
         testkey = key[0:3].casefold()
@@ -64,7 +105,7 @@ class M3uFixer:
                 if group.__contains__("Adulto"):
                     self.adultos.append(M3uEntity(lineInfo, lineLink))
                 elif group.startswith("Filme:") or group.startswith("Coleção: "):
-                    self.movies.append(M3uEntity(lineInfo, lineLink))
+                    self.movies.append(M3uMovie(lineInfo, lineLink))
                 elif group.startswith("Série:") or group.startswith("Serie:"):
                     self.series.append(M3uEntity(lineInfo, lineLink))
                 else:
@@ -81,15 +122,7 @@ class M3uFixer:
     def update_m3u_entity(self, m3u_entity_list, db):
         logging.info("Updating {} M3U Entities".format(len(m3u_entity_list)))
         for m3uEntity in m3u_entity_list:
-            if re.match("#EXTINF", m3uEntity.line):
-                tvg_id = re.search(TVG_ID_PATTERN, m3uEntity.line).group(1)
-                tvg_name = re.search(TVG_NAME_PATTERN, m3uEntity.line).group(1)
-                tvg_group = re.search(GROUP_TITLE_PATTERN, m3uEntity.line).group(1)
-                tvg_logo = re.search(TVG_LOGO_PATTERN, m3uEntity.line).group(1)
-                search_by_tvg_name = Query().tvg_name == tvg_name
-                if not (db.contains(search_by_tvg_name)):
-                    logging.debug("no m3u entity with tvg-name: {} - insert".format(tvg_name))
-                    db.insert({'tvg_id': tvg_id, 'tvg_name': tvg_name, 'tvg_group': tvg_group, 'tvg_logo':tvg_logo,
-                                     'vod_link': m3uEntity.link, 'movie_id': 'NOT_PROCESSED'})
-            else:
-                logging.error("Argument provided is not a M3U line - {}".format(m3uEntity.line))
+            # search_by_tvg_name = Query().tvg_name == m3uEntity.tvg_name
+            # if not (db.contains(search_by_tvg_name)):
+            logging.info("Inserting new M3U entity {} - insert".format(m3uEntity))
+            db.upsert(vars(m3uEntity), where('tvg_name') == m3uEntity.tvg_name)

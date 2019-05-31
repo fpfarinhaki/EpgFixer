@@ -1,14 +1,11 @@
-import concurrent
 import logging
 import sys
-from concurrent.futures import ALL_COMPLETED
 from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
 
-from tinydb import where
+from tinydb import Query
 
 import repository
-import tmdb
 from M3uFixer import M3uFixer
 from M3uWriter import M3uWriter
 
@@ -195,14 +192,15 @@ def main(iptv_filename):
     fixer.fixLines()
     writer = M3uWriter()
 
-    create_channel_list(writer)
+    #create_channel_list(writer)
 
     movie_executor = ThreadPoolExecutor()
-    movieDataFuture = movie_executor.submit(tmdb.fill_movie_data())
-    concurrent.futures.wait([movieDataFuture], return_when=ALL_COMPLETED)
-    create_movies_list(writer)
+    #with movie_executor:
+    #    movieDataFuture = movie_executor.submit(tmdb.fill_movie_data)
+    #concurrent.futures.wait([movieDataFuture], return_when=ALL_COMPLETED)
+    # create_movies_list(writer)
 
-    create_series_list(writer)
+    #create_series_list(writer)
     logging.info("EPG and movie data process finished.")
 
 
@@ -217,15 +215,15 @@ def create_channel_list(writer):
 
 
 def create_movies_list(writer):
-    m3u_movies = repository.movies()
-    movies = repository.movie_data().all()
-    sorted_movies = sorted(movies, key=lambda m: m['title'])
+    movies = repository.movies()
+    movie_data = repository.movie_data().all()
+    sorted_movies = sorted(movie_data, key=lambda m: m['title'])
     with open('movies.m3u', 'w+', encoding='utf8') as file:
         logging.info("Creating movies list with {} items.".format(len(sorted_movies)))
         writer.initialize_m3u_list(file)
-        for movie in sorted_movies:
-            m3umovie = m3u_movies.get(where('movie_id') == movie.doc_id)
-            file.write(writer.generate_movie_line(m3umovie, movie))
+        for movie_data in sorted_movies:
+            m3umovie = movies.get(Query().movie_data_id == movie_data.doc_id)
+            file.write(writer.generate_movie_line(m3umovie, movie_data))
 
 
 def create_series_list(writer):
@@ -239,3 +237,4 @@ def create_series_list(writer):
 
 
 main(sys.argv[1])
+
