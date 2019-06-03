@@ -16,7 +16,8 @@ class MovieFixer:
             logging.info("Trying to apply fix for movies without data - {}".format(movie))
             movie_name = movie['tvg_name']
             movie_data = self.apply_fixes(movie_name)
-            self.update_db(movie_data, movie_name)
+            if movie_data:
+                self.update_db(movie_data, movie_name)
 
     def assign_data_to_movie_manually(self, tvg_name, query):
         logging.info("Manually searching for movie - {} - with query: {}".format(tvg_name, query))
@@ -52,6 +53,9 @@ class MovieFixer:
         return tmdb.movie_info(tmdb.searchMovie(movie_name))
 
     def update_db(self, movie_data, tvg_name):
-        movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_data['id'])
-        repository.movies().update(set('movie_data_id', movie_data_id[0]), Query().tvg_name == tvg_name)
-        repository.no_data_movies().update(set('movie_data_id', 'FIXED'), Query().tvg_name == tvg_name)
+        try:
+            movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_data['id'])
+            repository.movies().update(set('movie_data_id', movie_data_id[0]), Query().tvg_name == tvg_name)
+            repository.no_data_movies().update(set('movie_data_id', 'FIXED'), Query().tvg_name == tvg_name)
+        except Exception:
+            logging.error("Error updating movie during fix.")
