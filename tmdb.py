@@ -4,7 +4,8 @@ import time
 
 import tmdbsimple as tmdb
 from requests import HTTPError
-from tinydb import operations, Query
+from tinydb import Query
+from tinydb.operations import set
 
 import repository
 from RateLimitedDecorator import RateLimited
@@ -22,6 +23,7 @@ def searchMovie(name, year=''):
         logging.error("No result found for query(movie-name: {}, year: {}".format(name, year))
         return None
 
+
 @RateLimited(4)
 def movie_info(movie_id):
     if movie_id:
@@ -29,7 +31,6 @@ def movie_info(movie_id):
 
 
 def fill_movie_data():
-    movie_data = repository.movie_data()
     movies = repository.movies()
     no_data_movies = repository.no_data_movies()
 
@@ -38,15 +39,16 @@ def fill_movie_data():
     for movie in not_processed_movies:
         title = movie['tvg_name']
         title, year = find_year_in_title(title)
-        # TODO: Spell check movie name
         try:
             movie_id = searchMovie(clean_movie_title(title), year)
-            movie_data_id = movie_data.upsert(movie_info(movie_id), Query().id == movie_id)
-            movies.update(operations.set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
-        except IndexError:
-            logging.error("No results found for: {}".format(movie['tvg_name']))
-            no_data_movies.upsert(movie, Query().tvg_name == movie.tvg_name and Query.movie_data_id != 'FIXED')
-            movies.update(operations.set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
+            movie_data = movie_info(movie_id)
+            if movie_data:
+                movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_id)
+                movies.update(set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
+            else:
+                logging.error("No results found for: {}".format(movie['tvg_name']))
+                no_data_movies.upsert(movie, Query().tvg_name == movie['tvg_name'] and Query().movie_data_id != 'FIXED')
+                movies.update(set('movie_data_id', 'NO_DATA_FOUND'), Query().doc_id == movie.doc_id)
         except HTTPError as e:
             logging.error("Error on TMDB request - {}".format(e.response))
             time.sleep(10)

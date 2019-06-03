@@ -9,6 +9,7 @@ import repository
 import tmdb
 from M3uPatterns import *
 from M3uWriter import M3uWriter
+from MovieFixer import MovieFixer
 from domain.M3uEntity import M3uEntity, M3uMovie
 
 
@@ -38,20 +39,23 @@ class M3uFixer:
 
     def save_m3u_entities(self):
         with ThreadPoolExecutor(thread_name_prefix='save_thread') as executor:
-            executor.submit(self.save_movies)
-            executor.submit(self.save_channels)
-            executor.submit(self.save_series)
+            movies_future = executor.submit(self.save_movies)
+            channel_future = executor.submit(self.save_channels)
+            series_future = executor.submit(self.save_series)
             # executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
-            # executor.submit(self.update_m3u_entity, self.others, repository.other())
+
+            logging.debug("Future result for movie thread - {}".format(movies_future.result()))
+            logging.debug("Future result for channels thread - {}".format(channel_future.result()))
+            logging.debug("Future result for series thread - {}".format(series_future.result()))
 
     def save_movies(self):
         logging.info("{} - Processing movie database".format(threading.current_thread().name))
         movies_repo = repository.movies()
         self.update_m3u_entity(self.movies, movies_repo)
         tmdb.fill_movie_data()
+        MovieFixer().fix_no_data_movies()
 
-        movie_data = repository.movie_data().all()
-        sorted_movies = sorted(movie_data, key=lambda m: m['title'])
+        sorted_movies = sorted(repository.movie_data().all(), key=lambda m: m['title'])
         writer = M3uWriter()
         with open('movies.m3u', 'w+', encoding='utf8') as file:
             logging.info("{} - Creating movies list with {} items."
@@ -64,8 +68,11 @@ class M3uFixer:
     def save_channels(self):
         logging.info("{} - Processing channel database".format(threading.current_thread().name))
         self.update_m3u_entity(self.channels, repository.channels())
+        self.update_m3u_entity(self.others, repository.other())
         channels = repository.channels().all()
+        others = repository.other().all()
         sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
+        sorted_other = sorted(others, key=lambda m: m['tvg_name'])
         writer = M3uWriter()
         with open('channels.m3u', 'w+', encoding='utf8') as file:
             logging.info("{} - Creating channels list with {} items"
@@ -73,6 +80,8 @@ class M3uFixer:
             writer.initialize_m3u_list(file)
             for channel in sorted_channels:
                 file.write(writer.generate_channel_line(channel))
+            for other in sorted_other:
+                file.write(writer.generate_channel_line(other))
 
     def save_series(self):
         logging.info("{} - Processing series database".format(threading.current_thread().name))

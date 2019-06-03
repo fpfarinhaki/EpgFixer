@@ -1,6 +1,5 @@
 import logging
 import re
-from logging.handlers import TimedRotatingFileHandler
 
 from tinydb import Query
 from tinydb.operations import *
@@ -8,16 +7,13 @@ from tinydb.operations import *
 import repository
 import tmdb
 
-logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
-                    handlers=[TimedRotatingFileHandler(filename='MOVIE_FIXER.log', encoding='utf-8'),
-                              logging.StreamHandler()], level=logging.INFO)
-
 
 class MovieFixer:
 
     def fix_no_data_movies(self):
-        movies = filter(lambda m: m.movie_data_id != 'FIXED', repository.no_data_movies().all())
+        movies = filter(lambda m: m['movie_data_id'] != 'FIXED', repository.no_data_movies().all())
         for movie in movies:
+            logging.info("Trying to apply fix for movies without data - {}".format(movie))
             movie_name = movie['tvg_name']
             movie_data = self.apply_fixes(movie_name)
             self.update_db(movie_data, movie_name)
@@ -57,5 +53,5 @@ class MovieFixer:
 
     def update_db(self, movie_data, tvg_name):
         movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_data['id'])
-        repository.movies().update(set('movie_data_id', movie_data_id), Query().tvg_name == tvg_name)
+        repository.movies().update(set('movie_data_id', movie_data_id[0]), Query().tvg_name == tvg_name)
         repository.no_data_movies().update(set('movie_data_id', 'FIXED'), Query().tvg_name == tvg_name)

@@ -3,15 +3,14 @@ import sys
 from logging.handlers import TimedRotatingFileHandler
 
 from M3uFixer import M3uFixer
-from MovieFixer import MovieFixer
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
-console_handler.setLevel(logging.INFO)
+console_handler.setLevel(logging.DEBUG)
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
                     handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
-                              console_handler], level=logging.INFO)
+                              console_handler], level=logging.DEBUG)
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -188,9 +187,6 @@ def main(iptv_filename):
     fixer.fixLines()
 
     logging.info("EPG and movie data process finished.")
-
-    logging.info("Trying to fix movies with no data found.")
-    MovieFixer().fix_no_data_movies()
 
 
 main(sys.argv[1])

@@ -4,7 +4,7 @@ from datetime import *
 from string import Template
 
 LINE_WITH_DESCRIPTION_TEMPLATE = ('#EXTINF:-1 tvg-id="{id}" '
-                       'tvg-name="{title}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
+                       'tvg-name="{tvg_name}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
                        'group-title="{tvg_group}",{title}\n'
                        '{link}\n')
 
