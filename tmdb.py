@@ -15,13 +15,17 @@ tmdb.API_KEY = 'edc5f123313769de83a71e157758030b'
 
 
 @RateLimited(4)
-def searchMovie(name, year):
-    return tmdb.Search().movie(query=name, language='pt-BR', year=year)['results'][0]['id']
-
+def searchMovie(name, year=''):
+    try:
+        return tmdb.Search().movie(query=name, language='pt-BR', year=year)['results'][0]['id']
+    except IndexError:
+        logging.error("No result found for query(movie-name: {}, year: {}".format(name, year))
+        return None
 
 @RateLimited(4)
 def movie_info(movie_id):
-    return tmdb.Movies(id=movie_id).info(language='pt-BR')
+    if movie_id:
+        return tmdb.Movies(id=movie_id).info(language='pt-BR')
 
 
 def fill_movie_data():
@@ -41,7 +45,7 @@ def fill_movie_data():
             movies.update(operations.set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
         except IndexError:
             logging.error("No results found for: {}".format(movie['tvg_name']))
-            no_data_movies.insert(movie)
+            no_data_movies.upsert(movie, Query().tvg_name == movie.tvg_name and Query.movie_data_id != 'FIXED')
             movies.update(operations.set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
         except HTTPError as e:
             logging.error("Error on TMDB request - {}".format(e.response))

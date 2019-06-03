@@ -1,13 +1,9 @@
 import logging
 import sys
-from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
 
-from tinydb import Query
-
-import repository
 from M3uFixer import M3uFixer
-from M3uWriter import M3uWriter
+from MovieFixer import MovieFixer
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -190,51 +186,11 @@ def main(iptv_filename):
     logging.info("Starting EPG and movie data process.")
     fixer = M3uFixer(iptv_filename, channel_id_dic)
     fixer.fixLines()
-    writer = M3uWriter()
 
-    #create_channel_list(writer)
-
-    movie_executor = ThreadPoolExecutor()
-    #with movie_executor:
-    #    movieDataFuture = movie_executor.submit(tmdb.fill_movie_data)
-    #concurrent.futures.wait([movieDataFuture], return_when=ALL_COMPLETED)
-    # create_movies_list(writer)
-
-    #create_series_list(writer)
     logging.info("EPG and movie data process finished.")
 
-
-def create_channel_list(writer):
-    channels = repository.channels().all()
-    sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
-    with open('channels.m3u', 'w+', encoding='utf8') as file:
-        logging.info("Creating channels list with {} items".format(len(sorted_channels)))
-        writer.initialize_m3u_list(file)
-        for channel in sorted_channels:
-            file.write(writer.generate_channel_line(channel))
-
-
-def create_movies_list(writer):
-    movies = repository.movies()
-    movie_data = repository.movie_data().all()
-    sorted_movies = sorted(movie_data, key=lambda m: m['title'])
-    with open('movies.m3u', 'w+', encoding='utf8') as file:
-        logging.info("Creating movies list with {} items.".format(len(sorted_movies)))
-        writer.initialize_m3u_list(file)
-        for movie_data in sorted_movies:
-            m3umovie = movies.get(Query().movie_data_id == movie_data.doc_id)
-            file.write(writer.generate_movie_line(m3umovie, movie_data))
-
-
-def create_series_list(writer):
-    series = repository.series().all()
-    sorted_series = sorted(series, key=lambda m: m['tvg_name'])
-    with open('series.m3u', 'w+', encoding='utf8') as file:
-        logging.info("Creating Series list with {} items".format(len(sorted_series)))
-        writer.initialize_m3u_list(file)
-        for serie in sorted_series:
-            file.write(writer.generate_channel_line(serie))
+    logging.info("Trying to fix movies with no data found.")
+    MovieFixer().fix_no_data_movies()
 
 
 main(sys.argv[1])
-
