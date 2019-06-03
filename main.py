@@ -7,10 +7,10 @@ from M3uFixer import M3uFixer
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
-console_handler.setLevel(logging.DEBUG)
+console_handler.setLevel(logging.INFO)
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
                     handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
-                              console_handler], level=logging.DEBUG)
+                              console_handler], level=logging.INFO)
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
