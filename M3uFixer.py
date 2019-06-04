@@ -57,13 +57,16 @@ class M3uFixer:
 
         sorted_movies = sorted(repository.movie_data().all(), key=lambda m: m['title'])
         writer = M3uWriter()
+        movies_to_write = []
+        for movie_data in sorted_movies:
+            m3umovie = movies_repo.get(Query().movie_data_id == movie_data.doc_id)
+            movies_to_write.append(writer.generate_movie_line(m3umovie, movie_data))
+
+        logging.info("{} - Creating movies list with {} items.".format(threading.current_thread().name, len(sorted_movies)))
         with open('movies.m3u', 'w+', encoding='utf8') as file:
-            logging.info("{} - Creating movies list with {} items."
-                         .format(threading.current_thread().name, len(sorted_movies)))
             writer.initialize_m3u_list(file)
-            for movie_data in sorted_movies:
-                m3umovie = movies_repo.get(Query().movie_data_id == movie_data.doc_id)
-                file.write(writer.generate_movie_line(m3umovie, movie_data))
+            file.writelines(movies_to_write)
+        logging.info("{} - Finished creating movies list".format(threading.current_thread().name))
 
     def save_channels(self):
         logging.info("{} - Processing channel database".format(threading.current_thread().name))
@@ -74,14 +77,17 @@ class M3uFixer:
         sorted_channels = sorted(channels, key=lambda m: m['tvg_name'])
         sorted_other = sorted(others, key=lambda m: m['tvg_name'])
         writer = M3uWriter()
+        channels = []
+        for channel in sorted_channels:
+            channels.append(writer.generate_channel_line(channel))
+        for other in sorted_other:
+            channels.append(writer.generate_channel_line(other))
+        logging.info("{} - Creating channels list with {} items"
+                     .format(threading.current_thread().name, len(sorted_channels)))
         with open('channels.m3u', 'w+', encoding='utf8') as file:
-            logging.info("{} - Creating channels list with {} items"
-                         .format(threading.current_thread().name, len(sorted_channels)))
             writer.initialize_m3u_list(file)
-            for channel in sorted_channels:
-                file.write(writer.generate_channel_line(channel))
-            for other in sorted_other:
-                file.write(writer.generate_channel_line(other))
+            file.writelines(channels)
+        logging.info("{} - Finished creating channels list".format(threading.current_thread().name))
 
     def save_series(self):
         logging.info("{} - Processing series database".format(threading.current_thread().name))
@@ -91,12 +97,16 @@ class M3uFixer:
         series = series_repo.all()
         sorted_series = sorted(series, key=lambda m: m['tvg_name'])
         writer = M3uWriter()
-        with open('series.m3u', 'w+', encoding='utf8') as file:
-            logging.info("{} - Creating Series list with {} items"
+        series = []
+        for serie in sorted_series:
+            series.append(writer.generate_channel_line(serie))
+        logging.info("{} - Creating Series list with {} items"
                          .format(threading.current_thread().name, len(sorted_series)))
+        with open('series.m3u', 'w+', encoding='utf8') as file:
             writer.initialize_m3u_list(file)
-            for serie in sorted_series:
-                file.write(writer.generate_channel_line(serie))
+            file.writelines(series)
+        logging.info("{} - Finished creating series list".format(threading.current_thread().name))
+
 
     def getPossibleKeyMatches(self, key, matcher):
         testkey = key[0:3].casefold()
@@ -133,7 +143,9 @@ class M3uFixer:
 
     def update_m3u_entity(self, m3u_entity_list, db):
         logging.info("Updating {} M3U Entities".format(len(m3u_entity_list)))
+        to_insert = []
         for m3uEntity in m3u_entity_list:
-            if not(db.contains(Query().tvg_name == m3uEntity.tvg_name)):
+            if not (db.contains(Query().tvg_name == m3uEntity.tvg_name)):
                 logging.debug("Inserting new M3U entity {} - insert".format(m3uEntity))
-                db.insert(vars(m3uEntity))
+                to_insert.append(vars(m3uEntity))
+        db.insert_multiple(to_insert)
