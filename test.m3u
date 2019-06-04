@@ -1,5 +1,83 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="" tvg-name="A Casa das Brasileirinhas - As Panteras O Dia em Que Eu Fiz 18 Anos" tvg-logo="https://www.chocolatefx.ca/wp-content/uploads/2017/11/Adults-Only-Chocolate.jpg" group-title="Filme: Adultos",A Casa das Brasileirinhas - As Panteras O Dia em Que Eu Fiz 18 Anos
-http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/14972.mp4
-#EXTINF:-1 tvg-id="" tvg-name="A Cor Púrpura" tvg-logo="http://painel.iptvmove.com:8880/images/2a50LyRInWGLWq3u3DeGBQnvBHR_small.jpg" group-title="Filme: Lançamentos / Pedidos",A Cor Púrpura
-http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/25741.mp4
+#EXTINF:-1 tvg-id="Animal  Planet FHD" tvg-name="ANIMAL  PLANET FHD" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL  PLANET FHD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28782
+#EXTINF:-1 tvg-id="Animal Planet" tvg-name="ANIMAL PLANET" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL PLANET
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28658
+#EXTINF:-1 tvg-id="Animal Planet [Alter]" tvg-name="ANIMAL PLANET [Alter]" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL PLANET [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/29024
+#EXTINF:-1 tvg-id="Animal Planet HD" tvg-name="ANIMAL PLANET HD" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL PLANET HD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28657
+#EXTINF:-1 tvg-id="Animal Planet HD [Alter]" tvg-name="ANIMAL PLANET HD [Alter]" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL PLANET HD [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28884
+#EXTINF:-1 tvg-id="Arte 1" tvg-name="ARTE 1" tvg-logo="http://i.imgur.com/uHwATw4.png" group-title="Canais: Documentários",ARTE 1
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28656
+#EXTINF:-1 tvg-id="Arte 1 [Alter]" tvg-name="ARTE 1 [Alter]" tvg-logo="http://i.imgur.com/uHwATw4.png" group-title="Canais: Documentários",ARTE 1 [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/29029
+#EXTINF:-1 tvg-id="Arte 1" tvg-name="ARTE 1 FHD" tvg-logo="http://i.imgur.com/uHwATw4.png" group-title="Canais: Documentários",ARTE 1 FHD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28781
+#EXTINF:-1 tvg-id="Arte 1" tvg-name="ARTE 1 HD" tvg-logo="http://i.imgur.com/uHwATw4.png" group-title="Canais: Documentários",ARTE 1 HD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28655
+#EXTINF:-1 tvg-id="AXN [Alter]" tvg-name="AXN [Alter]" tvg-logo="http://i.imgur.com/cAGSnn7.png" group-title="Canais: Filmes e Séries",AXN [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/29028
+#EXTINF:-1 tvg-id="AXN" tvg-name="AXN FHD" tvg-logo="http://i.imgur.com/cAGSnn7.png" group-title="Canais: Filmes e Séries",AXN FHD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28780
+#EXTINF:-1 tvg-id="AXN HD" tvg-name="AXN HD" tvg-logo="http://i.imgur.com/cAGSnn7.png" group-title="Canais: Filmes e Séries",AXN HD
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28653
+#EXTINF:-1 tvg-id="AXN HD [Alter]" tvg-name="AXN HD [Alter]" tvg-logo="http://i.imgur.com/cAGSnn7.png" group-title="Canais: Filmes e Séries",AXN HD [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28883
+#EXTINF:-1 tvg-id="" tvg-name="O Círculo" tvg-logo="http://painel.iptvmove.com:80/images/bQVqd5rWrx5GbXhJNuvKy4Viz6j_small.jpg" group-title="Filme: Policial / Suspense",O Círculo
+http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/13523.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Código" tvg-logo="http://painel.iptvmove.com:80/images/eoiqqDHohBCDwFWQOvczUeNoixK_small.jpg" group-title="Filme: Policial / Suspense",O Código
+http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/12250.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto" tvg-logo="http://painel.iptvmove.com:8880/images/aguq47xq3qhN807rSyz4lJyhAkX_small.jpg" group-title="Filme: Drama / Romance",O Conto
+http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/17820.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Culto" tvg-logo="http://painel.iptvmove.com:80/images/uVHPBTLb6Sj1Eso9HzyBAOMRheM_small.jpg" group-title="Filme: Terror",O Culto
+http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/16198.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E01" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E01
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21790.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E02" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E02
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21791.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E03" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E03
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21792.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E04" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E04
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21793.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E05" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E05
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21794.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E06" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E06
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21795.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E07" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E07
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21796.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E08" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E08
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21797.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E09" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E09
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21798.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S01 E10" tvg-logo="http://painel.iptvmove.com:8880/images/Q6Kgm3SgFC5krNiwP4N8tUPtSP_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S01 E10
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/21799.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E01" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E01
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26562.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E02" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E02
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26563.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E03" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E03
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26564.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E04" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E04
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26565.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E05" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E05
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26566.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E06" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E06
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26567.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E07" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E07
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26568.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E08" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E08
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26569.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E09" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E09
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26570.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E10" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E10
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26571.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E11" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E11
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26572.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E12" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E12
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26573.mp4
+#EXTINF:-1 tvg-id="" tvg-name="O Conto da Aia (The Handmaid's Tale) S02 E13" tvg-logo="http://painel.iptvmove.com:8880/images/szTXwJyWKVKgmWLvhtdQsSeadRZ_small.jpg" group-title="Série: O Conto da Aia (The Handmaid's Tale)",O Conto da Aia (The Handmaid's Tale) S02 E13
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/26574.mp4
+#EXTINF:-1 tvg-id="" tvg-name="Bohemian Rhapsody: Performance Completa no Live Aid 2019" tvg-logo="http://painel.iptvmove.com:8880/images/lHu1wtNaczFPGFDTrjCSzeLPTKN_small.jpg" group-title="Filme: Lançamentos / Pedidos",Bohemian Rhapsody: Performance Completa no Live Aid 2019
+http://srv.mtvs.me:8880/movie/sdrehBge0F/Z2Gda3tzQb/27071.mkv
