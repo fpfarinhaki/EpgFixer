@@ -60,9 +60,11 @@ class M3uFixer:
         movies_to_write = []
         for movie_data in sorted_movies:
             m3umovie = movies_repo.get(Query().movie_data_id == movie_data.doc_id)
-            movies_to_write.append(writer.generate_movie_line(m3umovie, movie_data))
+            if m3umovie:
+                movies_to_write.append(writer.generate_movie_line(m3umovie, movie_data))
 
         logging.info("{} - Creating movies list with {} items.".format(threading.current_thread().name, len(sorted_movies)))
+
         with open('movies.m3u', 'w+', encoding='utf8') as file:
             writer.initialize_m3u_list(file)
             file.writelines(movies_to_write)

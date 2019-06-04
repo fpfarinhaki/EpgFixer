@@ -47,8 +47,9 @@ def fill_movie_data():
                 movies.update(set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
             else:
                 logging.error("No results found for: {}".format(movie['tvg_name']))
-                no_data_movies.upsert(movie, Query().tvg_name == movie['tvg_name'] and Query().movie_data_id != 'FIXED')
-                movies.update(set('movie_data_id', 'NO_DATA_FOUND'), Query().doc_id == movie.doc_id)
+                movie['movie_data_id'] = 'NO_DATA_FOUND'
+                no_data_movies.upsert(movie, Query().tvg_name == movie['tvg_name'])
+                movies.update(set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
         except HTTPError as e:
             logging.error("Error on TMDB request - {}".format(e.response))
             time.sleep(10)
