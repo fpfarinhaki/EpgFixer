@@ -1,14 +1,16 @@
 """Manual Movie Fixer CLI
 Usage:
-    ManualMovieFixer.py [options] <tvg_name> <query>
+    ManualMovieFixer.py [options] [--list | (<tvg_name> <query>)]
 
-tvg_name    Should match m3ulist tvg_name. Can be found in file ***_need_manual_fix.txt
+tvg_name    Should match m3ulist tvg_name needing fix. See --list below
 query       Query that will be used to search for movie information.
 
 Options:
 -h --help   show this
+-l --list   list all shows needing manual fix
 --debug     show debug information
 --quiet     display errors only
+
 """
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -31,4 +33,9 @@ if __name__ == '__main__':
                         handlers=[TimedRotatingFileHandler(filename='ManualDataFixing.log', encoding='utf-8'),
                                   console_handler], level=logging.DEBUG)
 
-    MovieFixer().assign_data_to_movie_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
+    if arguments['--list']:
+        print("Shows which need manual fix intervention\n{}".format('-' * 50 + '\n'))
+        for show in MovieFixer().search_shows_with_no_data():
+            print(show)
+    else:
+        MovieFixer().assign_data_to_movie_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])

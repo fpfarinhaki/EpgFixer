@@ -9,7 +9,6 @@ import repository
 import tmdb
 from M3uPatterns import *
 from M3uWriter import M3uWriter
-from MovieFixer import MovieFixer
 from domain.M3uEntity import M3uEntity, M3uMovie
 
 
@@ -53,7 +52,7 @@ class M3uFixer:
         movies_repo = repository.movies()
         self.update_m3u_entity(self.movies, movies_repo)
         tmdb.fill_movie_data()
-        MovieFixer().fix_no_data_movies()
+        # MovieFixer().fix_no_data_movies()
 
         sorted_movies = sorted(repository.movie_data().all(), key=lambda m: m['title'])
         writer = M3uWriter()

@@ -17,11 +17,6 @@ class MovieFixer:
             movie_name = movie['tvg_name']
             movie_data = self.apply_fixes(movie_name)
             self.update_db(movie_data, movie_name)
-        with open("movies_need_manual_fix.txt", "w+", encoding='utf8') as need_fix:
-            need_fix.write("Movies which need manual fix intervention\n{}".format('-' * 50 + '\n'))
-            manual_fix = map(lambda manFix: 'tvg_name: {}\n'.format(manFix['tvg_name']),
-                             filter(lambda m: m['movie_data_id'] == 'MANUAL_FIX_NEEDED', repository.no_data_movies().all()))
-            need_fix.writelines(manual_fix)
 
     def assign_data_to_movie_manually(self, tvg_name, query):
         logging.info("Manually searching for movie - {} - with query: {}".format(tvg_name, query))
@@ -57,16 +52,29 @@ class MovieFixer:
         return tmdb.movie_info(tmdb.searchMovie(movie_name))
 
     def update_db(self, movie_data, tvg_name):
+        status = 'MANUAL_FIX_NEEDED'
         try:
             if movie_data:
                 logging.info("Movie data found - Updating DB")
                 logging.debug("Movie data found - {}".format(movie_data))
-                movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_data['id'])
-                repository.movies().update(set('movie_data_id', movie_data_id[0]), Query().tvg_name == tvg_name)
-                repository.no_data_movies().update(set('movie_data_id', 'FIXED'), Query().tvg_name == tvg_name)
+                if not(repository.movie_data().contains(Query().id == movie_data['id'])):
+                    status = 'FIXED'
+                    movie_data_id = repository.movie_data().insert(movie_data)
+                    repository.movies().update(set('movie_data_id', movie_data_id), Query().tvg_name == tvg_name)
+                else:
+                    logging.info("Duplicate movie data. Check logs.")
+                    logging.debug("Movie data already in database - {} Check for duplicates and consider manual fixing."
+                                 .format("id: " + movie_data['id'] + " title: " + movie_data['title']))
             else:
                 logging.info("Movie data not found - Setting as manual fix needed.")
-                repository.no_data_movies().update(
-                    set('movie_data_id', 'MANUAL_FIX_NEEDED'), Query().tvg_name == tvg_name)
+            repository.no_data_movies().update(set('movie_data_id', status), Query().tvg_name == tvg_name)
         except Exception:
             logging.error("Error updating movie during fix.")
+
+    def search_manual_fix_required(self):
+        return map(lambda manFix: 'tvg_name: {}\n'.format(manFix['tvg_name']),
+                  filter(lambda m: m['movie_data_id'] == 'MANUAL_FIX_NEEDED', repository.no_data_movies().all()))
+
+    def search_shows_with_no_data(self):
+        return map(lambda manFix: 'tvg_name: {}'.format(manFix['tvg_name']),
+                   filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.no_data_movies().all()))
