@@ -1,6 +1,6 @@
 import sys
 
-from MovieFixer import MovieFixer
+from services.MovieFixer import MovieFixer
 
 sys.argv.append("Bohemian Rhapsody: Performance Completa no Live Aid 2019")
 sys.argv.append("Bohemian Rhapsody: Recreating Live Aid")

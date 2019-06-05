@@ -3,10 +3,10 @@ import threading
 
 from tinydb import Query
 
-import m3uCollectors
-import repository
-from M3uWriter import M3uWriter
-from m3uCollectors import *
+from helpers import m3uCollectors
+from repository import repository
+from io_operations.M3uWriter import M3uWriter
+from helpers.m3uCollectors import *
 
 
 def save_movies(m3u_list, data_service):

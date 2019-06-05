@@ -4,8 +4,8 @@ import re
 from tinydb import Query
 from tinydb.operations import *
 
-import repository
-import tmdb
+from repository import repository
+from services import tmdb
 
 
 class MovieFixer:

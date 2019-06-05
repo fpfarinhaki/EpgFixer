@@ -3,9 +3,8 @@ import sys
 from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
 
-import service
-import tmdb
-from M3uTransformer import M3uTransformer
+from services import service, tmdb
+from io_operations.M3uTransformer import M3uTransformer
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

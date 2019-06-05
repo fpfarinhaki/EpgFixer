@@ -1,6 +1,6 @@
 from typing import List
 
-from m3uCollectors import *
+from helpers.m3uCollectors import *
 
 
 class M3uTransformer:

@@ -1,6 +1,3 @@
-import re
-
-from M3uPatterns import TVG_ID_PATTERN
 from domain.M3uEntity import M3uMovie, M3uEntity
 
 
@@ -25,7 +22,6 @@ class M3uChannelCollector(M3uCollector):
             for key in possible_key_matches:
                 if m3u_entity.tvg_name in self.channelDictionary.get(key):
                     m3u_entity.tvg_id = key
-                    m3u_entity.tvg_line = re.sub(TVG_ID_PATTERN, 'tvg-id="' + key + '"', m3u_entity.line)
             return m3u_entity
 
     def getPossibleKeyMatches(self, key, matcher):

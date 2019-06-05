@@ -19,7 +19,7 @@ from logging.handlers import TimedRotatingFileHandler
 
 from docopt import docopt
 
-from MovieFixer import MovieFixer
+from services.MovieFixer import MovieFixer
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Manual Movie Fixer 1.0')

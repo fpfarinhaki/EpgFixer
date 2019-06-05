@@ -1,6 +1,6 @@
 # This Python file uses the following encoding: utf-8
-import m3uCollectors
-from m3uCollectors import *
+from helpers import m3uCollectors
+from helpers.m3uCollectors import *
 
 channel = M3uEntity(
     '#EXTINF:-1 tvg-id="Animal  Planet FHD" tvg-name="ANIMAL  PLANET FHD" tvg-logo="http://i.imgur.com/J1oK0xW.png" group-title="Canais: Documentários",ANIMAL  PLANET FHD',

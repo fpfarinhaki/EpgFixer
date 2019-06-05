@@ -7,8 +7,8 @@ from requests import HTTPError
 from tinydb import Query
 from tinydb.operations import set
 
-import repository
-from RateLimitedDecorator import RateLimited
+from repository import repository
+from services.RateLimitedDecorator import RateLimited
 
 WRONG_COLECAO_BEGINNING_OF_MOVIE_TITLE = "Coleção.*:\s*"
 TITLE_ENDING_UNNECESSARY_NUMBER_ONE = "\s*1$"
