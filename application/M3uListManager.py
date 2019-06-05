@@ -1,18 +1,27 @@
+"""M3U List Manager CLI
+Usage:
+    M3uListManager [options] --m3u-file filename
+
+Options:
+-h --help               show this
+--m3u-file <filename>   save to file
+--debug                 show debug information
+--quiet                 display errors only
+
+"""
 import logging
-import sys
 from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
-
+from docopt import docopt
 from services import service, tmdb
 from io_operations.M3uTransformer import M3uTransformer
 
 console_handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(message)s')
 console_handler.setFormatter(formatter)
-console_handler.setLevel(logging.INFO)
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p',
                     handlers=[TimedRotatingFileHandler(filename='M3U_FIXER.log', encoding='utf-8'),
-                              console_handler], level=logging.INFO)
+                              console_handler], level=logging.DEBUG)
 
 channel_id_dic = {
     "A&E": ['A&E', 'A&E FHD', 'A&E HD', 'A&E HD [Alter]', 'A&E [Alter]'],
@@ -200,4 +209,12 @@ def main(iptv_filename):
     logging.info("EPG and show data process finished.")
 
 
-main(sys.argv[1])
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='M3U List Manager 1.0')
+    console_handler.setLevel(logging.INFO)
+    if arguments['--debug']:
+        logging.basicConfig(level=logging.DEBUG)
+    elif arguments['--quiet']:
+        logging.basicConfig(level=logging.ERROR)
+
+    main(arguments['--m3u-file'])
