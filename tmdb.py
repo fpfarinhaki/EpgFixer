@@ -51,7 +51,7 @@ def fill_movie_data():
                 no_data_movies.upsert(movie, Query().tvg_name == movie['tvg_name'])
                 movies.update(set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
         except HTTPError as e:
-            logging.error("Error on TMDB request - {}".format(e.response))
+            logging.error("Error on TMDB request - {} - Skipping for tvg_name: {}".format(e.response, movie['tvg_name']))
             time.sleep(10)
 
 

@@ -1,15 +1,17 @@
 """Manual Movie Fixer CLI
 Usage:
-    ManualMovieFixer.py [options] [--list | (<tvg_name> <query>)]
+    ManualMovieFixer.py (--list | [options] <tvg_name> <query> -o <file>)
 
-tvg_name    Should match m3ulist tvg_name needing fix. See --list below
-query       Query that will be used to search for movie information.
+Arguments:
+    tvg_name    Should match m3ulist tvg_name needing fix. See --list below
+    query       Query that will be used to search for movie information.
 
 Options:
--h --help   show this
--l --list   list all shows needing manual fix
---debug     show debug information
---quiet     display errors only
+-h --help                    show this
+-l --list                    list all shows needing manual fix
+-o <file>, --output <file>   save to file
+--debug                      show debug information
+--quiet                      display errors only
 
 """
 import logging
@@ -22,7 +24,7 @@ from MovieFixer import MovieFixer
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Manual Movie Fixer 1.0')
     console_handler = logging.StreamHandler()
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(message)s')
     console_handler.setFormatter(formatter)
     console_handler.setLevel(logging.INFO)
     if arguments['--debug']:
@@ -39,3 +41,4 @@ if __name__ == '__main__':
             print(show)
     else:
         MovieFixer().assign_data_to_movie_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
+

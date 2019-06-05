@@ -57,14 +57,14 @@ class MovieFixer:
             if movie_data:
                 logging.info("Movie data found - Updating DB")
                 logging.debug("Movie data found - {}".format(movie_data))
-                if not(repository.movie_data().contains(Query().id == movie_data['id'])):
+                if not (repository.movie_data().contains(Query().id == movie_data['id'])):
                     status = 'FIXED'
                     movie_data_id = repository.movie_data().insert(movie_data)
                     repository.movies().update(set('movie_data_id', movie_data_id), Query().tvg_name == tvg_name)
                 else:
                     logging.info("Duplicate movie data. Check logs.")
                     logging.debug("Movie data already in database - {} Check for duplicates and consider manual fixing."
-                                 .format("id: " + movie_data['id'] + " title: " + movie_data['title']))
+                                  .format("id: " + movie_data['id'] + " title: " + movie_data['title']))
             else:
                 logging.info("Movie data not found - Setting as manual fix needed.")
             repository.no_data_movies().update(set('movie_data_id', status), Query().tvg_name == tvg_name)
@@ -73,7 +73,7 @@ class MovieFixer:
 
     def search_manual_fix_required(self):
         return map(lambda manFix: 'tvg_name: {}\n'.format(manFix['tvg_name']),
-                  filter(lambda m: m['movie_data_id'] == 'MANUAL_FIX_NEEDED', repository.no_data_movies().all()))
+                   filter(lambda m: m['movie_data_id'] == 'MANUAL_FIX_NEEDED', repository.no_data_movies().all()))
 
     def search_shows_with_no_data(self):
         return map(lambda manFix: 'tvg_name: {}'.format(manFix['tvg_name']),

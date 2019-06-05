@@ -24,5 +24,3 @@ class M3uMovie(M3uEntity):
         M3uEntity.__init__(self, line, link)
         self.movie_data_id = movie_data_id
 
-
-

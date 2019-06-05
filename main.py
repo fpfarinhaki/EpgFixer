@@ -1,8 +1,11 @@
 import logging
 import sys
+from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
 
-from M3uFixer import M3uFixer
+import service
+import tmdb
+from M3uTransformer import M3uTransformer
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -183,10 +186,19 @@ channel_id_dic = {
 
 def main(iptv_filename):
     logging.info("Starting EPG and movie data process.")
-    fixer = M3uFixer(iptv_filename, channel_id_dic)
-    fixer.fixLines()
+    all_m3u = M3uTransformer(iptv_filename).transform()
 
-    logging.info("EPG and movie data process finished.")
+    with ThreadPoolExecutor(thread_name_prefix='save_thread') as executor:
+        movies_future = executor.submit(service.save_movies, all_m3u, tmdb)
+        channel_future = executor.submit(service.save_channels, all_m3u, channel_id_dic)
+        series_future = executor.submit(service.save_series, all_m3u)
+        # executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
+
+        logging.debug("Future result for movie thread - {}".format(movies_future.result()))
+        logging.debug("Future result for channels thread - {}".format(channel_future.result()))
+        logging.debug("Future result for series thread - {}".format(series_future.result()))
+
+    logging.info("EPG and show data process finished.")
 
 
 main(sys.argv[1])
