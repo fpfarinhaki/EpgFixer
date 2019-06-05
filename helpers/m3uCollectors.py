@@ -22,7 +22,7 @@ class M3uChannelCollector(M3uCollector):
             for key in possible_key_matches:
                 if m3u_entity.tvg_name in self.channelDictionary.get(key):
                     m3u_entity.tvg_id = key
-            return m3u_entity
+                    return m3u_entity
 
     def getPossibleKeyMatches(self, key, matcher):
         if key[0:3].casefold() in matcher.replace(' ', '').casefold():
@@ -60,3 +60,10 @@ class M3uAdultCollector(M3uCollector):
                 return M3uMovie(m3u_entity.line, m3u_entity.link)
             else:
                 return M3uEntity(m3u_entity.line, m3u_entity.link)
+
+
+class M3uChannel24Collector(M3uCollector):
+    def collect(self, m3u_entity):
+        group = m3u_entity.tvg_group
+        if group.__contains__("Canais: 24") and not (group.__contains__("Adultos")):
+            return m3u_entity

@@ -29,6 +29,8 @@ def save_channels(m3u_list, epg_dictionary):
     logging.info("{} - Processing channel database".format(threading.current_thread().name))
     update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannelCollector(epg_dictionary)), repository.channels())
     update_m3u_entity(m3uCollectors.collect(m3u_list, M3uRadioCollector()), repository.channels())
+    update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannel24Collector()), repository.channels())
+
 
     sorted_channels = sorted(repository.channels().all(), key=lambda m: m['tvg_name'])
 
