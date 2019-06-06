@@ -30,3 +30,11 @@ class M3uSerie(M3uEntity):
     def __init__(self, line, link, data_id='NO_DATA'):
         M3uEntity.__init__(self, line, link)
         self.data_id = data_id
+        self.season = '01'
+        self.episode = '01'
+
+    def assign_season_and_episode(self):
+        match = re.search("S([0-9]{1,2})\s*E([0-9]{1,3})\s*$", self.tvg_name)
+        if match:
+            self.season = match.group(1)
+            self.episode = match.group(2)
