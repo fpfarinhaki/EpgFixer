@@ -1,4 +1,4 @@
-from domain.M3uEntity import M3uMovie, M3uEntity
+from domain.M3uEntity import M3uMovie, M3uEntity, M3uSerie
 
 
 class M3uCollector:
@@ -42,7 +42,7 @@ class M3uSeriesCollector(M3uCollector):
     def collect(self, m3u_entity):
         group = m3u_entity.tvg_group
         if group.__contains__("Série:") or group.__contains__("Serie:"):
-            return M3uEntity(m3u_entity.line, m3u_entity.link)
+            return M3uSerie(m3u_entity.line, m3u_entity.link)
 
 
 class M3uRadioCollector(M3uCollector):
