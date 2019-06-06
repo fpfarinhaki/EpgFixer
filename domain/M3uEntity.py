@@ -24,3 +24,9 @@ class M3uMovie(M3uEntity):
         M3uEntity.__init__(self, line, link)
         self.movie_data_id = movie_data_id
 
+
+class M3uSerie(M3uEntity):
+
+    def __init__(self, line, link, data_id='NO_DATA'):
+        M3uEntity.__init__(self, line, link)
+        self.data_id = data_id
