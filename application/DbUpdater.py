@@ -8,15 +8,9 @@ Options:
 --db-script <script>    run script
 
 """
-import pathlib
 import runpy
 
 from docopt import docopt
-
-flist = []
-for p in pathlib.Path('../db/').iterdir():
-    if p.is_file():
-        flist.append(p.name)
 
 
 def update(filename):
