@@ -1,20 +1,24 @@
 """M3U List Manager CLI
 Usage:
-    M3uListManager [options] --m3u-file filename
+    M3uListManager [options] (--m3u-file filename | --update-db script)
 
 Options:
 -h --help               show this
 --m3u-file <filename>   save to file
+--update-db <script>    update db using script provided
 --debug                 show debug information
 --quiet                 display errors only
 
 """
 import logging
+import runpy
 from concurrent.futures.thread import ThreadPoolExecutor
 from logging.handlers import TimedRotatingFileHandler
+
 from docopt import docopt
-from services import service, tmdb
+
 from io_operations.M3uTransformer import M3uTransformer
+from services import service, tmdb
 
 console_handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(message)s')
@@ -217,4 +221,7 @@ if __name__ == '__main__':
     elif arguments['--quiet']:
         logging.basicConfig(level=logging.ERROR)
 
-    main(arguments['--m3u-file'])
+    if arguments['--update-db']:
+        runpy.run_path(arguments['--update-db'])
+    else:
+        main(arguments['--m3u-file'])
