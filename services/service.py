@@ -4,9 +4,9 @@ import threading
 from tinydb import Query
 
 from helpers import m3uCollectors
-from repository import repository
-from io_operations.M3uWriter import M3uWriter
 from helpers.m3uCollectors import *
+from io_operations.M3uWriter import M3uWriter
+from repository import repository
 
 
 def save_movies(m3u_list, data_service):
@@ -31,7 +31,6 @@ def save_channels(m3u_list, epg_dictionary):
     update_m3u_entity(m3uCollectors.collect(m3u_list, M3uRadioCollector()), repository.channels())
     update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannel24Collector()), repository.channels())
 
-
     sorted_channels = sorted(repository.channels().all(), key=lambda m: m['tvg_name'])
 
     writer = M3uWriter("channels.m3u")
@@ -41,18 +40,18 @@ def save_channels(m3u_list, epg_dictionary):
     writer.generate_list()
 
 
-def save_series(m3u_list):
+def save_series(m3u_list, data_service):
     logging.info("{} - Processing series database".format(threading.current_thread().name))
-    series_repo = repository.series()
-    update_m3u_entity(m3uCollectors.collect(m3u_list, M3uSeriesCollector()), series_repo)
+    update_m3u_entity(m3uCollectors.collect(m3u_list, M3uSeriesCollector()), repository.series())
+    data_service.fill_series_data()
 
-    series = series_repo.all()
-    sorted_series = sorted(series, key=lambda m: m['tvg_name'])
-
+    sorted_series = sorted(repository.series_data().all(), key=lambda m: m['name'])
     writer = M3uWriter('series.m3u')
 
-    for serie in sorted_series:
-        writer.generate_channel_line(serie)
+    for series_data in sorted_series:
+        m3u_serie = repository.series().get(Query().data_id == series_data.doc_id)
+        if m3u_serie:
+            writer.generate_series_line(m3u_serie, series_data)
 
     writer.generate_list()
 

@@ -203,7 +203,7 @@ def main(iptv_filename):
     with ThreadPoolExecutor(thread_name_prefix='save_thread') as executor:
         movies_future = executor.submit(service.save_movies, all_m3u, tmdb)
         channel_future = executor.submit(service.save_channels, all_m3u, channel_id_dic)
-        series_future = executor.submit(service.save_series, all_m3u)
+        series_future = executor.submit(service.save_series, all_m3u, tmdb)
         # executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
 
         logging.debug("Future result for movie thread - {}".format(movies_future.result()))

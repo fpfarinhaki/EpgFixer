@@ -4,8 +4,7 @@ import time
 
 import tmdbsimple as tmdb
 from requests import HTTPError
-from tinydb import Query
-from tinydb.operations import set
+from tinydb import Query, operations
 
 from repository import repository
 from services.RateLimitedDecorator import RateLimited
@@ -25,9 +24,38 @@ def searchMovie(name, year=''):
 
 
 @RateLimited(4)
+def search_serie_id(title):
+    logging.debug("Searching series with title: {}".format(title))
+    try:
+        return tmdb.Search().tv(query=title, language='pt-BR')['results'][0]['id']
+    except IndexError:
+        logging.error("No result found for query(series title: {}".format(title))
+        return None
+
+
+@RateLimited(4)
+def serie_info(series_id):
+    if series_id:
+        return tmdb.TV(series_id).info(language='pt-BR')
+
+
+@RateLimited(4)
 def movie_info(movie_id):
     if movie_id:
         return tmdb.Movies(id=movie_id).info(language='pt-BR')
+
+
+@RateLimited(4)
+def season_info(series_id, season):
+    if series_id:
+        return tmdb.TV_Seasons(series_id=series_id, season_number=season).info(language='pt-BR')
+
+
+@RateLimited(4)
+def episode_info(series_id, season, episode):
+    if series_id:
+        return tmdb.TV_Episodes(series_id=series_id, season_number=season, episode_number=episode) \
+            .info(language='pt-BR')
 
 
 def fill_movie_data():
@@ -44,14 +72,15 @@ def fill_movie_data():
             movie_data = movie_info(movie_id)
             if movie_data:
                 movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_id)
-                movies.update(set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
+                movies.update(operations.set('movie_data_id', movie_data_id[0]), doc_ids=[movie.doc_id])
             else:
                 logging.error("No results found for: {}".format(movie['tvg_name']))
                 movie['movie_data_id'] = 'NO_DATA_FOUND'
                 no_data_movies.upsert(movie, Query().tvg_name == movie['tvg_name'])
-                movies.update(set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
+                movies.update(operations.set('movie_data_id', 'NO_DATA_FOUND'), doc_ids=[movie.doc_id])
         except HTTPError as e:
-            logging.error("Error on TMDB request - {} - Skipping for tvg_name: {}".format(e.response, movie['tvg_name']))
+            logging.error(
+                "Error on TMDB request - {} - Skipping for tvg_name: {}".format(e.response, movie['tvg_name']))
             time.sleep(10)
 
 
@@ -78,23 +107,46 @@ def clean_movie_title(name):
     return cleaned_name
 
 
-'''
+def map_to_series_id_dict(title):
+    serie_id = search_serie_id(title.strip())
+    if serie_id:
+        doc_ids = list(map(lambda serie: serie.doc_id, repository.series().search(Query().title == title)))
+        return {serie_id: doc_ids}
+    else:
+        return None
+
+
 def fill_series_data():
     series = repository.series()
-    not_processed_series = series.search(where('movie_id') == 'NOT_PROCESSED')
-    for serie in not_processed_series:
-        title = serie['tvg_name']
-        title, year = find_year_in_title(title)
-        # TODO: Spell check movie name
+    not_processed_series = series.search(Query().data_id == 'NO_DATA')
+
+    titles = set(list(map(lambda serie: serie['title'], not_processed_series)))
+    logging.info("{} series found without data. Filling data".format(len(titles)))
+
+    series_id_dict = dict()
+    for title in titles:
+        series_id_dict.update(map_to_series_id_dict(title))
+    for serie_id in series_id_dict.keys():
         try:
-            movie_id = searchMovie(clean_movie_title(title), year)
-            movie_data_id = movie_data.insert(movie_info(movie_id))
-            movies.update(operations.set('movie_id', movie_data_id), doc_ids=[serie.doc_id])
+            serie_data = serie_info(serie_id)
+            seasons = []
+            for season in range(1, int(serie_data['number_of_seasons']) + 1):
+                seasons.append(season_info(serie_data['id'], season))
+            serie = {
+                'id': serie_data['id'],
+                'name': serie_data['name'],
+                'generos': list(map(lambda genre: genre['name'], serie_data['genres'])),
+                'original_title': serie_data['original_name'],
+                'overview': serie_data['overview'],
+                'poster_path': serie_data['poster_path'],
+                'vote_average': serie_data['vote_average'],
+                'seasons': seasons
+            }
+            data_id = repository.series_data().insert(serie)
+            repository.series().update(operations.set('data_id', data_id), doc_ids=series_id_dict.get(serie_id))
         except IndexError:
             logging.error("No results found for: {}".format(serie['tvg_name']))
-            no_data_movies.insert(serie)
-            movies.update(operations.set('movie_id', 'NO_DATA_FOUND'), doc_ids=[serie.doc_id])
+            repository.series().update(operations.set('data_id', 'NO_DATA_FOUND'), doc_ids=series_id_dict.get(serie_id))
         except HTTPError as e:
             logging.error("Error on TMDB request - {}".format(e.response))
-            time.sleep(10) 
-'''
+            time.sleep(10)

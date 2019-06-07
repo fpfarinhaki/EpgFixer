@@ -27,3 +27,11 @@ def movie_data():
 
 def no_data_movies():
     return TinyDB('NO_DATA_MOVIES.json', encoding='utf8', ensure_ascii=False)
+
+
+def series_data():
+    return TinyDB('SERIES_DATA.json', encoding='utf8', ensure_ascii=False)
+
+
+def no_data_series():
+    return TinyDB('NO_DATA_SERIES.json', encoding='utf8', ensure_ascii=False)
