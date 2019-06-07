@@ -55,7 +55,7 @@ class M3uWriter:
         except IndexError:
             description = ''
             logging.error("Episode details not found for serie {} - Season {} - Episode {}"
-                          .format(m3uSerie.title, season, episodio))
+                          .format(m3uSerie['title'], season, episodio))
 
         self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
                                                       show_data=series_data))
