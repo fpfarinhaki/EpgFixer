@@ -58,7 +58,7 @@ def save_series(m3u_list, data_service):
             except IndexError:
                 logging.error("No data found for {}  - doc_id {} - Season {} - Episode {}"
                               .format(m3u_serie['title'], m3u_serie.doc_id, season, episodio))
-                repository.series().update(operations.set('data_id', 'NO_DATA'), doc_ids=[m3u_series.doc_id])
+                repository.series().update(operations.set('data_id', 'NO_DATA'), doc_ids=[m3u_serie.doc_id])
             writer.generate_series_line(m3u_serie, series_data, episode_data)
 
     writer.generate_list()
