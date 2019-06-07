@@ -52,13 +52,14 @@ def save_series(m3u_list, data_service):
         m3u_series = repository.series().search(Query().data_id == series_data.doc_id)
         for m3u_serie in m3u_series:
             season, episodio = int(m3u_serie['season']), int(m3u_serie['episode'])
-            episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
-            if episode_data:
-                writer.generate_series_line(m3u_serie, series_data, episode_data)
-            else:
+            episode_data = ''
+            try:
+                episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
+            except IndexError:
                 logging.error("No data found for {}  - doc_id {} - Season {} - Episode {}"
                               .format(m3u_serie['title'], m3u_serie.doc_id, season, episodio))
                 repository.series().update(operations.set('data_id', 'NO_DATA'), doc_ids=[m3u_series.doc_id])
+            writer.generate_series_line(m3u_serie, series_data, episode_data)
 
     writer.generate_list()
 

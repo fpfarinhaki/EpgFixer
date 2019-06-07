@@ -42,14 +42,14 @@ class M3uWriter:
         self.buffer.append(fill_line_with_description(description, m3uMovie, movie_data))
 
     def generate_series_line(self, m3uSerie, series_data, episode_data):
-        try:
+        if episode_data:
             description = Template('description="{Episódio: } $name\\n'
                                    '{Temporada:} $season_number {Episódio:} $episode_number\\n'
                                    '{Data de Estréia:} $estreia\\n'
                                    '\\n{Sinopse:} $overview\\n'
                                    '\\n{Avaliação:} $vote_average"') \
                 .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']))
-        except IndexError:
+        else:
             description = ''
 
         self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
