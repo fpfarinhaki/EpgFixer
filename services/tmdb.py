@@ -48,14 +48,10 @@ def movie_info(movie_id):
 @RateLimited(4)
 def season_info(series_id, season):
     if series_id:
-        return tmdb.TV_Seasons(series_id=series_id, season_number=season).info(language='pt-BR')
-
-
-@RateLimited(4)
-def episode_info(series_id, season, episode):
-    if series_id:
-        return tmdb.TV_Episodes(series_id=series_id, season_number=season, episode_number=episode) \
-            .info(language='pt-BR')
+        try:
+            return tmdb.TV_Seasons(series_id=series_id, season_number=season).info(language='pt-BR')
+        except HTTPError:
+            return None
 
 
 def fill_movie_data():
@@ -140,7 +136,7 @@ def fill_series_data():
                 'overview': serie_data['overview'],
                 'poster_path': serie_data['poster_path'],
                 'vote_average': serie_data['vote_average'],
-                'seasons': seasons
+                'seasons': list(filter(None.__ne__, seasons))
             }
             data_id = repository.series_data().insert(serie)
             repository.series().update(operations.set('data_id', data_id), doc_ids=series_id_dict.get(serie_id))

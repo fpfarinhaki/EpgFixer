@@ -91,3 +91,16 @@ http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/30946
 http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28405
 #EXTINF:-1 tvg-id="" tvg-name="Radio Mania Melody" tvg-logo="http://iconbug.com/data/c0/347/2ca8069df1ccf87f23afe60b26faae1e.png" group-title="Rádios",Radio Mania Melody
 http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/29119
+#EXTINF:-1 tvg-id="Globo Bahia [Alter]" tvg-name="GLOBO BAHIA [Alter]" tvg-logo="http://i.imgur.com/ozxkJhG.png" group-title="Canais: Abertos",GLOBO BAHIA [Alter]
+http://srv.mtvs.me:8880/sdrehBge0F/Z2Gda3tzQb/28994
+#EXTINF:-1 tvg-id="" tvg-name="1983 S01 E01" tvg-logo="https://i.imgur.com/CU6cv58.png" group-title="Série: 1983",1983 S01 E01
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/24344.mp4
+#EXTINF:-1 tvg-id="" tvg-name="1983 S01 E02" tvg-logo="https://i.imgur.com/CU6cv58.png" group-title="Série: 1983",1983 S01 E02
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/24345.mp4
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/16430.mp4
+#EXTINF:-1 tvg-id="" tvg-name="Arrow S03 E23" tvg-logo="http://painel.iptvmove.com:80/images/mo0FP1GxOFZT4UDde7RFDz5APXF_small.jpg" group-title="Série: Arrow",Arrow S03 E23
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/16431.mp4
+#EXTINF:-1 tvg-id="" tvg-name="Arrow S04 E01" tvg-logo="http://painel.iptvmove.com:80/images/dQ1KYxilK1d8UHEtPTw5HHQpp0b_small.jpg" group-title="Série: Arrow",Arrow S04 E01
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/16432.mp4
+#EXTINF:-1 tvg-id="" tvg-name="Carcereiros S02 E14" tvg-logo="http://painel.iptvmove.com:8880/images/_small.jpg" group-title="Série: Carcereiros",Carcereiros S02 E14^M
+http://srv.mtvs.me:8880/series/sdrehBge0F/Z2Gda3tzQb/29988.mkv^M

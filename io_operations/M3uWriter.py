@@ -43,18 +43,22 @@ class M3uWriter:
 
     def generate_series_line(self, m3uSerie, series_data):
         season, episodio = int(m3uSerie['season']), int(m3uSerie['episode'])
-        episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
-        description = Template('description="{Episódio: } $name\\n'
-                               '{Temporada:} $season {Episódio:} $episode\\n'
-                               '{Data de Estréia:} $estreia\\n'
-                               '\\n{Sinopse:} $overview\\n'
-                               '\\n{Avaliação:} $vote_average"') \
-            .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']),
-                             season=season, episode=episodio)
+        try:
+            episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
+            description = Template('description="{Episódio: } $name\\n'
+                                   '{Temporada:} $season {Episódio:} $episode\\n'
+                                   '{Data de Estréia:} $estreia\\n'
+                                   '\\n{Sinopse:} $overview\\n'
+                                   '\\n{Avaliação:} $vote_average"') \
+                .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']),
+                                 season=season, episode=episodio)
+        except IndexError:
+            description = ''
+            logging.error("Episode details not found for serie {} - Season {} - Episode {}"
+                          .format(m3uSerie.title, season, episodio))
 
         self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
                                                       show_data=series_data))
-
 
     def generate_channel_line(self, channel):
         self.buffer.append(DEFAULT_M3U_LINE.format(**channel, doc_id=channel.doc_id))
