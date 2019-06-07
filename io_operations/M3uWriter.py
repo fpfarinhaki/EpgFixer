@@ -49,10 +49,11 @@ class M3uWriter:
                                '{Data de Estréia:} $estreia\\n'
                                '\\n{Sinopse:} $overview\\n'
                                '\\n{Avaliação:} $vote_average"') \
-            .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']))
+            .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']),
+                             season=season, episode=episodio)
 
-        self.buffer.append(fill_line_with_description(description=description,
-                                                      m3uEntity=m3uSerie, show_data=series_data))
+        self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
+                                                      show_data=series_data))
 
 
     def generate_channel_line(self, channel):

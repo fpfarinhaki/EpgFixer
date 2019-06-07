@@ -63,7 +63,7 @@ def fill_movie_data():
     no_data_movies = repository.no_data_movies()
 
     not_processed_movies = movies.search(Query().movie_data_id == 'NOT_PROCESSED')
-    logging.debug("List for movie fill process: {}".format(not_processed_movies))
+    logging.info("{} movies found without data. Filling data".format(len(not_processed_movies)))
     for movie in not_processed_movies:
         title = movie['tvg_name']
         title, year = find_year_in_title(title)
@@ -113,7 +113,7 @@ def map_to_series_id_dict(title):
         doc_ids = list(map(lambda serie: serie.doc_id, repository.series().search(Query().title == title)))
         return {serie_id: doc_ids}
     else:
-        return None
+        return {}
 
 
 def fill_series_data():
@@ -126,7 +126,7 @@ def fill_series_data():
     series_id_dict = dict()
     for title in titles:
         series_id_dict.update(map_to_series_id_dict(title))
-    for serie_id in series_id_dict.keys():
+    for serie_id in filter(lambda key: key != '', series_id_dict.keys()):
         try:
             serie_data = serie_info(serie_id)
             seasons = []

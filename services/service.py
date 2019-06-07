@@ -49,8 +49,8 @@ def save_series(m3u_list, data_service):
     writer = M3uWriter('series.m3u')
 
     for series_data in sorted_series:
-        m3u_serie = repository.series().get(Query().data_id == series_data.doc_id)
-        if m3u_serie:
+        m3u_series = repository.series().search(Query().data_id == series_data.doc_id)
+        for m3u_serie in m3u_series:
             writer.generate_series_line(m3u_serie, series_data)
 
     writer.generate_list()
