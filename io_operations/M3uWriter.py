@@ -41,21 +41,16 @@ class M3uWriter:
 
         self.buffer.append(fill_line_with_description(description, m3uMovie, movie_data))
 
-    def generate_series_line(self, m3uSerie, series_data):
-        season, episodio = int(m3uSerie['season']), int(m3uSerie['episode'])
+    def generate_series_line(self, m3uSerie, series_data, episode_data):
         try:
-            episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
             description = Template('description="{Episódio: } $name\\n'
-                                   '{Temporada:} $season {Episódio:} $episode\\n'
+                                   '{Temporada:} $season_number {Episódio:} $episode_number\\n'
                                    '{Data de Estréia:} $estreia\\n'
                                    '\\n{Sinopse:} $overview\\n'
                                    '\\n{Avaliação:} $vote_average"') \
-                .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']),
-                                 season=season, episode=episodio)
+                .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']))
         except IndexError:
             description = ''
-            logging.error("Episode details not found for serie {} - Season {} - Episode {}"
-                          .format(m3uSerie['title'], season, episodio))
 
         self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
                                                       show_data=series_data))

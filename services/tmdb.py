@@ -29,7 +29,7 @@ def search_serie_id(title):
     try:
         return tmdb.Search().tv(query=title, language='pt-BR')['results'][0]['id']
     except IndexError:
-        logging.error("No result found for query(series title: {}".format(title))
+        logging.error("No result found for query(series title: {})".format(title))
         return None
 
 
@@ -105,10 +105,11 @@ def clean_movie_title(name):
 
 def map_to_series_id_dict(title):
     serie_id = search_serie_id(title.strip())
+    doc_ids = list(map(lambda doc: doc.doc_id, repository.series().search(Query().title == title)))
     if serie_id:
-        doc_ids = list(map(lambda serie: serie.doc_id, repository.series().search(Query().title == title)))
         return {serie_id: doc_ids}
     else:
+        repository.series().update(operations.set('data_id', 'NO_DATA_FOUND'), doc_ids=doc_ids)
         return {}
 
 
@@ -142,7 +143,6 @@ def fill_series_data():
             repository.series().update(operations.set('data_id', data_id), doc_ids=series_id_dict.get(serie_id))
         except IndexError:
             logging.error("No results found for: {}".format(serie['tvg_name']))
-            repository.series().update(operations.set('data_id', 'NO_DATA_FOUND'), doc_ids=series_id_dict.get(serie_id))
         except HTTPError as e:
             logging.error("Error on TMDB request - {}".format(e.response))
             time.sleep(10)

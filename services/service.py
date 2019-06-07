@@ -1,7 +1,7 @@
 import logging
 import threading
 
-from tinydb import Query
+from tinydb import Query, operations
 
 from helpers import m3uCollectors
 from helpers.m3uCollectors import *
@@ -51,7 +51,14 @@ def save_series(m3u_list, data_service):
     for series_data in sorted_series:
         m3u_series = repository.series().search(Query().data_id == series_data.doc_id)
         for m3u_serie in m3u_series:
-            writer.generate_series_line(m3u_serie, series_data)
+            season, episodio = int(m3u_serie['season']), int(m3u_serie['episode'])
+            episode_data = series_data['seasons'][season - 1]['episodes'][episodio - 1]
+            if episode_data:
+                writer.generate_series_line(m3u_serie, series_data, episode_data)
+            else:
+                logging.error("No data found for {}  - doc_id {} - Season {} - Episode {}"
+                              .format(m3u_serie['title'], m3u_serie.doc_id, season, episodio))
+                repository.series().update(operations.set('data_id', 'NO_DATA'), doc_ids=[m3u_series.doc_id])
 
     writer.generate_list()
 
