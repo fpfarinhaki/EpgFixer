@@ -76,5 +76,5 @@ class MovieFixer:
                    filter(lambda m: m['movie_data_id'] == 'MANUAL_FIX_NEEDED', repository.no_data_movies().all()))
 
     def search_shows_with_no_data(self):
-        return map(lambda manFix: 'tvg_name: {}'.format(manFix['tvg_name']),
-                   filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.no_data_movies().all()))
+        return list(map(lambda manFix: 'tvg_name: {}'.format(manFix['tvg_name']),
+                        filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.no_data_movies().all())))
