@@ -43,7 +43,7 @@ class M3uWriter:
 
     def generate_series_line(self, m3uSerie, series_data, episode_data):
         if episode_data:
-            description = Template('description="{Episódio: } $name\\n'
+            description = Template('description="{Episódio:} $name\\n'
                                    '{Temporada:} $season_number {Episódio:} $episode_number\\n'
                                    '{Data de Estréia:} $estreia\\n'
                                    '\\n{Sinopse:} $overview\\n'
