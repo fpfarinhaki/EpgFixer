@@ -44,6 +44,5 @@ if __name__ == '__main__':
         elif arguments['--series']:
             for show in SeriesFixer().search_shows_with_no_data():
                 print(show)
-
     else:
         MovieFixer().assign_data_to_movie_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
