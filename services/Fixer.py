@@ -9,7 +9,7 @@ class Fixer:
     def search_shows_with_no_data(self):
         pass
 
-    def assign_data_manually(self, tvg_name, query):
+    def assign_data_manually(self, name, query):
         pass
 
     def fill_show_data(self, m3u_list):

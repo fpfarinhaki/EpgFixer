@@ -5,7 +5,7 @@ from tinydb import Query, operations
 from tinydb.operations import *
 
 from repository import repository
-from services import TmdbShowDataService, ShowDataService
+from services import ShowDataService
 from services.Fixer import Fixer
 
 
@@ -24,13 +24,17 @@ class MovieFixer(Fixer):
             movie_data = self.apply_fixes(movie_name)
             self.update_db(movie_data, movie_name)
 
-    def assign_data_manually(self, tvg_name, query):
-        logging.info("Manually searching for movie - {} - with query: {}".format(tvg_name, query))
-        if repository.movies().contains(Query().tvg_name == tvg_name):
-            movie_data = self.get_movie_info(query)
-            self.update_db(movie_data, tvg_name)
+    def assign_data_manually(self, name, query):
+        logging.info("Manually searching for movie - {} - with query: {}".format(name, query))
+        if repository.movies().contains(Query().tvg_name == name):
+            movie_id = self.show_data_service.search_movie_id(query)
+            if movie_id:
+                movie_data = self.show_data_service.movie_info(movie_id)
+                self.update_db(movie_data, name)
+            else:
+                logging.info("Movie data not found in data service. Check later for updates or change query.")
         else:
-            logging.info("TVG_NAME provided not part of collection. Skipping")
+            logging.info("Show provided is not part of collection. Skipping")
 
     def apply_fixes(self, movie_name):
         fixes = [self.movies_with_date_in_title, self.substring_after_colon, self.substring_before_colon]
@@ -55,7 +59,7 @@ class MovieFixer(Fixer):
         return movie_name
 
     def get_movie_info(self, movie_name):
-        return TmdbShowDataService.movie_info(TmdbShowDataService.search_movie_id(movie_name))
+        return
 
     def update_db(self, movie_data, tvg_name):
         try:
@@ -76,7 +80,7 @@ class MovieFixer(Fixer):
             logging.error("Error updating movie during fix.")
 
     def search_shows_with_no_data(self):
-        return list(map(lambda manFix: 'tvg_name: {}'.format(manFix['tvg_name']),
+        return list(map(lambda manFix: manFix['tvg_name'],
                         filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.movies().all())))
 
     def fill_show_data(self, movies):

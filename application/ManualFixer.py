@@ -1,12 +1,12 @@
 """Manual Movie Fixer CLI
 Usage:
-    ManualMovieFixer.py (--show-type=<type>) (--fix <tvg_name> <query> | --list) [options]
+    ManualFixer.py (--show-type=<type>) (--fix <name> <query> | --list) [options]
 
 Options:
 -h --help                           Show this
 --show-type=<type>                  Type of show: movies or series [default: movies]
---fix                               Fix show. Requires arguments tvg_name and query
---list                              List missing data for type: movies or series
+--fix                               Fix show. Requires arguments name and query
+--list                              List names of missing data for type: movies or series
 --debug                             Show debug information
 --quiet                             Display errors only
 
@@ -43,8 +43,9 @@ if __name__ == '__main__':
         service = SeriesFixer(mdb_service)
 
     if arguments['--list']:
-        print("Shows which need manual fix intervention\n{}".format('-' * 50 + '\n'))
+        print("Shows which need manual fix intervention\n{}".format('-' * 50))
+        print("Name:\n")
         for show in service.search_shows_with_no_data():
             print(show)
     else:
-        service.assign_data_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
+        service.assign_data_manually(arguments['<name>'], query=arguments['<query>'])
