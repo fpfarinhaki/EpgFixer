@@ -4,10 +4,15 @@ import threading
 from datetime import *
 from string import Template
 
-LINE_WITH_DESCRIPTION_TEMPLATE = ('#EXTINF:-1 tvg-id="{id}" '
-                                  'tvg-name="{tvg_name}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
-                                  'group-title="{tvg_group}",{title}\n'
-                                  '{link}\n')
+MOVIE_LINE_WITH_DESCRIPTION_TEMPLATE = ('#EXTINF:-1 tvg-id="{id}" '
+                                        'tvg-name="{tvg_name}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
+                                        'group-title="{tvg_group}",{title}\n'
+                                        '{link}\n')
+
+SERIES_LINE_WITH_DESCRIPTION_TEMPLATE = ('#EXTINF:-1 tvg-id="{id}" '
+                                         'tvg-name="{tvg_name}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
+                                         'group-title="{tvg_group}",{title} S{season} E{episode}\n'
+                                         '{link}\n')
 
 DEFAULT_M3U_LINE = ('#EXTINF:-1 tvg-id="{tvg_id}" '
                     'tvg-name="{tvg_name}" tvg-logo="{tvg_logo}" '
@@ -38,8 +43,8 @@ class M3uWriter:
             .safe_substitute(movie_data,
                              genre=', '.join(map(lambda genre: genre['name'], movie_data['genres'])),
                              release_date=format_release_date(movie_data['release_date']))
-
-        self.buffer.append(fill_line_with_description(description, m3uMovie, movie_data))
+        self.buffer.append(fill_line_with_description(MOVIE_LINE_WITH_DESCRIPTION_TEMPLATE,
+                                                      m3uMovie, movie_data, description=description))
 
     def generate_series_line(self, m3uSerie, series_data, episode_data):
         if episode_data:
@@ -50,17 +55,18 @@ class M3uWriter:
                                    '\\n{Avaliação:} $vote_average"') \
                 .safe_substitute(episode_data, estreia=format_release_date(episode_data['air_date']))
         else:
+
             description = ''
 
-        self.buffer.append(fill_line_with_description(description=description, m3uEntity=m3uSerie,
-                                                      show_data=series_data))
+        self.buffer.append(fill_line_with_description(SERIES_LINE_WITH_DESCRIPTION_TEMPLATE,
+                                                      m3uSerie, series_data, description=description))
 
     def generate_channel_line(self, channel):
         self.buffer.append(DEFAULT_M3U_LINE.format(**channel, doc_id=channel.doc_id))
 
 
-def fill_line_with_description(description, m3uEntity, show_data):
-    filled_line = LINE_WITH_DESCRIPTION_TEMPLATE.format(**m3uEntity, **show_data, description=description)
+def fill_line_with_description(line_template, m3uEntity, show_data, description=''):
+    filled_line = line_template.format(**m3uEntity, **show_data, description=description)
     logging.debug("Line generated: {}".format(filled_line))
     return filled_line
 
