@@ -1,17 +1,14 @@
 """Manual Movie Fixer CLI
 Usage:
-    ManualMovieFixer.py (--list (--series | --movies) | [options] <tvg_name> <query> -o <file>)
-
-Arguments:
-    tvg_name    Should match m3ulist tvg_name needing fix. See --list below
-    query       Query that will be used to search for movie information.
+    ManualMovieFixer.py (--show-type=<type>) (--fix <tvg_name> <query> | --list) [options]
 
 Options:
--h --help                           show this
--l --list  (--series | --movies)    list all shows needing manual fix
--o <file>, --output <file>          save to file
---debug                             show debug information
---quiet                             display errors only
+-h --help                           Show this
+--show-type=<type>                  Type of show: movies or series [default: movies]
+--fix                               Fix show. Requires arguments tvg_name and query
+--list                              List missing data for type: movies or series
+--debug                             Show debug information
+--quiet                             Display errors only
 
 """
 import logging
@@ -19,8 +16,10 @@ from logging.handlers import TimedRotatingFileHandler
 
 from docopt import docopt
 
+from services.Fixer import Fixer
 from services.MovieFixer import MovieFixer
 from services.SeriesFixer import SeriesFixer
+from services.TmdbShowDataService import TmdbShowDataService
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Manual Movie Fixer 1.0')
@@ -36,13 +35,16 @@ if __name__ == '__main__':
                         handlers=[TimedRotatingFileHandler(filename='ManualDataFixing.log', encoding='utf-8'),
                                   console_handler], level=logging.DEBUG)
 
+    service: Fixer = ''
+    mdb_service = TmdbShowDataService()
+    if arguments['--show-type'] == 'movies':
+        service = MovieFixer(mdb_service)
+    elif arguments['--show-type'] == 'series':
+        service = SeriesFixer(mdb_service)
+
     if arguments['--list']:
         print("Shows which need manual fix intervention\n{}".format('-' * 50 + '\n'))
-        if arguments['--movies']:
-            for show in MovieFixer().search_shows_with_no_data():
-                print(show)
-        elif arguments['--series']:
-            for show in SeriesFixer().search_shows_with_no_data():
-                print(show)
+        for show in service.search_shows_with_no_data():
+            print(show)
     else:
-        MovieFixer().assign_data_to_movie_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
+        service.assign_data_manually(tvg_name=arguments['<tvg_name>'], query=arguments['<query>'])
