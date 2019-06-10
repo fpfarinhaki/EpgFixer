@@ -21,7 +21,6 @@ class SeriesFixer(Fixer):
         m3uSeries = repository.series().search(Query().title.matches("\s*" + title + "\s*"))
         doc_ids = list(map(lambda doc: doc.doc_id, m3uSeries))
         if m3uSeries:
-            print(m3uSeries)
             serie_id = self.show_data_service.search_serie_id(query)
             if serie_id:
                 serie_data = self.show_data_service.serie_info(serie_id)
