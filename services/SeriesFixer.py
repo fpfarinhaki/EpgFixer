@@ -23,13 +23,7 @@ class SeriesFixer(Fixer):
         if m3uSeries:
             serie_id = self.show_data_service.search_serie_id(query)
             if serie_id:
-                serie_data = self.show_data_service.serie_info(serie_id)
-                seasons = []
-                for season in range(1, int(serie_data['number_of_seasons']) + 1):
-                    seasons.append(self.show_data_service.season_info(serie_data['id'], season))
-                serie = SeriesData(serie_data, seasons)
-                data_id = repository.series_data().upsert(vars(serie), Query().id == serie.id)
-                repository.series().update(operations.set('data_id', data_id), doc_ids=doc_ids)
+                self.update_series_data(serie_id, doc_ids)
             else:
                 logging.info("Series data not found in data service. Check later for updates.")
         else:
@@ -53,10 +47,13 @@ class SeriesFixer(Fixer):
         for title in titles:
             series_id_dict.update(self.map_to_series_id_dict(title))
         for serie_id in filter(lambda key: key != '', series_id_dict.keys()):
-            serie_data = self.show_data_service.serie_info(serie_id)
-            seasons = []
-            for season in range(1, int(serie_data['number_of_seasons']) + 1):
-                seasons.append(self.show_data_service.season_info(serie_data['id'], season))
-            serie = SeriesData(serie_data, seasons)
-            data_id = repository.series_data().upsert(vars(serie), Query().id == serie.id)
-            repository.series().update(operations.set('data_id', data_id), doc_ids=series_id_dict.get(serie_id))
+            self.update_series_data(serie_id, series_id_dict.get(serie_id))
+
+    def update_series_data(self, serie_id, doc_ids):
+        serie_data = self.show_data_service.serie_info(serie_id)
+        seasons = []
+        for season in range(1, int(serie_data['number_of_seasons']) + 1):
+            seasons.append(self.show_data_service.season_info(serie_data['id'], season))
+        serie = SeriesData(serie_data, seasons)
+        data_id = repository.series_data().upsert(vars(serie), Query().id == serie.id)
+        repository.series().update(operations.set('data_id', data_id[0]), doc_ids=doc_ids)

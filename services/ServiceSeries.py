@@ -35,6 +35,7 @@ class ServiceSeries(Service):
                     logging.error("No data found for {}  - doc_id {} - Season {} - Episode {}"
                                   .format(m3u_serie['title'], m3u_serie.doc_id, season, episodio))
                     repository.series().update(operations.set('data_id', 'NO_DATA'), doc_ids=[m3u_serie.doc_id])
+
                 self.file_writer.generate_line(m3u_serie=m3u_serie, series_data=series_data, episode_data=episode_data)
 
         self.file_writer.generate_list()
