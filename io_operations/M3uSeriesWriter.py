@@ -13,7 +13,7 @@ class M3uSeriesWriter(M3uWriter):
     SERIES_LINE_INFORMATION_TEMPLATE = ('#EXTINF:-1 tvg-id="" '
                                         'tvg-name="{name}" {description} tvg-logo="http://image.tmdb.org/t/p/w400{poster_path}" '
                                         'group-title="{tvg_group}",{name}\n'
-                                        '----------------------------------------------\n')
+                                        'http://sample.serie.tv/description\n')
 
     def __init__(self, filename):
         super().__init__(filename)
