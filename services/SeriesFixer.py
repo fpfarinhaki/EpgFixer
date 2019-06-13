@@ -2,6 +2,7 @@ import logging
 
 from tinydb import Query, operations
 
+from domain.MissingDataItem import MissingDataItem
 from domain.SeriesData import SeriesData
 from repository import repository
 from services.Fixer import Fixer
@@ -14,7 +15,7 @@ class SeriesFixer(Fixer):
 
     def search_shows_with_no_data(self):
         no_data_series = repository.series().search(Query().data_id == 'NO_DATA_FOUND')
-        return set(list(map(lambda serie: serie['title'], no_data_series)))
+        return set(list(map(lambda serie: MissingDataItem(serie['title'], serie['tvg_logo']), no_data_series)))
 
     def assign_data_manually(self, title, query):
         logging.info("Manually searching for series - {} - with query: {}".format(title, query))

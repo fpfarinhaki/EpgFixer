@@ -44,8 +44,7 @@ if __name__ == '__main__':
 
     if arguments['--list']:
         print("Shows which need manual fix intervention\n{}".format('-' * 50))
-        print("Name:\n")
         for show in service.search_shows_with_no_data():
-            print(show)
+            print("Name: {} - poster_path: {:>15}".format(show.name, show.poster_path))
     else:
         service.assign_data_manually(arguments['<name>'], query=arguments['<query>'])

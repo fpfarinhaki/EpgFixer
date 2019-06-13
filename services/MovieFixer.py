@@ -4,6 +4,7 @@ import re
 from tinydb import Query, operations
 from tinydb.operations import *
 
+from domain.MissingDataItem import MissingDataItem
 from repository import repository
 from services import ShowDataService
 from services.Fixer import Fixer
@@ -80,7 +81,7 @@ class MovieFixer(Fixer):
             logging.error("Error updating movie during fix.")
 
     def search_shows_with_no_data(self):
-        return list(map(lambda manFix: manFix['tvg_name'],
+        return list(map(lambda manFix: MissingDataItem(manFix['tvg_name'], manFix['tvg_logo']),
                         filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.movies().all())))
 
     def fill_show_data(self, movies):
