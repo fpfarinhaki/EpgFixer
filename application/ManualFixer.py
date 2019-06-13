@@ -15,6 +15,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 from docopt import docopt
+from tabulate import tabulate
 
 from services.Fixer import Fixer
 from services.MovieFixer import MovieFixer
@@ -43,8 +44,11 @@ if __name__ == '__main__':
         service = SeriesFixer(mdb_service)
 
     if arguments['--list']:
-        print("Shows which need manual fix intervention\n{}".format('-' * 50))
+        print("Shows which need manual fix intervention\n")
+        shows_list = []
         for show in service.search_shows_with_no_data():
-            print("Name: {} - poster_path: {:>15}".format(show.name, show.poster_path))
+            shows_list.append([show.name, show.poster_path])
+
+        print(tabulate(shows_list, headers=['Name', 'Poster Path']))
     else:
         service.assign_data_manually(arguments['<name>'], query=arguments['<query>'])
