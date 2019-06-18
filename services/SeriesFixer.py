@@ -10,6 +10,10 @@ from services.Fixer import Fixer
 
 class SeriesFixer(Fixer):
 
+    def remove_show_by_name(self, name):
+        removed_ids = repository.series().remove(Query().title == name)
+        logging.info("Removed {} series records with name = {}".format(len(removed_ids), name))
+
     def __init__(self, show_data_service):
         super().__init__(show_data_service)
 

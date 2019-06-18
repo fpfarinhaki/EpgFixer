@@ -17,6 +17,10 @@ class MovieFixer(Fixer):
     def __init__(self, show_data_service: ShowDataService):
         super().__init__(show_data_service)
 
+    def remove_show_by_name(self, name):
+        removed_ids = repository.movies().remove(Query().tvg_name == name)
+        logging.info("Removed {} movies with name = {}".format(len(removed_ids), name))
+
     def fix_no_data_movies(self):
         movies = filter(lambda m: m['movie_data_id'] == 'NO_DATA_FOUND', repository.movies().all())
         for movie in movies:
@@ -27,13 +31,17 @@ class MovieFixer(Fixer):
 
     def assign_data_manually(self, name, query):
         logging.info("Manually searching for movie - {} - with query: {}".format(name, query))
+        year = ''
+        match = re.match("(.*)\s*year=([0-9]{4})", query)
+        if match:
+            year = match.group(2)
+            query = match.group(1)
+            logging.debug("Search Movie arguments: query = {} year = {}".format(query, year))
         if repository.movies().contains(Query().tvg_name == name):
-            movie_id = self.show_data_service.search_movie_id(query)
+            movie_id = self.show_data_service.search_movie_id(query, year)
             if movie_id:
                 movie_data = self.show_data_service.movie_info(movie_id)
                 self.update_db(movie_data, name)
-            else:
-                logging.info("Movie data not found in data service. Check later for updates or change query.")
         else:
             logging.info("Show provided is not part of collection. Skipping")
 
@@ -67,14 +75,8 @@ class MovieFixer(Fixer):
             if movie_data:
                 logging.info("Movie data found - Updating DB")
                 logging.debug("Movie data found - {}".format(movie_data))
-                if not (repository.movie_data().contains(Query().id == movie_data['id'])):
-                    movie_data_id = repository.movie_data().insert(movie_data)
-                    repository.movies().update(set('movie_data_id', movie_data_id), Query().tvg_name == tvg_name)
-                else:
-                    logging.info("Duplicate movie data. Consider improving query for manual fixing.")
-                    logging.debug("Movie data already in database - {} Check for duplicates and consider improving "
-                                  "query for manual fixing."
-                                  .format("id: " + movie_data['id'] + " title: " + movie_data['title']))
+                movie_data_id = repository.movie_data().upsert(movie_data, Query().id == movie_data['id'])
+                repository.movies().update(set('movie_data_id', movie_data_id[0]), Query().tvg_name == tvg_name)
             else:
                 logging.info("Movie data not found in data service. Check later for updates.")
         except Exception:

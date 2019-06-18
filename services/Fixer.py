@@ -15,3 +15,6 @@ class Fixer:
 
     def fill_show_data(self, m3u_list):
         pass
+
+    def remove_show_by_name(self, name):
+        pass

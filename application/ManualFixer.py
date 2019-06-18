@@ -1,12 +1,13 @@
 """Manual Movie Fixer CLI
 Usage:
-    ManualFixer.py (--show-type=<type>) (--fix <name> <query> | --list) [options]
+    ManualFixer.py (--show-type=<type>) (--fix <name> <query> | --list | --remove <name>) [options]
 
 Options:
 -h --help                           Show this
 --show-type=<type>                  Type of show: movies or series [default: movies]
 --fix                               Fix show. Requires arguments name and query
 --list                              List names of missing data for type: movies or series
+--remove                            Remove a show from m3u list using name
 --debug                             Show debug information
 --quiet                             Display errors only
 
@@ -50,5 +51,7 @@ if __name__ == '__main__':
             shows_list.append([show.name, show.poster_path])
 
         print(tabulate(shows_list, headers=['Name', 'Poster Path']))
+    elif arguments['--remove']:
+        service.remove_show_by_name(name=arguments['<name>'])
     else:
         service.assign_data_manually(arguments['<name>'], query=arguments['<query>'])
