@@ -18,7 +18,7 @@ class MovieFixer(Fixer):
         super().__init__(show_data_service)
 
     def remove_show_by_name(self, name):
-        removed_ids = repository.movies().remove(Query().tvg_name == name)
+        removed_ids = repository.movies().update(operations.set('movie_data_id', 'REMOVED'), Query().tvg_name == name)
         logging.info("Removed {} movies with name = {}".format(len(removed_ids), name))
 
     def fix_no_data_movies(self):
