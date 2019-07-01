@@ -195,18 +195,16 @@ class M3uChannelCollector(M3uCollector):
     def collect(self, m3u_entity):
         group = m3u_entity.tvg_group
         if group.__contains__("Canais:") and not (group.__contains__("Adultos")):
-            keys = list(self.channel_id_dic.keys())
-            possible_key_matches = [k for k in keys if self.getPossibleKeyMatches(k, m3u_entity.tvg_name)]
-            for key in possible_key_matches:
-                if m3u_entity.tvg_name in self.channel_id_dic.get(key):
-                    m3u_entity.tvg_id = key
+            for channel_id, tvg_name in self.channel_id_dic.items():
+                if m3u_entity.tvg_name in tvg_name:
+                    m3u_entity.tvg_id = channel_id
                     return m3u_entity
 
-    def getPossibleKeyMatches(self, key, matcher):
-        if key[0:3].casefold() in matcher.replace(' ', '').casefold():
-            return True
-        else:
-            return False
+    # def getPossibleKeyMatches(self, key, matcher):
+    #     if key[0:3].casefold() in matcher.replace(' ', '').casefold():
+    #         return True
+    #     else:
+    #         return False
 
 
 class M3uMovieCollector(M3uCollector):

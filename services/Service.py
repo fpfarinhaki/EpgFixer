@@ -4,6 +4,7 @@ from tinydb import Query
 
 from io_operations import M3uWriter
 from services import ShowDataService
+from tinydb import operations
 
 
 class Service(object):
@@ -22,4 +23,6 @@ class Service(object):
             if not (db.contains(Query().tvg_name == m3uEntity.tvg_name)):
                 logging.debug("Inserting new M3U entity {} - insert".format(m3uEntity))
                 to_insert.append(vars(m3uEntity))
+            else:
+                db.update(operations.set("link", m3uEntity.link), Query().tvg_name == m3uEntity.tvg_name)
         db.insert_multiple(to_insert)

@@ -18,6 +18,13 @@ class M3uEntity(object):
     def __repr__(self) -> str:
         return 'TVG-NAME {} - LINK {}'.format(self.tvg_name, self.link)
 
+    def __eq__(self, o: object) -> bool:
+        if isinstance(o, self.__class__):
+            return self.__dict__ == o.__dict__
+        else:
+            return False
+
+
 
 class M3uMovie(M3uEntity):
     def __init__(self, line, link, movie_data_id='NOT_PROCESSED'):
