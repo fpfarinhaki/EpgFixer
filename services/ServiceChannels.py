@@ -1,7 +1,7 @@
 import logging
 import threading
 
-from tinydb import Query
+from tinydb.database import Table
 
 from helpers import m3uCollectors
 from helpers.m3uCollectors import M3uChannelCollector, M3uRadioCollector, M3uChannel24Collector
@@ -17,20 +17,19 @@ class ServiceChannels(Service):
 
     def save(self, m3u_list):
         logging.info("{} - Processing channel database".format(threading.current_thread().name))
-        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannelCollector()), repository.channels())
-        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uRadioCollector()), repository.channels())
-        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannel24Collector()), repository.channels())
+        channels_table = repository.channels()
+        channels_table.purge()
+        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannelCollector()), channels_table)
+        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uRadioCollector()), channels_table)
+        self.update_m3u_entity(m3uCollectors.collect(m3u_list, M3uChannel24Collector()), channels_table)
 
-        sorted_channels = sorted(repository.channels().all(), key=lambda m: m['tvg_name'])
+        sorted_channels = sorted(channels_table.all(), key=lambda m: m['tvg_name'])
 
         for channel in sorted_channels:
             self.file_writer.generate_line(channel)
 
         self.file_writer.generate_list()
 
-    def update_m3u_entity(self, m3u_entity_list, db):
+    def update_m3u_entity(self, m3u_entity_list, db: Table):
         logging.info("Updating {} with {} M3U Entities".format(db, len(m3u_entity_list)))
-        logging.debug("TVG-NAMES:")
-        logging.debug(list(map(lambda m3u: m3u.tvg_name, m3u_entity_list)))
-        for m3uEntity in m3u_entity_list:
-            db.upsert(vars(m3uEntity), Query().tvg_name == m3uEntity.tvg_name)
+        db.insert_multiple(list(map(lambda m3u: vars(m3u), m3u_entity_list)))
