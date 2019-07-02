@@ -1,10 +1,10 @@
 import logging
 
 from tinydb import Query
+from tinydb import operations
 
 from io_operations import M3uWriter
 from services import ShowDataService
-from tinydb import operations
 
 
 class Service(object):
@@ -17,7 +17,7 @@ class Service(object):
         pass
 
     def update_m3u_entity(self, m3u_entity_list, db):
-        logging.debug("Updating {} with {} M3U Entities".format(db, len(m3u_entity_list)))
+        logging.info("Updating {} with {} M3U Entities".format(db, len(m3u_entity_list)))
         to_insert = []
         for m3uEntity in m3u_entity_list:
             if not (db.contains(Query().tvg_name == m3uEntity.tvg_name)):

@@ -61,9 +61,9 @@ if __name__ == '__main__':
     arguments = docopt(__doc__, version='M3U List Manager 1.0')
     console_handler.setLevel(logging.INFO)
     if arguments['--debug']:
-        logging.basicConfig(level=logging.DEBUG)
+        console_handler.setLevel(logging.DEBUG)
     elif arguments['--quiet']:
-        logging.basicConfig(level=logging.ERROR)
+        console_handler.setLevel(logging.ERROR)
 
     if arguments['--update-db']:
         runpy.run_path(arguments['--update-db'])
