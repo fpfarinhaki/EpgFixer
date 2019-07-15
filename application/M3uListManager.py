@@ -1,9 +1,10 @@
 """M3U List Manager CLI
 Usage:
-    M3uListManager [options] (--m3u-file filename | --update-db script)
+    M3uListManager [options] ([--type=<type>] --m3u-file filename | --update-db script)
 
 Options:
 -h --help               show this
+--type=<type>          (optional) type of list to process: channels, series or movies. Default to all.
 --m3u-file <filename>   save to file
 --update-db <script>    update db using script provided
 --debug                 show debug information
@@ -34,30 +35,24 @@ logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S
                               console_handler], level=logging.DEBUG)
 
 
-def main(iptv_filename):
+def main(iptv_filename, services):
     logging.info("Starting EPG and movie data process.")
     all_m3u = M3uTransformer(iptv_filename).transform()
-    show_data_service = TmdbShowDataService()
-
-    series_service = ServiceSeries(M3uSeriesWriter("series.m3u"), show_data_service)
-    movies_service = ServiceMovies(M3uMoviesWriter('movies.m3u'), show_data_service)
-    channels_service = ServiceChannels(M3uChannelsWriter('channels.m3u'), show_data_service)
 
     with ThreadPoolExecutor(thread_name_prefix='save_thread') as executor:
-        series_future = executor.submit(series_service.save, all_m3u)
-        movies_future = executor.submit(movies_service.save, all_m3u)
-        channel_future = executor.submit(channels_service.save, all_m3u)
-
-        # executor.submit(self.update_m3u_entity, self.adultos, repository.adult_movies())
-
-        logging.debug("Future result for movie thread - {}".format(movies_future.result()))
-        logging.debug("Future result for channels thread - {}".format(channel_future.result()))
-        logging.debug("Future result for series thread - {}".format(series_future.result()))
+        for service in services:
+            future = executor.submit(service.save, all_m3u)
+            logging.debug("Future result for {} thread - {}".format(service.__class__.__name__, future.result()))
 
     logging.info("M3u process finished.")
 
 
 if __name__ == '__main__':
+    show_data_service = TmdbShowDataService()
+    services = [ServiceSeries(M3uSeriesWriter("series.m3u"), show_data_service),
+                ServiceMovies(M3uMoviesWriter('movies.m3u'), show_data_service),
+                ServiceChannels(M3uChannelsWriter('channels.m3u'), show_data_service)
+                ]
     arguments = docopt(__doc__, version='M3U List Manager 1.0')
     console_handler.setLevel(logging.INFO)
     if arguments['--debug']:
@@ -68,4 +63,11 @@ if __name__ == '__main__':
     if arguments['--update-db']:
         runpy.run_path(arguments['--update-db'])
     else:
-        main(arguments['--m3u-file'])
+        if arguments['--type'] == 'channels':
+            main(arguments['--m3u-file'], [services.pop(2)])
+        elif arguments['--type'] == 'movies':
+            main(arguments['--m3u-file'], [services.pop(1)])
+        elif arguments['--type'] == 'series':
+            main(arguments['--m3u-file'], [services.pop(0)])
+        else:
+            main(arguments['--m3u-file'], services)
