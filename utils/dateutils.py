@@ -8,5 +8,7 @@ def format_release_date(date):
     except ValueError:
         logging.error("Release date not in proper format - {}".format(date))
         release_date = date
+    except TypeError:
+        logging.error("Error on type of date provided - {}".format(date));
 
     return release_date
