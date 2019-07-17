@@ -10,5 +10,6 @@ def format_release_date(date):
         release_date = date
     except TypeError:
         logging.error("Error on type of date provided - {}".format(date))
+        release_date = ''
 
     return release_date
